@@ -1,0 +1,28 @@
+{
+  "root": "apps/type-plan-client-e2e",
+  "sourceRoot": "apps/type-plan-client-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/type-plan-client-e2e/cypress.json",
+        "devServerTarget": "type-plan-client:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "type-plan-client:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/type-plan-client-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["type-plan-client"]
+}
