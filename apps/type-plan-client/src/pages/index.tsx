@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledPage = styled.div`
   .page {
@@ -17,7 +17,7 @@ export function Index() {
         <div className="container">
           <div id="welcome">
             <h1>
-              <span> Hello there, </span>
+              <span>Hello there,</span>
               Welcome type-plan-client 👋
             </h1>
           </div>
@@ -40,7 +40,7 @@ export function Index() {
                 </svg>
                 <span>You&apos;re up and running</span>
               </h2>
-              <a href="#commands"> What&apos;s next? </a>
+              <a href="#commands">What&apos;s next?</a>
             </div>
             <div className="logo-container">
               <svg
@@ -78,7 +78,7 @@ export function Index() {
                 </svg>
                 <span>
                   Documentation
-                  <span> Everything is in there </span>
+                  <span>Everything is in there</span>
                 </span>
                 <svg
                   fill="none"
@@ -115,7 +115,7 @@ export function Index() {
                 </svg>
                 <span>
                   Blog
-                  <span> Changelog, features & events </span>
+                  <span>Changelog, features & events</span>
                 </span>
                 <svg
                   fill="none"
@@ -148,7 +148,7 @@ export function Index() {
                 </svg>
                 <span>
                   YouTube channel
-                  <span> Nx Show, talks & tutorials </span>
+                  <span>Nx Show, talks & tutorials</span>
                 </span>
                 <svg
                   fill="none"
@@ -185,7 +185,7 @@ export function Index() {
                 </svg>
                 <span>
                   Interactive tutorials
-                  <span> Create an app, step-by-step </span>
+                  <span>Create an app, step-by-step</span>
                 </span>
                 <svg
                   fill="none"
@@ -224,7 +224,7 @@ export function Index() {
                 </svg>
                 <span>
                   Video courses
-                  <span> Nx custom courses </span>
+                  <span>Nx custom courses</span>
                 </span>
                 <svg
                   fill="none"
@@ -294,8 +294,8 @@ export function Index() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {' '}
-                  What is Nx Cloud?{' '}
+                  {" "}
+                  What is Nx Cloud?{" "}
                 </a>
               </div>
               <a
@@ -315,7 +315,7 @@ export function Index() {
                 </svg>
                 <span>
                   Nx is open source
-                  <span> Love Nx? Give us a star! </span>
+                  <span>Love Nx? Give us a star!</span>
                 </span>
               </a>
             </div>

@@ -1,6 +1,31 @@
+@font-face {
+  font-family: Vazir;
+  src: url("/fonts/Vazir.ttf");
+}
+
+@font-face {
+  font-family: VazirLight;
+  src: url("/fonts/Vazir-Light.ttf");
+}
+
+@font-face {
+  font-family: VazirThin;
+  src: url("/fonts/Vazir-Thin.ttf");
+}
+
+@font-face {
+  font-family: VazirMedium;
+  src: url("/fonts/Vazir-Medium.ttf");
+}
+
+@font-face {
+  font-family: VazirBold;
+  src: url("/fonts/Vazir-Bold.ttf");
+}
+
 html {
   -webkit-text-size-adjust: 100%;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+  font-family: VazirLight, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   line-height: 1.5;
