@@ -1,26 +1,26 @@
 @font-face {
   font-family: Vazir;
-  src: url("/fonts/Vazir.ttf");
+  src: url("/font/Vazir.ttf");
 }
 
 @font-face {
   font-family: VazirLight;
-  src: url("/fonts/Vazir-Light.ttf");
+  src: url("/font/Vazir-Light.ttf");
 }
 
 @font-face {
   font-family: VazirThin;
-  src: url("/fonts/Vazir-Thin.ttf");
+  src: url("/font/Vazir-Thin.ttf");
 }
 
 @font-face {
   font-family: VazirMedium;
-  src: url("/fonts/Vazir-Medium.ttf");
+  src: url("/font/Vazir-Medium.ttf");
 }
 
 @font-face {
   font-family: VazirBold;
-  src: url("/fonts/Vazir-Bold.ttf");
+  src: url("/font/Vazir-Bold.ttf");
 }
 
 html {
@@ -59,6 +59,9 @@ h2 {
 a {
   color: inherit;
   text-decoration: inherit;
+}
+a:hover {
+  cursor: pointer;
 }
 pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,

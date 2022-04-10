@@ -1,1 +1,2 @@
-export * from "./Flexible"
+export * from "./Flexible";
+export * from "./Media";

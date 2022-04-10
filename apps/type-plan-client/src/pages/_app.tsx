@@ -6,9 +6,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Welcome to type-plan-client!</title>
+        <title>پلن</title>
       </Head>
-      <main className="app">
+      <main dir="rtl">
         <Component {...pageProps} />
       </main>
     </>
