@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { Media } from "types";
+import styled from 'styled-components';
+import { Media } from 'types';
 
 export const Img = styled.img.attrs<ImgProps>((props) => ({
   src: props.Src ? props.Src : props.src,
 }))<ImgProps>``;
 
-export interface ImgProps extends Media {}
+export type ImgProps = Media;

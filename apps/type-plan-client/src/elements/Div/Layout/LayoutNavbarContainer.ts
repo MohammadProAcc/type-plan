@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Color } from "styles";
-import { Div } from ".";
+import styled from 'styled-components';
+import { Color } from 'styles';
+import { Div } from '..';
 
 export const LayoutNavbarContainer = styled(Div)`
   width: 100%;

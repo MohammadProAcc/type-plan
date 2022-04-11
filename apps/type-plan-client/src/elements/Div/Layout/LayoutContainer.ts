@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Color } from 'styles';
-import { Div } from './Div';
+import { Div } from "..";
 
 export const LayoutContainer = styled(Div)`
   width: 100%;

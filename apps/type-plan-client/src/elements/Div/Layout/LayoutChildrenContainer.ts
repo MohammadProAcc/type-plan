@@ -1,4 +1,4 @@
-import { Div } from "./Div";
+import { Div } from "..";
 import styled from 'styled-components'
 
 export const LayoutChildrenContainer = styled(Div)`
