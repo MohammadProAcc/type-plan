@@ -1,0 +1,25 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vyc0lkIjoiNWZlOThkNDZmNjAyZjJkMmRiZGI2YjU0In0.W0oiBUtViIMJfvJF2sSzG0PQT1rCwc2r4blAsqSi_Tky3kvh7MBtnvwlaBjRzoWZqLVqU9MoMElaAHYMY4Ky-Q
+
+{
+    "details":{
+        "set":{
+            "_id":"600d2e11592efe0cd85ab3c1"
+        },
+        "get":{
+            "name":1,
+            "blogPosts":{
+                "title":1,
+                "content":1
+                
+            }
+        
+
+        }
+    },
+    "wants":{
+        "model":"BlogCategory",
+        "doit":"getBlogCategory"
+    }
+}

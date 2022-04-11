@@ -1,0 +1,29 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+"contents":"dynamic",
+    "details":{
+        "set":{
+            "_id":"6145b42e698607dbdf5bfe6b"
+        },
+        "get":{
+            "name":1,
+         "blogPosts": {
+             "title":1,
+            "author": {"name":1},
+            "comments": {"content":1},
+            "likedUsers": 1,
+            "blogTags": 1,
+            "blogCategory": {"name":1}
+          }
+
+        
+
+        }
+    },
+    "wants":{
+        "model":"BlogTag",
+        "doit":"getBlogTag"
+    }
+}

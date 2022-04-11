@@ -1,0 +1,39 @@
+POST http://localhost:8000/funql HTTP/1.1
+Content-type: application/json
+token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTExNTg3MDcuNjIyLCJ1c2Vyc0lkIjoiNjE3NDM3NTQwNWZhNTQ5NDZjZmY5NWIyIn0.jKsa5BxVnSHpv0PkI9QXkGxlM6MPd2-YH1BN6iJi1pRnvxI6uGL26bv7ywhuHKIE6Q4tBin1E08lPfuVzZPwuw
+
+{
+    "details":{
+        "set":{
+            "address": {
+                "addressTxt": "nsd;fhk sdklhf s;dkhf s;df",
+                "country": "617437540a0321647b350d60",
+                "state": "617437540a0321647b350d68",
+                "city": "617437540a0321647b350d72"
+            }
+        },
+        "get":{
+            "_id":1,
+            "name":1,
+            "creditCardNumber":1,
+            "addresses": {
+            "addressId": 1,
+                "country": {
+                "_id": 1,
+                    "name": 1
+                },
+                "city": {
+                    "name": 1
+                },
+                "addressTxt": 1
+            }
+
+        }
+    },
+    "contents": "dynamic",
+
+    "wants":{
+        "model":"User",
+        "doit":"addUserAddress"
+    }
+}

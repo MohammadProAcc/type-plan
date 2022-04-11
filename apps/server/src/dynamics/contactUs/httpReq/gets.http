@@ -1,0 +1,23 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+    "contents":"dynamic",
+    "details":{
+        "set":{
+        "name":"a",
+        # "email":"masi@gmail.com",
+        "pagination":{
+                "limit":12,
+                "page":1
+            }
+        },
+        "get":{
+         
+        }
+    },
+    "wants":{
+        "model":"ContactUs",
+        "doit":"getContactUss"
+    }
+}

@@ -1,0 +1,24 @@
+
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+token:eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDAyNDQxODEuMDIzLCJ1c2Vyc0lkIjoiNjBkMWNkYTI3OGUzZjkwNTU4OTRlMDI3In0.t0JqV-lflf99RYgEEVy2m_MmW_k8XLSr6jQZpeUMmZbjmS4tZA4-GJYimF0z_8KUr_EoKQABzTaX6RV-3IrSDQ
+
+{
+    "contents":"dynamic",
+    "details":{
+
+        "set":{
+            "_id":"60f56001e9d6c83f77df61eb",
+            "name":"this is new",
+            "enName":"new hi"
+        },
+        "get":{
+            # "_id": 1,
+            # "name": 1
+        }
+    },
+    "wants":{
+        "model":"BlogCategory",
+        "doit":"updateBlogCategory"
+    }
+}

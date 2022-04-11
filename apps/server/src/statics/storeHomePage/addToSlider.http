@@ -1,0 +1,28 @@
+POST http://localhost:8000/funql HTTP/1.1
+Content-type: application/json
+
+
+{
+    "contents":"static",
+"details":{
+    "set":{
+        "photo":"lkjhgf",
+       "title":"lkjh",
+       "subTitle":";lkjh",
+       "url":"kjhgfdsdfghjm,m",
+       "type":"internal"
+
+
+
+        #       photo: "string",
+        #   title: "string",
+        #   subTitle: "string",
+        #   url: "string",
+        #   type: "string",
+    }
+},
+    "wants":{
+        "model":"StoreHomePage",
+        "doit":"addToStoreHomePageSlider"
+    }
+}

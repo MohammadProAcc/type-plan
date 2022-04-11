@@ -1,0 +1,15 @@
+POST http://localhost:6000/funql HTTP/1.1
+content-type: application/json
+token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmQ1ZjFiNjJmOTc5Njc5NzJlMmViOTAifQ.D_FFtNuxoA3MrgzYSKAJ4o3H_4MsiOwuxuDSu8Xz9E4GlNEtRuk-t0s12A6a7Oxj61G7faVdWWpjMkdW2A9soQ
+
+{
+    "details": {
+        "set": {
+            "_id":"6071616fa4e5a480c9194397"
+        }
+    },
+    "wants": {
+        "model": "City",
+        "doit": "deleteCity"
+    }
+}

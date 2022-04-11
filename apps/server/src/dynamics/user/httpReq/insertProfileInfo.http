@@ -1,0 +1,29 @@
+POST http://localhost:8000/funql HTTP/1.1
+Content-type: application/json
+token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzM2NzU0NDMuNDgzLCJ1c2Vyc0lkIjoiNjA2ZDZmNDBjNDAwZGY5YzlkNDU4ZjI5In0.C3uxZKm2zKyjJDSaCppn2aDkLOOFy_JSkDkvUrJ4-jt_AZIvHIsP3PkGLexSR0DbGRrwc-En4jtg1yxj0CJrHg
+
+{
+    "details":{
+        "set":{
+            "name":"user1",
+            "lastName":"lastName1",
+            "gender":"MALE",
+            "birthDate":1618037628351,
+            "password":"0123456",
+            "postalCode":"22",
+            "email":"masi@gmail.com",
+            "creditCardNumber":1234567891234568
+        },
+        "get":{
+            "_id":1,
+            "name":1,
+            "creditCardNumber":1
+
+        }
+    },
+
+    "wants":{
+        "model":"User",
+        "doit":"InsertProfileInfo"
+    }
+}

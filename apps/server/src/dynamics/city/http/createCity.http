@@ -1,0 +1,24 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+# //normalUser token
+# token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzMzMzY0MDMuMzYzLCJ1c2Vyc0lkIjoiNjA2ZDRkODIyN2MwMDM1YWU1OTc0ODJlIn0.NK3NX2EKxA6R36Ek1kkKpl6wkUwsxySmwLesNaJvuEqKWrkj0dc3S8U4BkuXZMDUbDYa6aI79UBp4VAHst0SIg
+
+{
+    "contents":"dynamic",
+    "details": {
+        "set": {
+            "name": "خوی",
+            "enName": "khoy",
+            "stateId":"61489b6801e492daa6d58f76",
+            "geometries": [[2,2],[3,3],[2,2]]
+        },
+        "get": {
+            "_id": 1,
+            "name": 1
+        }
+    },
+    "wants": {
+        "model": "City",
+        "doit": "createCity"
+    }
+}

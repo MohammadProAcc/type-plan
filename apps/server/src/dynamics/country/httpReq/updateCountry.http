@@ -1,0 +1,31 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+# //normalUser token
+# token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzMzMzY0MDMuMzYzLCJ1c2Vyc0lkIjoiNjA2ZDRkODIyN2MwMDM1YWU1OTc0ODJlIn0.NK3NX2EKxA6R36Ek1kkKpl6wkUwsxySmwLesNaJvuEqKWrkj0dc3S8U4BkuXZMDUbDYa6aI79UBp4VAHst0SIg
+
+{
+    "contents":"dynamic",
+    "details": {
+        "set": {
+            #you can edit any field without enter all field of country
+            "_id":"6152bc9e4ea689b8e8ff34e5",
+            "enName": "salammmmmmmmmm",
+            "name":"آیران",
+            "countryCode":["98","99"],
+            "geometries": [[1,1],[2,2],[1,1]]
+        },
+        "get": {
+            "_id": 1,
+            "name": 1,
+            "enName":1,
+            "states":{
+                "_id":1,
+                "name":1
+            }
+        }
+    },
+    "wants": {
+        "model": "Country",
+        "doit": "updateCountry"
+    }
+}

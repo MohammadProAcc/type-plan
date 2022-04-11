@@ -1,0 +1,36 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+    "contents": "dynamic",
+    "wants": {
+        "model": "Country",
+        "doit": "getCountries"
+    },
+    "details": {
+        "get": {
+            "_id":1,
+            "name":1,
+            "enName":1,
+            "states":{
+                "_id":1,
+                "name":1,
+                "enName":1
+            }
+        },
+        "set":{
+
+            "name":"f", 
+            # "enName":"iran",
+            "pagination":{
+                "limit": 10,
+                 "page": 1
+            },
+
+            "sort":{
+                "name":1
+
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/application/json
+
+{
+    "contents":"streams",
+    "details":{
+        "set":{
+          "_id":"60f9c682ab6bf0ad3cbf9272",
+          "fileType":"jpg"
+        }
+    },
+    "wants":{
+        "model":"File",
+        "doit":"downloadFile"
+    }
+}

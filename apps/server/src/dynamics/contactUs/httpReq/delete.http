@@ -1,0 +1,17 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+    "contents":"dynamic",
+    "details":{
+        "set":{
+            "_id":"60e46e64022619af17bb578b"
+        },
+        "get":{
+        }
+    },
+    "wants":{
+        "model":"ContactUs",
+        "doit":"deleteContactUs"
+    }
+}

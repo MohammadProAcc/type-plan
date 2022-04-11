@@ -1,0 +1,24 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+        "contents":"dynamic",
+    "details":{
+        "set":{
+            "phone": 989185085863,
+            "code":"111111"
+        },
+        "get":{
+          "user":{
+              "name":1,
+              "lastName":1
+            #   "gender":1
+          } ,
+          "token":1
+        }
+    },
+    "wants":{
+        "model":"User",
+        "doit":"login"
+    }
+}
