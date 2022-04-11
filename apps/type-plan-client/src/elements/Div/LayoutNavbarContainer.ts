@@ -7,10 +7,10 @@ export const LayoutNavbarContainer = styled(Div)`
   height: 4rem;
   padding: 0 1.5rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid ${Color.LightBackground};
+  border-bottom: 1px solid ${Color.Border};
 
   display: flex;
   align-items: center;
 
-  background: ${Color.NavbarBackground};
+  background: ${Color.BackgroundLight};
 `;

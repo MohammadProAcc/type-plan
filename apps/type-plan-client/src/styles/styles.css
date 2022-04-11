@@ -252,6 +252,9 @@ pre {
 }
 #other-links {
 }
+button:hover {
+  cursor: pointer;
+}
 .button-pill {
   padding: 1.5rem 2rem;
   transition-duration: 300ms;

@@ -1,4 +1,4 @@
-import { NavbarLogo } from "components";
+import { LoginButton, NavbarLogo } from "components";
 import { LayoutNavbarContainer, NavbarLink } from "elements";
 import { useRouter } from "next/router";
 
@@ -16,6 +16,10 @@ export const LayoutNavbar: React.FC = () => {
       <NavbarLink active={router?.route?.includes("plans")} href="/plans">
         نقشه ها
       </NavbarLink>
+
+      <LoginButton>
+        ورود
+      </LoginButton>
     </LayoutNavbarContainer>
   );
 };

@@ -13,7 +13,6 @@ export const NavbarLink = styled(A)<NavbarLinkProps>`
 
   font-size: ${FontSize.xl};
   font-family: ${FontFamily.regular};
-  color: ${Color.RedL1};
 
   transition: .125s ease-in-out;
 
@@ -36,7 +35,7 @@ export const NavbarLink = styled(A)<NavbarLinkProps>`
     bottom: .5rem;
     right: .5rem;
     
-    background-color: ${Color.RedL1};
+    background-color: ${Color.SecondaryLine};
 
     transition: width .5s;
   }

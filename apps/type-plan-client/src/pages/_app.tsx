@@ -6,7 +6,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>پلن</title>
+        <title>طرح تیپ</title>
       </Head>
       <main dir="rtl">
         <Component {...pageProps} />
