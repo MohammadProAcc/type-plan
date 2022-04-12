@@ -1,4 +1,5 @@
 export enum Color {
+  'Text' = '#001219',
   'DarkLine' = '#03045e',
   'PrimaryLine' = '#023e8a',
   'SecondaryLine' = '#0077b6',

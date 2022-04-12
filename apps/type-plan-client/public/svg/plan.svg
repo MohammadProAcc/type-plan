@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<rect x="43.333" y="30" width="13.333" height="6.667"/>
+<rect x="43.333" y="70" width="13.333" height="6.667"/>
+<path d="M80,10H70v6.667H10V90h70c5.521,0,10-4.479,10-10V20C90,14.479,85.521,10,80,10z M80,83.333H16.667v-60H70V30h-6.667v6.667
+	H70V70h-6.667v6.667H80c1.836,0,3.333,1.49,3.333,3.333C83.333,81.836,81.836,83.333,80,83.333z M83.333,70.612
+	C82.285,70.241,81.175,70,80,70h-3.333V16.667H80c1.836,0,3.333,1.494,3.333,3.333V70.612z"/>
+<polygon points="36.667,30 23.333,30 23.333,43.333 30,43.333 30,36.667 36.667,36.667 "/>
+<rect x="23.333" y="50" width="6.667" height="6.667"/>
+<polygon points="30,70 30,63.333 23.333,63.333 23.333,76.667 36.667,76.667 36.667,70 "/>
+</svg>
