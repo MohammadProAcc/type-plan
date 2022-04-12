@@ -1,0 +1,25 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+    "contents":"dynamic",
+    "details":{
+        "set":{
+            "_id":"6130c4bc88a1b8d8a14b7146"
+        },
+        "get":{
+            "name":1,
+            "country":{
+                "name":1
+            }
+        
+
+        
+
+        }
+    },
+    "wants":{
+        "model":"State",
+        "doit":"getState"
+    }
+}

@@ -1,0 +1,22 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+    "contents":"dynamic",
+    "details": {
+        "set": {
+            "name": "همدان",
+            "enName": "Hamedan",
+            "geometries": [[30, 10], [40, 40], [20, 40], [10, 20], [30, 10]],
+            "countryId":"6103cdb4d11f2e1dfe0e9cd5"
+        },
+        "get": {
+            "_id": 1,
+            "name": 1
+        }
+    },
+    "wants": {
+        "model": "State",
+        "doit": "createState"
+    }
+}

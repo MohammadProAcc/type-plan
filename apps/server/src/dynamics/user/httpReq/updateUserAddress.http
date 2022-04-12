@@ -1,0 +1,41 @@
+POST http://localhost:8000/funql HTTP/1.1
+Content-type: application/json
+
+
+{
+    "details":{
+        "set":{
+            "userId":"617fbb8a7dcb4f27c25a4cb0",
+            "address": {
+                "addressId":"e6365d11-0051-4f55-b1a9-33cc0d9b4d99",
+                "addressTxt": "some text",
+                # "country": "617fbb8a7dcb4f27c25a4c87",
+                # "state": "617fbb8a7dcb4f27c25a4c8c",
+                "city": "617fbb8a7dcb4f27c25a4c94"
+            }
+        },
+        "get":{
+            "_id":1,
+            "name":1,
+            "creditCardNumber":1,
+            "addresses": {
+            "addressId": 1,
+                "country": {
+                "_id": 1,
+                    "name": 1
+                },
+                "city": {
+                    "name": 1
+                },
+                "addressTxt": 1
+            }
+
+        }
+    },
+    "contents": "dynamic",
+
+    "wants":{
+        "model":"User",
+        "doit":"updateUserAddress"
+    }
+}

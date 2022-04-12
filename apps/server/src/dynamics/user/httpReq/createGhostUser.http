@@ -1,0 +1,12 @@
+
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+	"contents":"dynamic",
+ 
+    "wants":{
+        "model":"User",
+        "doit":"createGhostUser"
+    }
+}

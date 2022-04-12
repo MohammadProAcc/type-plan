@@ -1,0 +1,39 @@
+POST http://localhost:8000/funql HTTP/1.1
+Content-type: application/json
+
+{
+    "contents":"dynamic",
+    "details":{
+        "set":{
+            "userId":"6179570d32ddf2df509ede63", 
+            "profilePicture":{
+              "_id": "6152bc9e4ea689b8e8ff34ff",
+             "filename":"jhg",
+              "type": "kjhgfd",
+              "size": 46789
+             
+            }
+            ,
+            
+            "addresses":
+                {
+                    "_id":"15be2840-9fe3-453a-9755-797416e98575",
+                    "city":"6179570d32ddf2df509ede5b",
+                "addressTxt":"how it works2"
+                }
+                
+                
+        },
+        "get":{
+            "_id":1,
+            "name":1,
+            "creditCardNumber":1
+
+        }
+    },
+
+    "wants":{
+        "model":"User",
+        "doit":"updateUser"
+    }
+}

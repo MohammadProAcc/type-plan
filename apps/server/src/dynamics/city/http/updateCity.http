@@ -1,0 +1,25 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+    "contents":"dynamic",
+    "details": {
+        "set": {
+            "_id":"6103cdb4d11f2e1dfe0e9cf1",
+            "name": "LA",
+            "enName": "LA",
+            "stateId":"60cf59ae47eddd3cf9c5b4cd"
+            #"geometries": [[30, 10], [40, 40], [20, 40], [10, 20], [30, 10]]
+        },
+        "get": {
+            "_id": 0
+            #"name": 1,
+            #"enName":1,
+            #"geometries":1
+        }
+    },
+    "wants": {
+        "model": "City",
+        "doit": "updateCity"
+    }
+}

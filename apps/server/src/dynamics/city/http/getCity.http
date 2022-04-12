@@ -1,0 +1,39 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+# //normalUser token
+# token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzMzMzY0MDMuMzYzLCJ1c2Vyc0lkIjoiNjA2ZDRkODIyN2MwMDM1YWU1OTc0ODJlIn0.NK3NX2EKxA6R36Ek1kkKpl6wkUwsxySmwLesNaJvuEqKWrkj0dc3S8U4BkuXZMDUbDYa6aI79UBp4VAHst0SIg
+#//admin Token 
+token:eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzMzMzY0MDMuMzYzLCJ1c2Vyc0lkIjoiNjA2ZDZmNDBjNDAwZGY5YzlkNDU4ZjI5In0.Erl-YOCWtlEfIJx5CwQr1INK4zm9d8rAGBfTyQeFrTVJhAbboIdbN8jghTops64lmO6_rq7Npyf9FqCjwa9HmQ
+
+{
+    "details": {
+     
+        "get": {
+            "_id":1,
+            "name": 1,
+            "enName":1,
+            "geometries":1,
+            "state":{
+                "_id": 1,
+                "name":1 
+            }
+        },
+        "set":{  "_id":"60c4a51d4dee04d7b6c38322",
+            #"_id":"60716181a4e5a480c9194398",
+            #"name":"jolfa",
+            # "enName":"qom",
+           "sort":{
+             
+           },
+           "pagination":{
+           "page":1,
+           "limit":25
+           }
+
+        }
+    },
+    "wants": {
+        "model": "City",
+        "doit": "getCity"
+    }
+}

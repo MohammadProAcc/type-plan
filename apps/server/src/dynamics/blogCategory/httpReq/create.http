@@ -1,0 +1,34 @@
+
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+    "contents":"dynamic",
+    "details":{
+        "set":{
+            "name":"tursday blogCategory",
+            "enName":"111",
+            # "icon":{
+            #     "filename":"jhgfc",
+            #     "type":"image/jpeg","content":"kjhgf","size":12354
+            # },
+            "icon":{
+							"_id": "614993d2298d9114ca9e69b3",
+							"fileName": "name of pic",
+							"type": "type o file",
+							"size": 123
+						},
+            "description":"111"
+        },
+        "get":{
+            # "name": 1,
+            # "blogPosts":{
+            #     "title":1
+            # }
+        }
+    },
+    "wants":{
+        "model":"BlogCategory",
+        "doit":"createBlogCategory"
+    }
+}

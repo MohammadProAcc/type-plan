@@ -1,0 +1,33 @@
+
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+    "contents":"dynamic",
+    "details":{
+        "set":{
+		"title": "mohammad",
+		"summary": "testing isdb",
+		"content": "string",
+		"blogCategoryID": "6152bc9e4ea689b8e8ff3503",
+		"photo":"11113131",
+        "blogTagIDs":["6152bc9e4ea689b8e8ff350f"]
+        },
+        "get":{
+            "blogTags":{
+                "name":1
+            },
+            "title":1,
+            "blogCategory":{
+                "name":1
+            },
+            "author":{
+                "name":1
+            }
+        }
+    },
+    "wants":{
+        "model":"BlogPost",
+        "doit":"createBlogPost"
+    }
+}

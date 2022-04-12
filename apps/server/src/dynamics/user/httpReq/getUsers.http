@@ -1,0 +1,23 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTExNTg3MDcuNjIyLCJ1c2Vyc0lkIjoiNjE3NDM3NTQwNWZhNTQ5NDZjZmY5NWIyIn0.jKsa5BxVnSHpv0PkI9QXkGxlM6MPd2-YH1BN6iJi1pRnvxI6uGL26bv7ywhuHKIE6Q4tBin1E08lPfuVzZPwuw
+
+{
+    "details":{
+        "set":{
+            "pagination": {
+                "page": 1,
+                "limit": 10
+            }
+        },
+        "get":{
+         
+         "name":1
+        }
+    },
+    "contents": "dynamic",
+    "wants":{
+        "model":"User",
+        "doit":"getUsers"
+    }
+}

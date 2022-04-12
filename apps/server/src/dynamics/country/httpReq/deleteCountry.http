@@ -1,0 +1,17 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+# //normalUser token
+# token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzMzMzY0MDMuMzYzLCJ1c2Vyc0lkIjoiNjA2ZDRkODIyN2MwMDM1YWU1OTc0ODJlIn0.NK3NX2EKxA6R36Ek1kkKpl6wkUwsxySmwLesNaJvuEqKWrkj0dc3S8U4BkuXZMDUbDYa6aI79UBp4VAHst0SIg
+
+{
+    "contents":"dynamic",
+    "details": {
+        "set": {
+            "_id":"60fec240f881b2f3e5ba925e"
+        }
+    },
+    "wants": {
+        "model": "Country",
+        "doit": "deleteCountry"
+    }
+}

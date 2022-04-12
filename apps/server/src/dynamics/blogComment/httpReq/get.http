@@ -1,0 +1,32 @@
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+        "contents":"dynamic",
+    "details":{
+        "set":{
+            "_id":"61508637bf89f16784dcbc48"
+        },
+        "get":{
+           "_id":1 ,
+           "content":1,
+           "user":{
+               "name":1
+           },
+          
+           "repliedComments":
+               {    "content":1,
+                   "user":{
+                       "name":1
+                   }
+               }
+           
+
+           
+        }
+    },
+    "wants":{
+        "model":"Comment",
+        "doit":"getComment"
+    }
+}
