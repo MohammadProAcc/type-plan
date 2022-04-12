@@ -1,11 +1,12 @@
 import {
+  Body,
   DynamicModels,
   parsBody,
   StaticModels,
   StreamsModels,
-  Body,
 } from "./mod.ts";
 
+import { addCors } from "../cors.ts";
 import { dynamicFns } from "./../dynamics/mod.ts";
 import { staticFns } from "./../statics/mod.ts";
 import { streamsFns } from "./../streams/mod.ts";
@@ -38,5 +39,11 @@ export const serveLesan = async (req: Request) => {
   //   status: 200,
   // }));
 
-    return new Response(JSON.stringify({ body: await response(), success: true }));
+  return new Response(
+    JSON.stringify({ body: await response(), success: true }),
+    {
+      headers: addCors(),
+      status: 200,
+    },
+  );
 };

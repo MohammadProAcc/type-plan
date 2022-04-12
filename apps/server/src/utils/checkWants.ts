@@ -60,23 +60,23 @@ const decodeBody = async (req: Request): Promise<Body> => {
       //   const fileData = new Uint8Array(await f[1].arrayBuffer());
       //   await Deno.writeFile("./files/" + f[1].name, fileData);
       // }
-        const returnBody: (body:string) => Body = (body) => {
-          const parsedBody = JSON.parse(body) as Body;
-          parsedBody &&
-            parsedBody.details &&
-            parsedBody.details.set &&
-            (parsedBody.details.set = {
-              ...parsedBody.details.set,
-              formData: fd,
-            });
-          return parsedBody;
-        };
+      const returnBody: (body: string) => Body = (body) => {
+        const parsedBody = JSON.parse(body) as Body;
+        parsedBody &&
+          parsedBody.details &&
+          parsedBody.details.set &&
+          (parsedBody.details.set = {
+            ...parsedBody.details.set,
+            formData: fd,
+          });
+        return parsedBody;
+      };
 
-        const body = fd.get("lesan-body") ? fd.get("lesan-body") as string : "{}";
+      const body = fd.get("lesan-body") ? fd.get("lesan-body") as string : "{}";
 
-        return body
-          ? returnBody(body) 
-          : throwError("somthing wrong with your file") ;
+      return body
+        ? returnBody(body)
+        : throwError("somthing wrong with your file");
     };
 
     return req.body
@@ -92,7 +92,7 @@ const decodeBody = async (req: Request): Promise<Body> => {
     : throwError("content type is not correct");
 };
 export type StreamsModels = "File";
-export type StaticModels = "BlogFirstPage" | "StoreHomePage" ;
+export type StaticModels = "BlogFirstPage" | "StoreHomePage";
 
 export type DynamicModels =
   | "User"
@@ -112,7 +112,7 @@ export type Doits =
   | CommentDoit
   | BlogPostDoit
   | BlogFirstPageDoit
-  | ContactUsDoit
+  | ContactUsDoit;
 
 export interface Body {
   contents: "static" | "dynamic" | "streams";
@@ -141,7 +141,7 @@ export const parsBody = async (req: Request) => {
   const parsedBody = await decodeBody(req);
   const url = req.url.split("8080")[1];
 
-  return req.method === "POST" && url === "/lesan" && checkBody(parsedBody)
+  return req.method === "POST" && url === "/funql" && checkBody(parsedBody)
     ? { ...parsedBody, context: context(req) }
     : throwError("you most send a post request to /funql url");
 };
