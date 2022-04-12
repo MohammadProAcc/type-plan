@@ -1,8 +1,9 @@
-import { AppProps } from "next/app";
+// import { AppProps } from "next/app";
 import Head from "next/head";
 import "styles/styles.css";
 
-function CustomApp({ Component, pageProps }: AppProps) {
+// TODO: Fix The Temp AppProps Type Solution
+function CustomApp({ Component, pageProps }) {
   return (
     <>
       <Head>
