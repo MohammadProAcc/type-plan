@@ -1,7 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "type-plan-client": "apps/type-plan-client",
+    "client": "apps/client",
     "type-plan-client-e2e": "apps/type-plan-client-e2e"
   }
 }

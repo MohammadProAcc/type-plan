@@ -7,11 +7,11 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/type-plan-client-e2e/cypress.json",
-        "devServerTarget": "type-plan-client:serve"
+        "devServerTarget": "client:serve"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "type-plan-client:serve:production"
+          "devServerTarget": "client:serve:production"
         }
       }
     },
@@ -24,5 +24,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["type-plan-client"]
+  "implicitDependencies": ["client"]
 }
