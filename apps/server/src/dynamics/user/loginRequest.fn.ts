@@ -1,11 +1,11 @@
-import { setLoginToken } from "./../../utils/services/inMemoryDb/login.ts";
 import { countries, Level, users } from "../../schemas/mode.ts";
 import {
   createVerificationCode,
-  throwError,
   getPureDoc,
+  throwError,
 } from "../../utils/mod.ts";
-import { refinePhone, checkValidation } from "../../utils/mod.ts";
+import { checkValidation, refinePhone } from "../../utils/mod.ts";
+import { setLoginToken } from "./../../utils/services/inMemoryDb/login.ts";
 import { checkLoginReq, SigningDetails } from "./loginRequest.type.ts";
 
 export interface LoginRequestReturn {
@@ -57,7 +57,7 @@ export const loginRequest: LoginRequest = async details => {
     phone: phoneNumber,
   };
   /**
-   *a code is created for the user and within 100 seconds this code is valid
+   * a code is created for the user and within 100 seconds this code is valid
    */
   const code = createVerificationCode();
   await setLoginToken({ userId: foundedUser!._id.toHexString() }, code);

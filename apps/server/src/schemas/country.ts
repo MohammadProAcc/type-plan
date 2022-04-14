@@ -156,5 +156,4 @@ export const countrySelectable: any = (depth: number | CountryInp = 2): any => {
 //   indexes: [{ key: { countryCode: "text" }, name: "codeIndex" }],
 // });
 
-export const country = db.collection<ICountry>("Country");
 export const countries = db.collection<ICountry>("Countries");
