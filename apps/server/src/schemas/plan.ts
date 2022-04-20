@@ -219,5 +219,4 @@ export const planSelectable: any = (depth: number | PlanInp = 2): any => {
   return completeObj;
 };
 
-export const plan = db.collection<IPlan>("Plan");
-
+export const plans = db.collection<IPlan>("Plan");
