@@ -1,7 +1,7 @@
 export enum Breakpoint {
-  sm = 480,
-  md = 640,
-  lg = 960,
-  xl = 1280,
-  xxl = 1440,
+  mobile = 320,
+  tablet = 480,
+  laptop = 768,
+  desktop = 1024,
+  largeScreen = 1201,
 }
