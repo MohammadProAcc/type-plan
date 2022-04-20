@@ -1,7 +1,7 @@
 export enum Device {
-  sm = 'min-width: 480px',
-  md = 'min-width: 640px',
-  lg = 'min-width: 960px',
-  xl = 'min-width: 1280x',
-  xxl = 'min-width: 1440px',
+  mobile = 'min-width: 320px',
+  tablet = 'min-width: 480px',
+  laptop = 'min-width: 768px',
+  desktop = 'min-width: 1024px',
+  largeScreen = 'min-width: 1201px',
 }

@@ -10,7 +10,7 @@ export const HomePageIntroContainer = styled(Div)`
   display: flex;
   justify-content: space-between;
 
-  @media (${Device.lg}) {
+  @media (${Device.desktop}) {
     padding: 4rem;
   }
 `;

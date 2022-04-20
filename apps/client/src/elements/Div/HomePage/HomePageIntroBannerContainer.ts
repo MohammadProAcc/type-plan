@@ -15,7 +15,7 @@ export const HomePageIntroBannerContainer = styled(Div)`
   animation: ${HomePageIntoBannerAnimation} 0.5s forwards;
   animation-delay: 0.5s;
 
-  @media (${Device.lg}) {
+  @media (${Device.desktop}) {
     width: 50%;
   }
 `;
