@@ -7,3 +7,4 @@ export * from './H3';
 export * from './Span';
 export * from './Form'
 export * from './Input'
+export * from './Label'
