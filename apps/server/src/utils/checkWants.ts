@@ -13,6 +13,7 @@ import {
   CityDoit,
   CommentDoit,
   CountryDoit,
+  PlanDoit,
   StateDoit,
   UserDoit,
 } from "../dynamics/mod.ts";
@@ -112,7 +113,8 @@ export type Doits =
   | CommentDoit
   | BlogPostDoit
   | BlogFirstPageDoit
-  | ContactUsDoit;
+  | ContactUsDoit
+  | PlanDoit;
 
 export interface Body {
   contents: "static" | "dynamic" | "streams";
