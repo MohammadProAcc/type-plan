@@ -1,19 +1,19 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const withNx = require('@nrwl/next/plugins/with-nx');
+const withNx = require("@nrwl/next/plugins/with-nx");
 
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
- **/
+ */
 const nextConfig = {
   env: {
-    TOKEN: "TYP_PLN_TKN"
+    TOKEN: "TYP_PLN_TKN",
   },
   async rewrites() {
     return [
       {
         source: "/typeplanapi",
-        destination: "http://127.0.0.1:8000/funql",
-      }
+        destination: "http://127.0.0.1:8080/funql",
+      },
     ];
   },
   nx: {
