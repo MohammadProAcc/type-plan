@@ -6,6 +6,7 @@ import {
   POSITION,
   RPlan,
 } from "../../schemas/mode.ts";
+import { ObjectID } from "../../utils/deps.ts";
 const v = new FastestValidator();
 
 /**
@@ -36,6 +37,17 @@ export const schema = {
           width: { type: "tuple", items: ["number", "number"] },
           passageWidth: { type: "number", min: 1, max: 1000 },
           plateType: { type: "enum", values: ["Registered", "Normal"] },
+          photo: {
+            type: "object",
+            props: {
+              _id: { type: "objectID", ObjectID },
+              filename: { type: "string" },
+              type: { type: "string" },
+              size: { type: "number" },
+            },
+
+            optional: true,
+          },
         },
       },
       get: {

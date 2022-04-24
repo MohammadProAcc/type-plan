@@ -5,6 +5,7 @@ import {
   countrySelectable,
   ICountry,
   IState,
+  PuFile,
   PuRelCountry,
   PuRelState,
   RCountry,
@@ -62,6 +63,7 @@ export interface PuPlan extends Base {
   width: [number, number];
   passageWidth: number;
   plateType: PLATETYPE;
+  photo: PuFile;
   /**
    * save set of polygon of point of this plan
    */
