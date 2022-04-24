@@ -17,6 +17,9 @@ export const AdminPanelSidebarContainer = styled(Div)`
     border-radius: ${Radius.l1};
     margin: ${Margin.l3};
 
+    position: sticky;
+    top: 0;
+
     box-shadow: ${Shadow.secondary};
   }
 `

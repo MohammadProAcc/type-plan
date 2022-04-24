@@ -1,6 +1,33 @@
-import { HomePage } from 'components';
-import { NextPage } from 'next';
+import { HomePage } from "components";
+import { GetServerSideProps, NextPage } from "next";
+import { getPlans } from "state";
 
 const Index: NextPage = () => <HomePage />;
 
 export default Index;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { page } = context.query;
+
+  const plans = await getPlans({
+    set: {
+      pagination: {
+        page: 1,
+        limit: 10,
+      },
+    },
+    get: {
+      _id: 1,
+      infrastructureArea: 1,
+      exposure: 1,
+    },
+  }, "");
+
+  return {
+    props: {
+      initialZustandState: {
+        plans,
+      },
+    },
+  };
+};
