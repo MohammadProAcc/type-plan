@@ -1,11 +1,6 @@
-import { NextPage, GetServerSideProps } from "next";
+import React from 'react';
+import { LoginPage } from 'components';
 
-const Page: NextPage = () => <div />
+export const login: React.FC = () => <LoginPage />;
 
-export default Page;
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  return {
-    props: {}
-  }
-}
+export default login;
