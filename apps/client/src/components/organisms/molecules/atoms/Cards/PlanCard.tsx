@@ -1,27 +1,37 @@
 import {
-  PlanCardContainer,
-  PlanCardImgContainer,
-  PlanCardImage,
-  PlanCardInformationContainer,
-  PlanCardFieldName,
+  Em,
   PlanCardButton,
-} from 'elements';
-import { PlanCardContent } from 'elements/Div/PlanCard/PlanCardContent';
-import { PlanCardField } from 'elements/P';
-import Lottie from 'react-lottie';
-import animationData from '../../../../../../public/lottie/document.json';
-import React, { useState } from 'react';
+  PlanCardContainer,
+  PlanCardFieldName,
+  PlanCardImage,
+  PlanCardImgContainer,
+  PlanCardInformationContainer,
+  PlanCardSeparator,
+} from "elements";
+import { PlanCardContent } from "elements/Div/PlanCard/PlanCardContent";
+import { PlanCardField } from "elements/P";
+import React, { useState } from "react";
+import Lottie from "react-lottie";
+import { FQl_dynamic_plan_IPlan } from "state/declarations/schema/schema";
+import { translator } from "tools";
+import animationData from "../../../../../../public/lottie/document.json";
 
 const defaultOptions = {
   loop: false,
   autoplay: false,
   animationData: animationData,
   rendererSettings: {
-    preserveAspectRatio: 'xMidYMid slice',
+    preserveAspectRatio: "xMidYMid slice",
   },
 };
 
-export const PlanCard: React.FC = () => {
+interface PlanCardProps {
+  plan: Partial<FQl_dynamic_plan_IPlan>;
+}
+
+export const PlanCard: React.FC<PlanCardProps> = ({
+  plan,
+}) => {
   const [hover, setHover] = useState(false);
 
   return (
@@ -36,17 +46,22 @@ export const PlanCard: React.FC = () => {
       <PlanCardContent>
         <PlanCardInformationContainer>
           <PlanCardField>
-            <PlanCardFieldName>کد نقشه : </PlanCardFieldName>
-            AB12C
+            <PlanCardFieldName>کد نقشه :</PlanCardFieldName>
+            {plan?._id.substring(-4, 4)}
           </PlanCardField>
 
           <PlanCardField>
-            <PlanCardFieldName>مساحت : </PlanCardFieldName>x متر
+            <PlanCardFieldName>مساحت :</PlanCardFieldName>
+            {plan.infrastructureArea[0]} متر
+            <PlanCardSeparator>
+              در
+            </PlanCardSeparator>{" "}
+            {plan.infrastructureArea[1]} متر
           </PlanCardField>
 
           <PlanCardField>
-            <PlanCardFieldName>جهت جغرافیایی : </PlanCardFieldName>
-            شمالی
+            <PlanCardFieldName>جهت جغرافیایی :</PlanCardFieldName>
+            {translator(plan.exposure)}
           </PlanCardField>
         </PlanCardInformationContainer>
 
