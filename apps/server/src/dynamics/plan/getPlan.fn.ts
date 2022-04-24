@@ -35,5 +35,5 @@ export const getPlanFn: GetPlanFn = async (details, context) => {
 
   const obId = new Bson.ObjectId(_id);
 
-  return getPlan({ _id: obId, get });
+  return await getPlan({ _id: obId, get });
 };

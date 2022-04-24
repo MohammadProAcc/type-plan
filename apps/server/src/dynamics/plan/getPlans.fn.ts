@@ -38,7 +38,7 @@ export const getPlansFn: GetPlansFn = async (details, context) => {
 
   let filter: Bson.Document = {};
 
-  const foundPlans = getPlans({
+  const foundPlans = await getPlans({
     filter,
     getObj: get,
     pagination: {
