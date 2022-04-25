@@ -6,5 +6,5 @@ export const PlanInformationContainerTitle = styled(Div)`
   width: 100%;
   padding: 0.5rem;
   text-align: center;
-  background-color: ${Color.BackgroundBlue};
+  background-color: ${Color.BackgroundSecondary};
 `;

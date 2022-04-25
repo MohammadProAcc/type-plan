@@ -11,5 +11,5 @@ export const LayoutNavbarContainer = styled(Div)`
   display: flex;
   align-items: center;
 
-  background: ${Color.BackgroundLight};
+  background: ${Color.BackgroundSecondary};
 `;

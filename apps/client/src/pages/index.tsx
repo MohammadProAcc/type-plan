@@ -18,6 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       _id: 1,
       infrastructureArea: 1,
       exposure: 1,
+      photo: 1,
     },
   });
 

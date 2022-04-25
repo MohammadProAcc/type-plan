@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { Color, FontSize } from 'styles';
 import { FontFamily } from 'styles/design/FontFamily';
-import { Activable } from 'types/interfaces/props/Activable';
+import { Activable } from 'types';
 import { A } from '.';
 
-export const NavbarLink = styled(A)<NavbarLinkProps>`
+export const NavbarLink = styled(A) <Activable>`
   height: 100%;
   padding: 0 0.5rem;
   margin-left: 1rem;
@@ -16,7 +16,7 @@ export const NavbarLink = styled(A)<NavbarLinkProps>`
 
   transition: 0.125s ease-in-out;
 
-  display: flex;
+  display: ${props => props.deactive ? "none" : "flex"};
   align-items: center;
 
   &:hover {
@@ -35,10 +35,8 @@ export const NavbarLink = styled(A)<NavbarLinkProps>`
     bottom: 0.5rem;
     right: 0.5rem;
 
-    background-color: ${Color.SecondaryLine};
+    background-color: ${Color.Line};
 
     transition: width 0.5s;
   }
 `;
-
-export interface NavbarLinkProps extends Activable {}

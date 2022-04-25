@@ -9,5 +9,5 @@ export const LayoutContainer = styled(Div)`
   display: flex;
   flex-direction: column;
 
-  background: ${Color.BackgroundPrimary};
+  background: ${Color.Background};
 `;

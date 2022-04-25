@@ -3,7 +3,7 @@ import { Div } from '../Div';
 
 export const HomePagePlansFlexContainer = styled(Div)`
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 2rem;
 `;

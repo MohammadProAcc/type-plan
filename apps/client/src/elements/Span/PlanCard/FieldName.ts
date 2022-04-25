@@ -7,5 +7,5 @@ export const PlanCardFieldName = styled(Span)`
   margin-left: ${Margin.l2};
 
   font-family: ${FontFamily.bold};
-  color: ${Color.Text};
+  color: ${Color.Line};
 `;

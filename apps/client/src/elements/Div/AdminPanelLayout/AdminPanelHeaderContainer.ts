@@ -4,7 +4,7 @@ import { Color, Device, Radius, Shadow } from "styles";
 
 export const AdminPanelHeaderContainer = styled(Div)`
   width: 100%;
-  background-color: ${Color.BackgroundLight};
+  background-color: ${Color.BackgroundSecondary};
 
   display: flex;
   align-items: center;

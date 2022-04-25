@@ -24,3 +24,4 @@ export * from "./declarations/request/schema";
 export * from "./declarations/response/schema";
 export * from './actions'
 export * from "./store";
+export * from './persistStores'

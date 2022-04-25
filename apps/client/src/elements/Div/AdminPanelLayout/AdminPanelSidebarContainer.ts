@@ -7,7 +7,7 @@ export const AdminPanelSidebarContainer = styled(Div)`
   width: 100%;
   padding: ${Padding.l5} ${Padding.l6};
 
-  background-color: ${Color.BackgroundLight};
+  background-color: ${Color.BackgroundSecondary};
 
   display: flex;
   flex-direction: column;

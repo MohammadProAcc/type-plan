@@ -7,5 +7,5 @@ export const LayoutFooterContainer = styled(Div)`
   height: 24rem;
   margin-top: auto;
 
-  background: ${Color.BackgroundLight};
+  background: ${Color.BackgroundSecondary};
 `;

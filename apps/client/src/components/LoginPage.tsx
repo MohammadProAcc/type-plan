@@ -1,5 +1,10 @@
-import { InputPhoneNumber, InputSubmit, LoginCard, LoginForm } from "elements";
-import Cookies from "js-cookie";
+import {
+  Em,
+  InputPhoneNumber,
+  InputSubmit,
+  LoginCard,
+  LoginForm,
+} from "elements";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
@@ -13,11 +18,11 @@ import {
 import { Layout } from "./Layout";
 
 export const LoginPage: React.FC = () => {
+  const router = useRouter();
+
   const [phone, setPhoneNumber] = useState<number>(null);
 
   const [, setCookie] = useCookies([process.env.TOKEN]);
-
-  const router = useRouter();
 
   const {
     loginRequest,

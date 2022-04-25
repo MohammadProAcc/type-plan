@@ -14,10 +14,14 @@ const initialState = (set: SetState<any>) => ({
 export type InitialState = ReturnType<typeof initialState>;
 
 function initStore(preloadedState = initialState) {
-  return create<InitialState>((set, get) => ({
-    ...initialState(set),
-    ...preloadedState,
-  }));
+  return create<InitialState>(devtools(
+    (set, get) => ({
+      ...initialState(set),
+      ...preloadedState,
+    })
+  ), {
+    name: "type-plan"
+  });
 }
 
 export const initializeStore = (preloadedState) => {

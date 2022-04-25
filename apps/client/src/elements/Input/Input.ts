@@ -6,7 +6,7 @@ import { Color } from 'styles';
 // }))``;
 
 export const Input = styled.input`
-  border: solid 1px ${Color.BorderLight};
+  border: solid 1px ${Color.Line};
   border-radius: 0.5rem;
   padding: 0.5rem;
 `;

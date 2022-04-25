@@ -19,5 +19,5 @@ export const HomePageDescription = styled(P)`
   animation: ${HomePageDescriptionAnimation} 0.5s forwards;
   animation-delay: 1s;
 
-  color: ${Color.PrimaryLine};
+  color: ${Color.Line};
 `;

@@ -2,9 +2,9 @@ import { Em, InputGroup } from "elements";
 import { CreatePlanFormLabel } from "elements";
 import { AdminCreatePlanFormEl } from "elements/Form/Admin";
 import { Input } from "elements/Input";
-import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 import { Controller, useForm } from "react-hook-form";
 import Select from "react-select";
 import { toast } from "react-toastify";
@@ -35,6 +35,8 @@ const plateTypeOptions = [
 export const AdminCreatePlanForm: React.FC = () => {
   const router = useRouter();
 
+  const [cookies] = useCookies([process.env.TOKEN]);
+
   const [loading, setLoading] = useState(false);
 
   const {
@@ -47,7 +49,7 @@ export const AdminCreatePlanForm: React.FC = () => {
   // FIXME: fix the any
   const onSubmit = async (form: any) => {
     setLoading(true);
-    const response = await typePlanApi.api({
+    const uploadedFile = await typePlanApi.api({
       contents: "streams",
       wants: {
         model: "File",
@@ -55,34 +57,36 @@ export const AdminCreatePlanForm: React.FC = () => {
       },
       details: {
         set: {
-          file: form.photo[0],
+          file: {
+            filename: "file-1",
+            content: form.photo[0],
+            size: 0,
+            type: "image/jpeg",
+          },
         },
         get: {},
       },
+    }, {
+      token: cookies[process.env.TOKEN],
     });
-    console.log(response);
+    console.log(uploadedFile);
+    
     const finalForm = {
       ...form,
       exposure: form?.exposure?.value,
       planType: form?.planType?.value,
       plateType: form?.plateType?.value,
+      photo: uploadedFile.body,
     };
-    console.log(finalForm);
-
-    // const response = await createPlan({
-    //   set: finalForm,
-    //   get: {
-    //     _id: 1,
-    //   },
-    // }, Cookies.get(process.env.TOKEN));
-    // console.log(response);
-    // if (!response.error) {
-    //   reset();
-    //   toast.success("طرح اضافه شد");
-    //   router.push("/admin/plans");
-    // } else {
-    //   toast.error("ساخت طرح موفقیت آمیز نبود");
-    // }
+    const response = await createPlan(finalForm, cookies[process.env.TOKEN]);
+    console.log(response);
+    if (response.success) {
+      reset();
+      toast.success("طرح اضافه شد");
+      router.push("/admin/plans");
+    } else {
+      toast.error("ساخت طرح موفقیت آمیز نبود");
+    }
     setLoading(false);
   };
 

@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { Img } from '../Img';
 
-export const PlanCardImage = styled(Img).attrs({
-  src: '/svg/plan.svg',
-})`
+export const PlanCardImage = styled(Img)`
   width: 100%;
   height: 100%;
 

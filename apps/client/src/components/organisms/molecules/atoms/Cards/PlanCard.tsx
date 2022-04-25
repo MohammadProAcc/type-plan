@@ -40,7 +40,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       onMouseLeave={() => setHover(false)}
     >
       <PlanCardImgContainer>
-        <PlanCardImage />
+        <PlanCardImage Src={`${plan?.photo?.filename}.jpeg`} />
       </PlanCardImgContainer>
 
       <PlanCardContent>

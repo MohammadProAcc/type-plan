@@ -4,13 +4,13 @@ import { FontFamily } from 'styles/design/FontFamily';
 import { Activable } from 'types/interfaces/props/Activable';
 
 export const Button = styled.button<ButtonProps>`
-  border: 1px solid ${Color.PrimaryLine};
+  border: 1px solid ${Color.Line};
   border-radius: 1.5rem;
   padding: 0.25rem 1rem;
 
   font-size: ${FontSize.lg};
   font-family: ${FontFamily.medium};
-  color: ${Color.PrimaryLine};
+  color: ${Color.Line};
   background-color: transparent;
 
   display: flex;
@@ -20,7 +20,7 @@ export const Button = styled.button<ButtonProps>`
   transition: 0.25s ease-in-out;
 
   &:hover {
-    background-color: ${Color.BackgroundBlue};
+    background-color: ${Color.Background};
   }
 
   ${(props) =>

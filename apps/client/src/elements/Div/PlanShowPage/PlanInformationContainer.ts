@@ -7,7 +7,7 @@ export const PlanInformationContainer = styled(Div)`
   flex-direction: column;
   width: 30%;
   margin: 1rem;
-  border: solid 1px ${Color.Border};
+  border: solid 1px ${Color.Line};
   border-radius: 0.9rem;
   overflow: hidden;
 `;
