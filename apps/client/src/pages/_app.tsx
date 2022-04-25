@@ -3,6 +3,7 @@ import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 import { StoreProvider, useHydrate } from "state";
 import "styles/styles.css";
+import "react-toastify/dist/ReactToastify.css";
 
 // TODO: Fix The Temp AppProps Type Solution
 function CustomApp({ Component, pageProps }) {
@@ -17,7 +18,10 @@ function CustomApp({ Component, pageProps }) {
         <main dir="rtl">
           <Component {...pageProps} />
         </main>
-        <ToastContainer rtl />
+        <ToastContainer
+          rtl
+          position="top-center"
+        />
       </StoreProvider>
     </>
   );
