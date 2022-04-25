@@ -64,6 +64,7 @@ export interface PuPlan extends Base {
   passageWidth: number;
   plateType: PLATETYPE;
   photo: PuFile;
+  slider: PuFile[];
   /**
    * save set of polygon of point of this plan
    */
@@ -125,6 +126,8 @@ export interface RPlan {
   width?: 0 | 1;
   passageWidth?: 0 | 1;
   plateType?: 0 | 1;
+  photo?: 0 | 1;
+  slider?: 0 | 1;
   state?: RState;
   country?: RCountry;
   city?: RCity;
@@ -152,6 +155,8 @@ export const planSelectable: any = (depth: number | PlanInp = 2): any => {
     width: fieldType,
     passageWidth: fieldType,
     plateType: fieldType,
+    photo: fieldType,
+    slider: fieldType,
   };
   const numberDepth = (depth: number, pureObj: Record<string, any>) => {
     depth--;
