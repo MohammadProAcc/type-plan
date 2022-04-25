@@ -48,6 +48,21 @@ export const schema = {
 
             optional: true,
           },
+          slider: {
+            type: "array",
+            items: {
+              type: "object",
+              props: {
+                _id: { type: "objectID", ObjectID },
+                filename: { type: "string" },
+                type: { type: "string" },
+                size: { type: "number" },
+              },
+
+              optional: true,
+            },
+            optional: true,
+          },
         },
       },
       get: {
