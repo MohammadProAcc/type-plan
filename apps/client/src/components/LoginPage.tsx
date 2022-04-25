@@ -23,12 +23,9 @@ export const LoginPage: React.FC = () => {
   const router = useRouter();
 
   const [phone, setPhoneNumber] = useState<number>(null);
-<<<<<<< HEAD
 
   const [, setCookie] = useCookies([process.env.TOKEN]);
-=======
   const router = useRouter();
->>>>>>> 65987e49c3380e7884c45e21524a13d3baa2aa45
 
   const {
     register,
