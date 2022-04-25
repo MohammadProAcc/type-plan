@@ -15,7 +15,6 @@
     "@types/react-lottie": "^1.2.6",
     "axios": "^0.26.1",
     "core-js": "^3.6.5",
-    "js-cookie": "^3.0.1",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-cookie": "^4.1.1",
