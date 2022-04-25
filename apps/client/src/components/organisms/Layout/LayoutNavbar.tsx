@@ -1,7 +1,7 @@
 import { LoginButton, NavbarLogo } from "components";
 import { LayoutNavbarContainer, NavbarLink } from "elements";
 import { useRouter } from "next/router";
-import { useStore } from "tools/zustand";
+import { toast } from "react-toastify";
 
 export const LayoutNavbar: React.FC = () => {
   const router = useRouter();

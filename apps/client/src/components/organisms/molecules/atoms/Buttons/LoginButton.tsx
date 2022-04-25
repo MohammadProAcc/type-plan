@@ -1,22 +1,22 @@
 import { LoginButton as LoginButtonEl } from "elements";
-import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 
 export const LoginButton: React.FC = () => {
-  const [cookies] = useCookies(["token"]);
+  const [cookies, , removeCookie] = useCookies([process.env.TOKEN]);
   const router = useRouter();
 
   const logout = () => {
-    Cookies.remove(process.env.TOKEN);
-    alert("خدانگهدار");
+    toast.error("خدانگهدار");
+    removeCookie(process.env.TOKEN);
     router.reload();
   };
 
   return (
     <>
-      {cookies.token
+      {cookies[process.env.TOKEN]
         ? <LoginButtonEl onClick={logout}>خروج</LoginButtonEl>
         : (
           <Link href="/login">
