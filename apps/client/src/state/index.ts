@@ -22,5 +22,5 @@ export type PartialDeep<T> = {
 
 export * from "./declarations/request/schema";
 export * from "./declarations/response/schema";
-export * from "./src";
-
+export * from './actions'
+export * from "./store";

@@ -7,8 +7,6 @@ const Index: NextPage = () => <HomePage />;
 export default Index;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { page } = context.query;
-
   const plans = await getPlans({
     set: {
       pagination: {
@@ -21,12 +19,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       infrastructureArea: 1,
       exposure: 1,
     },
-  }, "");
+  });
 
   return {
     props: {
-      initialZustandState: {
-        plans,
+      initialState: {
+        plans: plans.body,
       },
     },
   };

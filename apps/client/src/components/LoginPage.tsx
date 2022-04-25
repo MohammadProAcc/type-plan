@@ -1,16 +1,31 @@
 import { InputPhoneNumber, InputSubmit, LoginCard, LoginForm } from "elements";
-import { typePlanApi } from "pages/admin/api/funreq";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import {
+  FQl_response_login_LoginReturn,
+  FQl_response_loginRequest_LoginRequestReturn,
+  useStore,
+} from "state";
 import { Layout } from "./Layout";
-import { useRouter } from "next/router";
-import Cookies from "js-cookie";
-import { login, loginRequest } from "state";
 
 export const LoginPage: React.FC = () => {
   const [phone, setPhoneNumber] = useState<number>(null);
+
+  const [, setCookie] = useCookies([process.env.TOKEN]);
+
   const router = useRouter();
+
+  const {
+    loginRequest,
+    login,
+  } = useStore((state) => ({
+    loginRequest: state?.loginRequest,
+    login: state?.login,
+  }));
 
   const {
     register,
@@ -21,39 +36,43 @@ export const LoginPage: React.FC = () => {
 
   const onSubmit = async (form) => {
     if (phone) {
-      // const response = await login({
-      //   set: {
-      //     code: form.code,
-      //     phone,
-      //   },
-      //   get: {
-      //     token: 1,
-      //     user: {
-      //       _id: 1,
-      //     },
-      //   },
-      // }, "");
-
-      // if (!response.error) {
-      //   Cookies.set(process.env.TOKEN, response.data.token);
-      //   toast.success("خوش آمدید");
-      //   router.back();
-      // } else {
-      //   toast.error("عملیات موفقیت آمیز نبود");
-      // }
+      const response = await login({
+        set: {
+          code: form.code,
+          phone,
+        },
+        get: {
+          token: 1,
+          user: {
+            _id: 1,
+          },
+        },
+      });
+      if (response.success) {
+        reset();
+        setCookie(
+          process.env.TOKEN,
+          (response.body as FQl_response_login_LoginReturn).token,
+        );
+        toast.success("خوش آمدید 🌹");
+        router.back();
+      } else {
+        toast.error("ورود موفقیت آمیز نبود");
+      }
     } else {
       const response = await loginRequest({
         set: {
-          phone: form?.phone,
+          phone: form.phone,
           countryCode: "98",
         },
-      }, Cookies.get(process.env.TOKEN));
-
-      console.log("loginRequest response >>> ", response);
-      if (response.error) {
+        get: { phone: 1 },
+      });
+      if (response.success) {
         reset();
         toast.success("کد برای شما ارسال شد");
-        setPhoneNumber(response.data.phone);
+        setPhoneNumber(
+          (response.body as FQl_response_loginRequest_LoginRequestReturn).phone,
+        );
       } else {
         toast.error("ارسال کد موفقیت آمیز نبود");
       }

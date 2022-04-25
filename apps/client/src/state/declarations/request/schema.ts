@@ -4280,7 +4280,13 @@ export interface FunQLRequest {
           lenght: any,
           width: any,
           passageWidth: number,
-          plateType: 'Registered' | 'Normal'
+          plateType: 'Registered' | 'Normal',
+          photo?: {
+           _id: any,
+           filename: string,
+           type: string,
+           size: number
+          }
          },
          get?: {
           _id?: 0 | 1,
