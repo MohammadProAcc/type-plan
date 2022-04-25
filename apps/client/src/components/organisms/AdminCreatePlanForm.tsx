@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import { createPlan } from "state";
+import { createPlan, typePlanApi } from "state";
 import {
   FQl_dynamic_plan_PLANTYPE,
   FQl_dynamic_plan_PLATETYPE,
@@ -47,35 +47,42 @@ export const AdminCreatePlanForm: React.FC = () => {
   // FIXME: fix the any
   const onSubmit = async (form: any) => {
     setLoading(true);
+    const response = await typePlanApi.api({
+      contents: "streams",
+      wants: {
+        model: "File",
+        doit: "uploadFile",
+      },
+      details: {
+        set: {
+          file: form.photo[0],
+        },
+        get: {},
+      },
+    });
+    console.log(response);
     const finalForm = {
       ...form,
       exposure: form?.exposure?.value,
       planType: form?.planType?.value,
       plateType: form?.plateType?.value,
-      units: +form?.units,
-      floors: +form?.floors,
-      sleeps: +form?.sleeps,
-      width: [1, 1],
-      infrastructureArea: [
-        +form.infrastructureArea[0],
-        +form.infrastructureArea[1],
-      ],
-      lenght: [+form.lenght[0], +form.lenght[1]],
     };
-    const response = await createPlan({
-      set: finalForm,
-      get: {
-        _id: 1,
-      },
-    }, Cookies.get(process.env.TOKEN));
-    console.log(response);
-    if (!response.error) {
-      reset();
-      toast.success("طرح اضافه شد");
-      router.push("/admin/plans");
-    } else {
-      toast.error("ساخت طرح موفقیت آمیز نبود");
-    }
+    console.log(finalForm);
+
+    // const response = await createPlan({
+    //   set: finalForm,
+    //   get: {
+    //     _id: 1,
+    //   },
+    // }, Cookies.get(process.env.TOKEN));
+    // console.log(response);
+    // if (!response.error) {
+    //   reset();
+    //   toast.success("طرح اضافه شد");
+    //   router.push("/admin/plans");
+    // } else {
+    //   toast.error("ساخت طرح موفقیت آمیز نبود");
+    // }
     setLoading(false);
   };
 
@@ -92,6 +99,16 @@ export const AdminCreatePlanForm: React.FC = () => {
               {...field}
             />
           )}
+        />
+      </InputGroup>
+
+      <InputGroup col>
+        <CreatePlanFormLabel>تصاویر نقشه :</CreatePlanFormLabel>
+        <Input
+          type="file"
+          {...register("photo", {
+            required: true,
+          })}
         />
       </InputGroup>
 
