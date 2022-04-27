@@ -18,6 +18,7 @@ import {
   UserDoit,
 } from "../dynamics/mod.ts";
 import { BlogFirstPageDoit } from "../statics/mod.ts";
+import { FileType } from "../streams/utils/uploadFunction.ts";
 const v = new FastestValidator();
 const check = v.compile({
   contents: {
@@ -54,13 +55,19 @@ const decodeBody = async (req: Request): Promise<Body> => {
 
     const getFileFormData: () => Promise<Body> = async () => {
       const fd = await req.formData();
-      // for (const f of fd.entries()) {
-      //   if (!(f[1] instanceof File)) {
-      //     continue;
-      //   }
-      //   const fileData = new Uint8Array(await f[1].arrayBuffer());
-      //   await Deno.writeFile("./files/" + f[1].name, fileData);
-      // }
+      let file: FileType;
+      for (const f of fd.entries()) {
+        if (!(f[1] instanceof File)) {
+          continue;
+        }
+        const fileData = new Uint8Array(await f[1].arrayBuffer());
+        file = {
+          content: fileData,
+          filename: f[1].name,
+          type: f[1].type,
+          size: f[1].size,
+        };
+      }
       const returnBody: (body: string) => Body = (body) => {
         const parsedBody = JSON.parse(body) as Body;
         parsedBody &&
@@ -68,12 +75,13 @@ const decodeBody = async (req: Request): Promise<Body> => {
           parsedBody.details.set &&
           (parsedBody.details.set = {
             ...parsedBody.details.set,
-            formData: fd,
+            file,
           });
+
         return parsedBody;
       };
 
-      const body = fd.get("lesan-body") ? fd.get("lesan-body") as string : "{}";
+      const body = fd.get("funql-body") ? fd.get("funql-body") as string : "{}";
 
       return body
         ? returnBody(body)
