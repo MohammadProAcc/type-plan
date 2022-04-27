@@ -1,31 +1,25 @@
-<<<<<<< HEAD
-import {
-  Em,
-  InputPhoneNumber,
-  InputSubmit,
-  LoginCard,
-  LoginForm,
-} from "elements";
-import { useRouter } from "next/router";
-=======
 import { InputPhoneNumber, InputSubmit, LoginCard, LoginForm } from "elements";
-import { typePlanApi } from "pages/admin/api/funreq";
->>>>>>> 65987e49c3380e7884c45e21524a13d3baa2aa45
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 import { Layout } from "./Layout";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
-import { login, loginRequest } from "state";
+import { useCookies } from "react-cookie";
+import {
+  FQl_response_login_LoginReturn,
+  FQl_response_loginRequest_LoginRequestReturn,
+  login,
+  loginRequest,
+} from "state";
+import { toast } from "react-toastify";
+import { P } from "elements/P";
 
 export const LoginPage: React.FC = () => {
   const router = useRouter();
 
-  const [phone, setPhoneNumber] = useState<number>(null);
+  const [phoneNumber, setPhoneNumber] = useState<number>(null);
+  const [loading, setLoading] = useState(false);
 
   const [, setCookie] = useCookies([process.env.TOKEN]);
-  const router = useRouter();
 
   const {
     register,
@@ -35,51 +29,62 @@ export const LoginPage: React.FC = () => {
   } = useForm();
 
   const onSubmit = async (form) => {
-    if (phone) {
-      // const response = await login({
-      //   set: {
-      //     code: form.code,
-      //     phone,
-      //   },
-      //   get: {
-      //     token: 1,
-      //     user: {
-      //       _id: 1,
-      //     },
-      //   },
-      // }, "");
-
-      // if (!response.error) {
-      //   Cookies.set(process.env.TOKEN, response.data.token);
-      //   toast.success("خوش آمدید");
-      //   router.back();
-      // } else {
-      //   toast.error("عملیات موفقیت آمیز نبود");
-      // }
+    setLoading(true);
+    if (phoneNumber) {
+      console.log({
+        phone: phoneNumber,
+        code: form.code,
+      });
+      const response = await login({
+        set: {
+          phone: phoneNumber,
+          code: form.code,
+        },
+        get: {
+          token: 1,
+          user: {
+            _id: 1,
+          },
+        },
+      });
+      if (response.success) {
+        setCookie(
+          process.env.TOKEN,
+          (response.body as FQl_response_login_LoginReturn).token,
+        );
+        reset();
+        toast.success("خوش آمدید 🌹");
+        router.back();
+      }
     } else {
       const response = await loginRequest({
         set: {
-          phone: form?.phone,
+          phone: form.phone,
           countryCode: "98",
         },
-      }, Cookies.get(process.env.TOKEN));
+        get: {
+          phone: 1,
+        },
+      });
 
-      console.log("loginRequest response >>> ", response);
-      if (response.error) {
+      if (response.success) {
+        setPhoneNumber(
+          (response.body as FQl_response_loginRequest_LoginRequestReturn).phone,
+        );
         reset();
-        toast.success("کد برای شما ارسال شد");
-        setPhoneNumber(response.data.phone);
+        toast.success("کد تایید برای شما ارسال شد");
       } else {
-        toast.error("ارسال کد موفقیت آمیز نبود");
+        toast.error("ارسال کد موفقیت آمیز نبود، لطفا دوباره تلاش کنید");
       }
     }
+    setLoading(false);
   };
 
   return (
     <Layout>
       <LoginCard>
         <LoginForm onSubmit={handleSubmit(onSubmit)}>
-          {!phone
+          {!phoneNumber
             ? (
               <>
                 شماره تلفن همراه:
@@ -123,7 +128,11 @@ export const LoginPage: React.FC = () => {
                 {errors.phone?.message}
               </>
             )}
-          <InputSubmit type="submit" value="دریافت کد ورود" />
+          <InputSubmit
+            disabled={loading}
+            type="submit"
+            value={loading ? "..." : "دریافت کد ورود"}
+          />
         </LoginForm>
       </LoginCard>
     </Layout>
