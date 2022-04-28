@@ -42,7 +42,7 @@ export const AdminTable: React.FC<AdminTableProps> = ({
       </AdminTableEl>
       <PaginationBar
         page={+((router.query.page as string) ?? 1)}
-        lastPage={2}
+        lastPage={1}
         callback={paginate}
       />
     </>
