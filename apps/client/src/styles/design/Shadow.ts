@@ -1,4 +1,6 @@
-export enum Shadow {
-  primary = `0 0.125rem 1rem #023e8a`,
-  secondary = `0 0.125rem 1rem #0077b6`,
+import { Color } from "./Color";
+
+export const Shadow = {
+  primary: `0 0.125rem 1rem ${Color.Line}`,
+  secondary: `0 0.125rem 1rem ${Color.BackgroundSecondary}`,
 }

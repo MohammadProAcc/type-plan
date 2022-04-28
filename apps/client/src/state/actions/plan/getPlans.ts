@@ -6,9 +6,9 @@ export const getPlans = async (details: GetPlansDetails) => {
     contents: "dynamic",
     wants: {
       model: "Plan",
-      doit: "getPlans"
+      doit: "getPlans",
     },
-    details
+    details,
   });
   return response;
-}
+};

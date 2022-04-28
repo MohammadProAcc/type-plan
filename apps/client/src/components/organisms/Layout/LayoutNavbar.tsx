@@ -48,7 +48,7 @@ export const LayoutNavbar: React.FC = () => {
       <Link href="/admin" passHref>
         <NavbarLink
           deactive={!isAdmin}
-          active={router?.route?.includes("plans")}
+          active={router?.route?.includes("admin")}
         >
           بخش مدیریت
         </NavbarLink>

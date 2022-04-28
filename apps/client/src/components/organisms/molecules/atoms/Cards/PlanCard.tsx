@@ -1,5 +1,6 @@
 import {
   Em,
+  PlanCardAnchor,
   PlanCardButton,
   PlanCardContainer,
   PlanCardFieldName,
@@ -10,6 +11,7 @@ import {
 } from "elements";
 import { PlanCardContent } from "elements/Div/PlanCard/PlanCardContent";
 import { PlanCardField } from "elements/P";
+import Link from "next/link";
 import React, { useState } from "react";
 import Lottie from "react-lottie";
 import { FQl_dynamic_plan_IPlan } from "state/declarations/schema/schema";
@@ -40,7 +42,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       onMouseLeave={() => setHover(false)}
     >
       <PlanCardImgContainer>
-        <PlanCardImage Src={`${plan?.photo?.filename}.jpeg`} />
+        <PlanCardImage Src={plan?.photo?.filename} />
       </PlanCardImgContainer>
 
       <PlanCardContent>
@@ -65,10 +67,14 @@ export const PlanCard: React.FC<PlanCardProps> = ({
           </PlanCardField>
         </PlanCardInformationContainer>
 
-        <PlanCardButton active={hover}>
-          <Lottie options={defaultOptions} />
-          مشاهده
-        </PlanCardButton>
+        <Link href={`/plans/${plan?._id}`}>
+          <PlanCardAnchor>
+            <PlanCardButton active={hover}>
+              <Lottie options={defaultOptions} />
+              مشاهده
+            </PlanCardButton>
+          </PlanCardAnchor>
+        </Link>
       </PlanCardContent>
     </PlanCardContainer>
   );

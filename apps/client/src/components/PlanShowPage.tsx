@@ -1,87 +1,97 @@
-import React from 'react';
-import { Layout } from './Layout';
+import React from "react";
+import { Layout } from "./Layout";
 
 import {
+  PlanDescriptionContainer,
   PlanDetailsContainer,
-  PlanTitle,
-  PlanShowTitle,
+  PlanDetailsImgContainer,
+  PlanInformation,
   PlanInformationContainer,
   PlanInformationContainerTitle,
-  PlanInformation,
   PlanInformationTitle,
   PlanInformationValue,
-  PlanDetailsImgContainer,
   PlanLargeImg,
-  PlanDescriptionContainer,
-} from 'elements';
+  PlanShowTitle,
+  PlanTitle,
+} from "elements";
+import { useStore } from "state";
+import { FQl_dynamic_plan_IPlan } from "state/declarations/schema/schema";
+import { translator } from "tools";
 
-export const PlanShowPage: React.FC<PlanShowPageProps> = (props) => {
+export const PlanShowPage: React.FC<PlanShowPageProps> = () => {
+  const {
+    plan,
+  } = useStore(state => ({
+    plan: (state?.plan as FQl_dynamic_plan_IPlan),
+  }));
+
   return (
     <Layout>
       <PlanDetailsContainer>
         <PlanShowTitle>جزئیات پلان</PlanShowTitle>
-        <PlanTitle>نقشه خانه مسکونی 110</PlanTitle>
+        <PlanTitle>نقشه خانه {translator(plan?.planType)}</PlanTitle>
         <PlanInformationContainer>
           <PlanInformationContainerTitle>
             مشخصات پلان
           </PlanInformationContainerTitle>
           <PlanInformation>
             <PlanInformationTitle>کد پلان:</PlanInformationTitle>
-            <PlanInformationValue>۱۰۹۶</PlanInformationValue>
+            <PlanInformationValue>{plan?._id}</PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
             <PlanInformationTitle>نوع کاربری:</PlanInformationTitle>
-            <PlanInformationValue>۱۰۹۶</PlanInformationValue>
+            <PlanInformationValue>
+              {translator(plan?.planType)}
+            </PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
             <PlanInformationTitle>تعداد واحد:</PlanInformationTitle>
-            <PlanInformationValue>۱۰۹۶</PlanInformationValue>
+            <PlanInformationValue>{plan?.units}</PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
             <PlanInformationTitle>تعداد طبقات:</PlanInformationTitle>
-            <PlanInformationValue>۱۰۹۶</PlanInformationValue>
+            <PlanInformationValue>{plan?.floors}</PlanInformationValue>
           </PlanInformation>
           <PlanInformation>
             <PlanInformationTitle>تعداد خواب:</PlanInformationTitle>
-            <PlanInformationValue>۱۰۹۶</PlanInformationValue>
+            <PlanInformationValue>{plan?.sleeps}</PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
             <PlanInformationTitle>تعداد حمام:</PlanInformationTitle>
-            <PlanInformationValue>۱۰۹۶</PlanInformationValue>
+            <PlanInformationValue>-</PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
             <PlanInformationTitle>موقعیت زمین:</PlanInformationTitle>
-            <PlanInformationValue>۱۰۹۶</PlanInformationValue>
+            <PlanInformationValue>
+              {translator(plan.exposure)}
+            </PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
             <PlanInformationTitle>مساحت:</PlanInformationTitle>
-            <PlanInformationValue> 175.21 متر مربع</PlanInformationValue>
+            <PlanInformationValue>
+              {plan.infrastructureArea[0] * plan.infrastructureArea[1]} متر مربع
+            </PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
             <PlanInformationTitle>طول:</PlanInformationTitle>
-            <PlanInformationValue>۱۰۹۶</PlanInformationValue>
+            <PlanInformationValue>{plan?.lenght[0]} متر</PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
             <PlanInformationTitle>عرض:</PlanInformationTitle>
-            <PlanInformationValue>۱۰۹۶</PlanInformationValue>
-          </PlanInformation>
-
-          <PlanInformation>
-            <PlanInformationTitle>تعداد واحد:</PlanInformationTitle>
-            <PlanInformationValue>۱۰۹۶</PlanInformationValue>
+            <PlanInformationValue>{plan?.width[0]} متر</PlanInformationValue>
           </PlanInformation>
         </PlanInformationContainer>
 
         <PlanDetailsImgContainer>
-          <PlanLargeImg />
+          <PlanLargeImg Src={plan?.photo?.filename} />
         </PlanDetailsImgContainer>
 
         <PlanInformationContainer>

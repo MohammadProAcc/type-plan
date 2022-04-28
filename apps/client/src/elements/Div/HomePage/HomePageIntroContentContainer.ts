@@ -1,6 +1,6 @@
-import { Div } from '..';
-import styled from 'styled-components';
-import { Device } from 'styles';
+import styled from "styled-components";
+import { Device } from "styles";
+import { Div } from "..";
 
 export const HomePageIntroContentContainer = styled(Div)`
   width: 100%;

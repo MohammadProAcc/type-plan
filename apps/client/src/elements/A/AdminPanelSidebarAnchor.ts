@@ -12,7 +12,7 @@ export const AdminPanelSidebarAnchor = styled(A) <Activable>`
   margin-bottom: ${Margin.l3};
 
   font-family: ${FontFamily.medium};
-  color: ${Color.Line};
+  color: ${props => props.active ? Color.BackgroundSecondary : Color.Line};
   background-color: ${props => props.active ? Color.Line : "transparent"};
   
   transition: ${Transition.basic};

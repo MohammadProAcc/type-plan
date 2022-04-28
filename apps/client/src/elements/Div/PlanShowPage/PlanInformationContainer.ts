@@ -1,13 +1,15 @@
-import styled from 'styled-components';
-import { Div } from '../Div';
-import { Color } from 'styles';
+import styled from "styled-components";
+import { Color } from "styles";
+import { Div } from "../Div";
 
 export const PlanInformationContainer = styled(Div)`
-  display: flex;
-  flex-direction: column;
   width: 30%;
-  margin: 1rem;
   border: solid 1px ${Color.Line};
   border-radius: 0.9rem;
+  margin: 1rem;
+  
+  display: flex;
+  flex-direction: column;
+
   overflow: hidden;
 `;

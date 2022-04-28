@@ -1,12 +1,14 @@
-import styled from 'styled-components';
-import { Div } from '../Div';
-import { Color, FontSize } from 'styles';
+import styled from "styled-components";
+import { Color, FontSize } from "styles";
+import { Div } from "../Div";
 
 export const PlanInformation = styled(Div)`
   display: flex;
-  border-bottom: solid 1px ${Color.Line};
-  border-radius: 0.5rem;
   padding: 0.7rem 0 0 0;
   margin: 0 1rem;
   font-size: ${FontSize.md};
+
+  :not(:last-child) {
+    border-bottom: solid 1px ${Color.Line};
+  }
 `;

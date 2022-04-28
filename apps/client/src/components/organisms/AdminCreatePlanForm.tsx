@@ -8,7 +8,7 @@ import { useCookies } from "react-cookie";
 import { Controller, useForm } from "react-hook-form";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import { createPlan, typePlanApi } from "state";
+import { createPlan, typePlanApi, uploadFile } from "state";
 import {
   FQl_dynamic_plan_PLANTYPE,
   FQl_dynamic_plan_PLATETYPE,
@@ -49,34 +49,15 @@ export const AdminCreatePlanForm: React.FC = () => {
   // FIXME: fix the any
   const onSubmit = async (form: any) => {
     setLoading(true);
-    const uploadedFile = await typePlanApi.api({
-      contents: "streams",
-      wants: {
-        model: "File",
-        doit: "uploadFile",
-      },
-      details: {
-        set: {
-          file: {
-            filename: "file-1",
-            content: form.photo[0],
-            size: 0,
-            type: "image/jpeg",
-          },
-        },
-        get: {},
-      },
-    }, {
-      token: cookies[process.env.TOKEN],
-    });
+    const uploadedFile = await uploadFile(form.photo[0]);
     console.log(uploadedFile);
-    
+
     const finalForm = {
       ...form,
       exposure: form?.exposure?.value,
       planType: form?.planType?.value,
       plateType: form?.plateType?.value,
-      photo: uploadedFile.body,
+      photo: uploadedFile,
     };
     const response = await createPlan(finalForm, cookies[process.env.TOKEN]);
     console.log(response);
@@ -121,6 +102,7 @@ export const AdminCreatePlanForm: React.FC = () => {
         <Input
           {...register("units", { required: true, valueAsNumber: true })}
           type="number"
+          placeholder="-"
         />
       </InputGroup>
 
@@ -129,6 +111,7 @@ export const AdminCreatePlanForm: React.FC = () => {
         <Input
           {...register("floors", { required: true, valueAsNumber: true })}
           type="number"
+          placeholder="-"
         />
       </InputGroup>
 
@@ -137,6 +120,7 @@ export const AdminCreatePlanForm: React.FC = () => {
         <Input
           {...register("sleeps", { required: true, valueAsNumber: true })}
           type="number"
+          placeholder="-"
         />
       </InputGroup>
 
@@ -163,6 +147,7 @@ export const AdminCreatePlanForm: React.FC = () => {
               valueAsNumber: true,
             })}
             type="number"
+            placeholder="-"
           />
           <Em>تا</Em>
           <Input
@@ -171,6 +156,7 @@ export const AdminCreatePlanForm: React.FC = () => {
               valueAsNumber: true,
             })}
             type="number"
+            placeholder="-"
           />
         </InputGroup>
       </InputGroup>
@@ -181,11 +167,13 @@ export const AdminCreatePlanForm: React.FC = () => {
           <Input
             {...register("lenght.0", { required: true, valueAsNumber: true })}
             type="number"
+            placeholder="-"
           />
           <Em>تا</Em>
           <Input
             {...register("lenght.1", { required: true, valueAsNumber: true })}
             type="number"
+            placeholder="-"
           />
         </InputGroup>
       </InputGroup>
@@ -196,11 +184,13 @@ export const AdminCreatePlanForm: React.FC = () => {
           <Input
             {...register("width.0", { required: true, valueAsNumber: true })}
             type="number"
+            placeholder="-"
           />
           <Em>تا</Em>
           <Input
             {...register("width.1", { required: true, valueAsNumber: true })}
             type="number"
+            placeholder="-"
           />
         </InputGroup>
       </InputGroup>
@@ -209,6 +199,7 @@ export const AdminCreatePlanForm: React.FC = () => {
         <CreatePlanFormLabel>عرض معبر :</CreatePlanFormLabel>
         <Input
           {...register("passageWidth", { required: true, valueAsNumber: true })}
+          placeholder="-"
           type="number"
         />
       </InputGroup>
@@ -228,7 +219,7 @@ export const AdminCreatePlanForm: React.FC = () => {
         <Input
           type="submit"
           value={loading ? "..." : "ارسال"}
-          disabled={loading}
+          // disabled={loading}
         />
       </InputGroup>
     </AdminCreatePlanFormEl>

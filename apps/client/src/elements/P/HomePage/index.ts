@@ -1,2 +1,1 @@
-export * from './HomePageDescription';
-export * from './HomePageIntroCardDescription';
+export * from "./HomePageDescription";

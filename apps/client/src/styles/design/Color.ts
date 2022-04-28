@@ -1,7 +1,6 @@
 export enum Color {
-  'Line' = '#2b2d42',
-  'BackgroundSecondary' = '#8d99ae',
-  'Background' = '#edf2f4',
-  'BackgroundError' = '#ef233c',
-  'LineError' = '#d90429'
+  "Line" = "#1d3557",
+  "BackgroundSecondary" = "#a8dadc",
+  "Background" = "#f1faee",
+  "Error" = "#e63946",
 }

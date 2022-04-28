@@ -1,27 +1,36 @@
-import { AdminPanelChildrenContainer, AdminPanelContentContainer, AdminPanelLayoutContainer } from 'elements'
-import React from 'react'
-import { AdminPanelHeader, AdminPanelSidebar } from './organisms'
+import {
+  AdminPanelChildrenContainer,
+  AdminPanelContentContainer,
+  AdminPanelLayoutContainer,
+} from "elements";
+import React from "react";
+import {
+  AdminPanelHeader,
+  AdminPanelNavbar,
+  AdminPanelSidebar,
+} from "./organisms";
 
-export const AdminPanelLayout:React.FC<AdminPanelLayoutProps> = ({title, createButtonLabel, children}) => {
-
+export const AdminPanelLayout: React.FC<AdminPanelLayoutProps> = (
+  { title, createButtonLabel, children },
+) => {
   return (
     <AdminPanelLayoutContainer>
-      <AdminPanelContentContainer>
+      <AdminPanelNavbar />
 
+      <AdminPanelContentContainer>
         <AdminPanelSidebar />
-        
+
         <AdminPanelChildrenContainer>
-          <AdminPanelHeader 
-            title={title} 
+          <AdminPanelHeader
+            title={title}
             createButtonLabel={createButtonLabel}
           />
           {children}
         </AdminPanelChildrenContainer>
-      
       </AdminPanelContentContainer>
     </AdminPanelLayoutContainer>
-  )
-}
+  );
+};
 
 export interface AdminPanelLayoutProps {
   title?: string;

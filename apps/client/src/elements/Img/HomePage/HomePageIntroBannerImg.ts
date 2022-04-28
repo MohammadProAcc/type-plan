@@ -1,8 +1,8 @@
-import { Img } from '..';
-import styled from 'styled-components';
+import styled from "styled-components";
+import { Img } from "../Img";
 
 export const HomePageIntroBannerImg = styled(Img).attrs({
-  src: '/png/intro.png',
+  src: "/png/intro.png",
 })`
   width: 100%;
   height: 100%;
