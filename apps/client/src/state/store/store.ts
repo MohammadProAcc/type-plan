@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import create, { SetState } from "zustand";
-import { devtools } from "zustand/middleware";
+// import { devtools } from "zustand/middleware";
 import { userPiece } from ".";
 import { planPiece } from "./pieces";
 
@@ -8,20 +8,18 @@ let store;
 
 const initialState = (set: SetState<any>) => ({
   ...userPiece(set),
-  ...planPiece(set)
+  ...planPiece(set),
 });
 
 export type InitialState = ReturnType<typeof initialState>;
 
 function initStore(preloadedState = initialState) {
-  return create<InitialState>(devtools(
+  return create<InitialState>(
     (set, get) => ({
       ...initialState(set),
       ...preloadedState,
-    })
-  ), {
-    name: "type-plan"
-  });
+    }),
+  );
 }
 
 export const initializeStore = (preloadedState) => {

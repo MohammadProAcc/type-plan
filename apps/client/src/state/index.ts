@@ -4,8 +4,9 @@ import { FunQLResponseWithDetails } from "./declarations/response/schema";
 
 export const typePlanApi = funreq<FunQLRequest, FunQLResponseWithDetails>();
 
-const url =
-  typeof window === "undefined" ? "http://127.0.0.1:8080/funql" : "/typeplanapi";
+const url = typeof window === "undefined"
+  ? "http://127.0.0.1:8080/funql"
+  : "/typeplanapi";
 
 export const apiSetting = { url };
 typePlanApi.setup(apiSetting);
@@ -20,8 +21,8 @@ export type PartialDeep<T> = {
   [P in keyof T]?: PartialDeep<T[P]>;
 };
 
+export * from "./actions";
 export * from "./declarations/request/schema";
 export * from "./declarations/response/schema";
-export * from './actions'
+export * from "./persistStores";
 export * from "./store";
-export * from './persistStores'

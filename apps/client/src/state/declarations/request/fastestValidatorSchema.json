@@ -26833,6 +26833,28 @@
                                           }
                                         },
                                         "optional": true
+                                      },
+                                      "slider": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "props": {
+                                            "_id": {
+                                              "type": "objectID"
+                                            },
+                                            "filename": {
+                                              "type": "string"
+                                            },
+                                            "type": {
+                                              "type": "string"
+                                            },
+                                            "size": {
+                                              "type": "number"
+                                            }
+                                          },
+                                          "optional": true
+                                        },
+                                        "optional": true
                                       }
                                     }
                                   },
@@ -26937,6 +26959,22 @@
                                         "optional": true
                                       },
                                       "plateType": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "photo": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "slider": {
                                         "type": "enum",
                                         "values": [
                                           0,
@@ -27626,6 +27664,22 @@
                                         ],
                                         "optional": true
                                       },
+                                      "photo": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "slider": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
                                       "state": {
                                         "type": "object",
                                         "optional": true,
@@ -27984,6 +28038,22 @@
                                         "optional": true
                                       },
                                       "plateType": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "photo": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "slider": {
                                         "type": "enum",
                                         "values": [
                                           0,

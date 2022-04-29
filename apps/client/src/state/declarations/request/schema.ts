@@ -4286,7 +4286,8 @@ export interface FunQLRequest {
            filename: string,
            type: string,
            size: number
-          }
+          },
+          slider?: { _id: any, filename: string, type: string, size: number }[]
          },
          get?: {
           _id?: 0 | 1,
@@ -4302,6 +4303,8 @@ export interface FunQLRequest {
           width?: 0 | 1,
           passageWidth?: 0 | 1,
           plateType?: 0 | 1,
+          photo?: 0 | 1,
+          slider?: 0 | 1,
           state?: {
            _id?: 0 | 1,
            createdAt?: 0 | 1,
@@ -4407,6 +4410,8 @@ export interface FunQLRequest {
           width?: 0 | 1,
           passageWidth?: 0 | 1,
           plateType?: 0 | 1,
+          photo?: 0 | 1,
+          slider?: 0 | 1,
           state?: {
            _id?: 0 | 1,
            createdAt?: 0 | 1,
@@ -4465,6 +4470,8 @@ export interface FunQLRequest {
           width?: 0 | 1,
           passageWidth?: 0 | 1,
           plateType?: 0 | 1,
+          photo?: 0 | 1,
+          slider?: 0 | 1,
           state?: {
            _id?: 0 | 1,
            createdAt?: 0 | 1,
