@@ -4,4 +4,5 @@ export enum Device {
   laptop = 'min-width: 768px',
   desktop = 'min-width: 1024px',
   largeScreen = 'min-width: 1201px',
+  ultimate = 'min-width: 1440px',
 }
