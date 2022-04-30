@@ -4,7 +4,9 @@ import {
   PLANTYPE,
   PLATETYPE,
   POSITION,
+  PuFile,
   RPlan,
+  UNITTYPE,
 } from "../../schemas/mode.ts";
 import { ObjectID } from "../../utils/deps.ts";
 const v = new FastestValidator();
@@ -28,6 +30,12 @@ export const schema = {
           units: { type: "number", min: 1, max: 1000 },
           floors: { type: "number", min: 1, max: 1000 },
           sleeps: { type: "number", min: 1, max: 1000 },
+          bathroom: { type: "number", min: 1, max: 1000 },
+          planCode: { type: "string", min: 6, max: 10 },
+          unitType: {
+            type: "enum",
+            values: ["Solo", "Duplex", "Triplex"],
+          },
           exposure: {
             type: "enum",
             values: ["Northern", "Southern", "Eastern", "Western"],
@@ -38,6 +46,17 @@ export const schema = {
           passageWidth: { type: "number", min: 1, max: 1000 },
           plateType: { type: "enum", values: ["Registered", "Normal"] },
           photo: {
+            type: "object",
+            props: {
+              _id: { type: "objectID", ObjectID },
+              filename: { type: "string" },
+              type: { type: "string" },
+              size: { type: "number" },
+            },
+
+            optional: true,
+          },
+          pdf: {
             type: "object",
             props: {
               _id: { type: "objectID", ObjectID },
@@ -89,12 +108,18 @@ export interface ICreatePlanDetails {
     units: number;
     floors: number;
     sleeps: number;
+    planCode: string;
+    unitType: UNITTYPE;
+    bathroom: number;
     exposure: POSITION;
     infrastructureArea: [number, number];
     lenght: [number, number];
     width: [number, number];
     passageWidth: number;
     plateType: PLATETYPE;
+    photo: PuFile;
+    pdf: PuFile;
+    slider: PuFile[];
   };
   get: RPlan;
 }

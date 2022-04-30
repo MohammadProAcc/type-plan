@@ -49,6 +49,12 @@ export enum PLATETYPE {
   Normal = "Normal", // this for aadi
 }
 
+export enum UNITTYPE {
+  Solo = "Solo",
+  Duplex = "Duplex",
+  Triplex = "Triplex",
+}
+
 /**
  * @interface
  * PURE city: This is an interface for primitives types of city */
@@ -57,6 +63,9 @@ export interface PuPlan extends Base {
   units: number;
   floors: number;
   sleeps: number;
+  planCode: string;
+  unitType: UNITTYPE;
+  bathroom: number;
   exposure: POSITION;
   infrastructureArea: [number, number];
   lenght: [number, number];
@@ -64,6 +73,7 @@ export interface PuPlan extends Base {
   passageWidth: number;
   plateType: PLATETYPE;
   photo: PuFile;
+  pdf: PuFile;
   slider: PuFile[];
   /**
    * save set of polygon of point of this plan
@@ -120,6 +130,9 @@ export interface RPlan {
   units?: 0 | 1;
   floors?: 0 | 1;
   sleeps?: 0 | 1;
+  planCode: 0 | 1;
+  unitType: 0 | 1;
+  bathroom: 0 | 1;
   exposure?: 0 | 1;
   infrastructureArea?: 0 | 1;
   lenght?: 0 | 1;
@@ -128,6 +141,7 @@ export interface RPlan {
   plateType?: 0 | 1;
   photo?: 0 | 1;
   slider?: 0 | 1;
+  pdf?: 0 | 1;
   state?: RState;
   country?: RCountry;
   city?: RCity;
@@ -149,6 +163,9 @@ export const planSelectable: any = (depth: number | PlanInp = 2): any => {
     units: fieldType,
     floors: fieldType,
     sleeps: fieldType,
+    planCode: fieldType,
+    unitType: fieldType,
+    bathroom: fieldType,
     exposure: fieldType,
     infrastructureArea: fieldType,
     lenght: fieldType,
@@ -157,6 +174,7 @@ export const planSelectable: any = (depth: number | PlanInp = 2): any => {
     plateType: fieldType,
     photo: fieldType,
     slider: fieldType,
+    pdf: fieldType,
   };
   const numberDepth = (depth: number, pureObj: Record<string, any>) => {
     depth--;
