@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Color } from 'styles';
+import { Color, Shadow } from 'styles';
 import { Div } from '../Div';
 
 export const PlanCardContainer = styled(Div)`
@@ -15,6 +15,6 @@ export const PlanCardContainer = styled(Div)`
   transition: 0.25s;
 
   &:hover {
-    box-shadow: 0 0.125rem 1rem ${Color.Line};
+    box-shadow: ${Shadow.primary};
   }
 `;

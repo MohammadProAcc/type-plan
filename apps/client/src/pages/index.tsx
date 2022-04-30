@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     set: {
       pagination: {
         page: 1,
-        limit: 20,
+        limit: 12,
       },
     },
     get: {

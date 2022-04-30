@@ -7,6 +7,7 @@ export const LayoutNavbarContainer = styled(Div)`
   height: 4rem;
   padding: 0 1.5rem;
   margin-bottom: 1rem;
+  border-bottom: ${Border("1px", Color.Line)};
 
   display: flex;
   align-items: center;

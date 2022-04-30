@@ -25,10 +25,6 @@ export const PlanShowPage: React.FC = () => {
     plan: (state?.plan as FQl_dynamic_plan_IPlan),
   }));
 
-  useEffect(() => {
-    console.log(plan);
-  }, []);
-
   return (
     <Layout>
       <PlanDetailsContainer>
@@ -40,7 +36,7 @@ export const PlanShowPage: React.FC = () => {
           </PlanInformationContainerTitle>
           <PlanInformation>
             <PlanInformationTitle>کد پلان:</PlanInformationTitle>
-            <PlanInformationValue>{plan?._id}</PlanInformationValue>
+            <PlanInformationValue>{plan?.planCode}</PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
@@ -66,7 +62,7 @@ export const PlanShowPage: React.FC = () => {
 
           <PlanInformation>
             <PlanInformationTitle>تعداد حمام:</PlanInformationTitle>
-            <PlanInformationValue>-</PlanInformationValue>
+            <PlanInformationValue>{plan?.bathroom}</PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
