@@ -627,7 +627,7 @@ export interface FQl_response_upload_IFile {
  _id: string;
  createdAt?: Date;
  updateAt?: Date;
- user?: FQl_response_lib_Pick<FQl_response_user_PuRelUser, "_id" | "name" | "phone" | "lastName">;
+ user?: Pick<FQl_response_user_PuRelUser, "_id" | "name" | "phone" | "lastName">;
  blogPost?: FQl_response_blogPost_PuRelBlogPost;
 }
 
