@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Color } from 'styles';
+import { Border, Color } from 'styles';
 import { Div } from '..';
 
 export const LayoutNavbarContainer = styled(Div)`
@@ -11,5 +11,5 @@ export const LayoutNavbarContainer = styled(Div)`
   display: flex;
   align-items: center;
 
-  background: ${Color.BackgroundSecondary};
+  background: ${Color.Background};
 `;

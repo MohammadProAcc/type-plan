@@ -5,9 +5,10 @@ import { Activable } from 'types';
 import { A } from '.';
 
 export const NavbarLink = styled(A) <Activable>`
-  height: 100%;
+  height: 3rem;
   padding: 0 0.5rem;
   margin-left: 1rem;
+  border-radius: 0.75rem;
 
   position: relative;
 
@@ -20,23 +21,6 @@ export const NavbarLink = styled(A) <Activable>`
   align-items: center;
 
   &:hover {
-    ::after {
-      width: calc(100% - 1rem);
-    }
-  }
-
-  &::after {
-    content: ' ';
-    width: ${(props) => (props.active ? 'calc(100% - 1rem)' : '0')};
-    height: 0.125rem;
-    border-radius: 0.0625rem;
-
-    position: absolute;
-    bottom: 0.5rem;
-    right: 0.5rem;
-
-    background-color: ${Color.Line};
-
-    transition: width 0.5s;
+    background-color: ${Color.BackgroundSecondary};
   }
 `;
