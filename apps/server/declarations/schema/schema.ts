@@ -145,7 +145,7 @@ export interface FQl_dynamic_country_ICountry {
     geometries: {
         type: "Polygon";
         coordinates: [number, number][];
-        };
+    };
     _id: string;
     createdAt?: Date;
     updateAt?: Date;
@@ -160,7 +160,7 @@ export interface FQl_dynamic_state_PuRelState {
     geometries: {
         type: "Polygon";
         coordinates: [number, number][];
-        };
+    };
     _id: string;
     createdAt?: Date;
     updateAt?: Date;
@@ -183,7 +183,7 @@ export interface FQl_dynamic_city_ICity {
     geometries: {
         type: "Polygon";
         coordinates: [number, number][];
-        };
+    };
     _id: string;
     createdAt?: Date;
     updateAt?: Date;
@@ -199,7 +199,7 @@ export interface FQl_dynamic_country_PuRelCountry {
     geometries: {
         type: "Polygon";
         coordinates: [number, number][];
-        };
+    };
     _id: string;
     createdAt?: Date;
     updateAt?: Date;
@@ -220,7 +220,7 @@ export interface FQl_dynamic_state_IState {
     geometries: {
         type: "Polygon";
         coordinates: [number, number][];
-        };
+    };
     _id: string;
     createdAt?: Date;
     updateAt?: Date;
@@ -237,7 +237,7 @@ export interface FQl_dynamic_city_PuRelCity {
     geometries: {
         type: "Polygon";
         coordinates: [number, number][];
-        };
+    };
     _id: string;
     createdAt?: Date;
     updateAt?: Date;
@@ -383,7 +383,7 @@ export interface FQl_dynamic_user_UserAddress {
     location: {
         type: "Point";
         coordinates: [number, number];
-        };
+    };
 }
 
 /**
@@ -548,7 +548,7 @@ export interface FQl_dynamic_city_PuCity {
     geometries: {
         type: "Polygon";
         coordinates: [number, number][];
-        };
+    };
     _id: string;
     createdAt?: Date;
     updateAt?: Date;
@@ -638,7 +638,7 @@ export interface FQl_dynamic_country_PuCountry {
     geometries: {
         type: "Polygon";
         coordinates: [number, number][];
-        };
+    };
     _id: string;
     createdAt?: Date;
     updateAt?: Date;
@@ -777,7 +777,7 @@ export interface FQl_dynamic_state_PuState {
     geometries: {
         type: "Polygon";
         coordinates: [number, number][];
-        };
+    };
     _id: string;
     createdAt?: Date;
     updateAt?: Date;
@@ -813,11 +813,11 @@ export interface FQl_dynamic_upload_PuRelFile {
 }
 
 export interface FQl_dynamic_upload_EmFile {
-    user?: FQl_dynamic_lib_Pick<FQl_dynamic_user_PuRelUser, "_id" | "name" | "phone" | "lastName">;
+    user?: Pick<FQl_dynamic_user_PuRelUser, "_id" | "name" | "phone" | "lastName">;
     blogPost?: FQl_dynamic_blogPost_PuRelBlogPost;
 }
 
-export type Pick<T, K extends keyof T> = {[P in K]:T[P];};
+export type Pick<T, K extends keyof T> = { [P in K]: T[P]; };
 
 export interface FQl_dynamic_upload_IFile {
     filename: string;
@@ -826,7 +826,7 @@ export interface FQl_dynamic_upload_IFile {
     _id: string;
     createdAt?: Date;
     updateAt?: Date;
-    user?: FQl_dynamic_lib_Pick<FQl_dynamic_user_PuRelUser, "_id" | "name" | "phone" | "lastName">;
+    user?: Pick<FQl_dynamic_user_PuRelUser, "_id" | "name" | "phone" | "lastName">;
     blogPost?: FQl_dynamic_blogPost_PuRelBlogPost;
 }
 
@@ -885,24 +885,24 @@ export interface FQl_static_types_LatestBlogPosts {
         filename: string;
         size: number;
         type: string;
-        };
+    };
     summary: string;
     totalComments?: number;
     createdAt?: Date;
     blogCategory: {
         _id: string;
         name: string;
-        };
+    };
     author?: {
         _id: string;
         name: string;
         profilePicture?: {
-          _id: string;
-          filename: string;
-          type: string;
-          size: number;
+            _id: string;
+            filename: string;
+            type: string;
+            size: number;
         };
-        };
+    };
 }
 
 /**

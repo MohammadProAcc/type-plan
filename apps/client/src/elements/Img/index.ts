@@ -4,3 +4,4 @@ export * from "./NavbarLogo";
 export * from "./PlanCard";
 export * from "./PlanShowPage";
 export * from "./PlanTableThumb";
+export * from './CreatePlanPreviewImg'

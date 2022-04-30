@@ -7,7 +7,7 @@ const withNx = require("@nrwl/next/plugins/with-nx");
 const nextConfig = {
   env: {
     TOKEN: "TYP_PLN_TKN",
-    SRC: "http://127.0.0.1:8080/funql",
+    SRC: "http://127.0.0.1:8080/",
   },
   async rewrites() {
     return [

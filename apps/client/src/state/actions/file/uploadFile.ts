@@ -1,8 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { FQl_dynamic_upload_IFile } from "state/declarations/schema/schema";
 
 export const uploadFile = async (file: File) => {
-  console.log("file >>> ", file)
   const formData = new FormData();
   formData.append("file", file);
   formData.append("funql-body", JSON.stringify({
@@ -28,7 +28,7 @@ export const uploadFile = async (file: File) => {
           token: Cookies.get(process.env.TOKEN)
         }
       });
-    return data.body;
+    return data.body as FQl_dynamic_upload_IFile;
   } catch (err) {
     return err;
   }

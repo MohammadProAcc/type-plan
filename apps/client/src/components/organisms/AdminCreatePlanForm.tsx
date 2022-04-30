@@ -1,4 +1,10 @@
-import { Em, InputGroup } from "elements";
+import {
+  CreatePlanInputGroup,
+  CreatePlanPreviewImg,
+  CreatePlanPreviewPdfName,
+  CreatePlanPreviewsContainer,
+  Em,
+} from "elements";
 import { CreatePlanFormLabel } from "elements";
 import { AdminCreatePlanFormEl } from "elements/Form/Admin";
 import { Input } from "elements/Input";
@@ -8,12 +14,30 @@ import { useCookies } from "react-cookie";
 import { Controller, useForm } from "react-hook-form";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import { createPlan, typePlanApi, uploadFile } from "state";
+import { createPlan } from "state";
 import {
   FQl_dynamic_plan_PLANTYPE,
   FQl_dynamic_plan_PLATETYPE,
   FQl_dynamic_plan_POSITION,
+  FQl_dynamic_plan_UNITTYPE,
+  FQl_dynamic_upload_IFile,
 } from "state/declarations/schema/schema";
+import { css } from "styled-components";
+import { CreatePlanImagePreview, UploadFile } from "./molecules";
+
+const fileInputStyles = css`
+  margin-right: 1rem;
+`;
+
+const fileInputGroupStyles = css`
+  margin-bottom: 1rem;
+`;
+
+const unitTypeOptions = [
+  { label: "تک", value: FQl_dynamic_plan_UNITTYPE.Solo },
+  { label: "دوبلکس", value: FQl_dynamic_plan_UNITTYPE.Duplex },
+  { label: "تری بلکس", value: FQl_dynamic_plan_UNITTYPE.Triplex },
+];
 
 const planTypeOptions = [
   { label: "مسکونی", value: FQl_dynamic_plan_PLANTYPE.Resindental },
@@ -39,6 +63,15 @@ export const AdminCreatePlanForm: React.FC = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const [pdf, setPdf] = useState<FQl_dynamic_upload_IFile>();
+  const [photo, setPhoto] = useState<FQl_dynamic_upload_IFile>();
+  const [slider, setSlider] = useState<FQl_dynamic_upload_IFile[]>([]);
+
+  const removePhoto = (photo: FQl_dynamic_upload_IFile) =>
+    setSlider((current) => current.filter((item) => item._id !== photo._id));
+
+  const removePdf = () => setPdf(null);
+
   const {
     register,
     handleSubmit,
@@ -47,18 +80,19 @@ export const AdminCreatePlanForm: React.FC = () => {
   } = useForm();
 
   // FIXME: fix the any
-  const onSubmit = async (form: any) => {
+  const onSubmit = async (form) => {
     setLoading(true);
-    const uploadedFile = await uploadFile(form.photo[0]);
-    console.log(uploadedFile);
 
     const finalForm = {
       ...form,
       exposure: form?.exposure?.value,
       planType: form?.planType?.value,
       plateType: form?.plateType?.value,
-      photo: uploadedFile,
+      unitType: form?.unitType?.value,
+      photo,
+      slider,
     };
+    console.log(finalForm);
     const response = await createPlan(finalForm, cookies[process.env.TOKEN]);
     console.log(response);
     if (response.success) {
@@ -73,7 +107,19 @@ export const AdminCreatePlanForm: React.FC = () => {
 
   return (
     <AdminCreatePlanFormEl onSubmit={handleSubmit(onSubmit)}>
-      <InputGroup col>
+      <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>کد نقشه :</CreatePlanFormLabel>
+        <Input
+          {...register("planCode", {
+            required: true,
+            minLength: 6,
+            maxLength: 10,
+          })}
+          placeholder="-"
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>نوع کاربری :</CreatePlanFormLabel>
         <Controller
           name="planType"
@@ -85,46 +131,111 @@ export const AdminCreatePlanForm: React.FC = () => {
             />
           )}
         />
-      </InputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup col>
-        <CreatePlanFormLabel>تصاویر نقشه :</CreatePlanFormLabel>
-        <Input
+      <CreatePlanInputGroup Style={fileInputGroupStyles}>
+        <CreatePlanFormLabel className="file">
+          تصویر اصلی نقشه :
+        </CreatePlanFormLabel>
+        <UploadFile
           type="file"
-          {...register("photo", {
-            required: true,
-          })}
+          callback={(file) => setPhoto(file)}
+          Style={fileInputStyles}
         />
-      </InputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup col>
+      {photo &&
+        <CreatePlanPreviewImg Src={photo.filename} />}
+
+      <CreatePlanInputGroup Style={fileInputGroupStyles}>
+        <CreatePlanFormLabel className="file">
+          تصاویر نقشه :
+        </CreatePlanFormLabel>
+        <UploadFile
+          type="file"
+          Style={fileInputStyles}
+          callback={(file) => setSlider((curr) => [...curr, file])}
+        />
+      </CreatePlanInputGroup>
+
+      {slider?.length > 0 &&
+        (
+          <CreatePlanPreviewsContainer>
+            {slider?.map((file) => (
+              <CreatePlanImagePreview
+                key={file.filename}
+                file={file}
+                removeCallback={(file) => removePhoto(file)}
+              />
+            ))}
+          </CreatePlanPreviewsContainer>
+        )}
+
+      <CreatePlanInputGroup Style={fileInputGroupStyles}>
+        <CreatePlanFormLabel className="file">
+          فایل PDF :
+        </CreatePlanFormLabel>
+        <UploadFile
+          type="pdf"
+          callback={(file) => setPdf(file)}
+          Style={fileInputStyles}
+        />
+        <CreatePlanPreviewPdfName onClick={removePdf}>
+          {pdf && pdf.filename}
+        </CreatePlanPreviewPdfName>
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>تعداد واحد ها :</CreatePlanFormLabel>
         <Input
           {...register("units", { required: true, valueAsNumber: true })}
           type="number"
           placeholder="-"
         />
-      </InputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup col>
+      <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>نوع واحد :</CreatePlanFormLabel>
+        <Controller
+          name="unitType"
+          control={control}
+          render={({ field }) => (
+            <Select
+              options={unitTypeOptions}
+              {...field}
+            />
+          )}
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>تعداد طبقات ها :</CreatePlanFormLabel>
         <Input
           {...register("floors", { required: true, valueAsNumber: true })}
           type="number"
           placeholder="-"
         />
-      </InputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup col>
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>تعداد اتاق ها :</CreatePlanFormLabel>
         <Input
           {...register("sleeps", { required: true, valueAsNumber: true })}
           type="number"
           placeholder="-"
         />
-      </InputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup col>
+      <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>تعداد حمام :</CreatePlanFormLabel>
+        <Input
+          {...register("bathroom", { required: true, valueAsNumber: true })}
+          type="number"
+          placeholder="-"
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>موقعیت زمین :</CreatePlanFormLabel>
         <Controller
           name="exposure"
@@ -136,11 +247,11 @@ export const AdminCreatePlanForm: React.FC = () => {
             />
           )}
         />
-      </InputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup col>
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>مساحت زیر بنا :</CreatePlanFormLabel>
-        <InputGroup>
+        <CreatePlanInputGroup>
           <Input
             {...register("infrastructureArea.0", {
               required: true,
@@ -158,12 +269,12 @@ export const AdminCreatePlanForm: React.FC = () => {
             type="number"
             placeholder="-"
           />
-        </InputGroup>
-      </InputGroup>
+        </CreatePlanInputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup col>
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>طول :</CreatePlanFormLabel>
-        <InputGroup>
+        <CreatePlanInputGroup>
           <Input
             {...register("lenght.0", { required: true, valueAsNumber: true })}
             type="number"
@@ -175,12 +286,12 @@ export const AdminCreatePlanForm: React.FC = () => {
             type="number"
             placeholder="-"
           />
-        </InputGroup>
-      </InputGroup>
+        </CreatePlanInputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup col>
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>عرض :</CreatePlanFormLabel>
-        <InputGroup>
+        <CreatePlanInputGroup>
           <Input
             {...register("width.0", { required: true, valueAsNumber: true })}
             type="number"
@@ -192,19 +303,19 @@ export const AdminCreatePlanForm: React.FC = () => {
             type="number"
             placeholder="-"
           />
-        </InputGroup>
-      </InputGroup>
+        </CreatePlanInputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup col>
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>عرض معبر :</CreatePlanFormLabel>
         <Input
           {...register("passageWidth", { required: true, valueAsNumber: true })}
           placeholder="-"
           type="number"
         />
-      </InputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup col>
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>نوع پلاک :</CreatePlanFormLabel>
         <Controller
           name="plateType"
@@ -213,15 +324,15 @@ export const AdminCreatePlanForm: React.FC = () => {
             <Select options={plateTypeOptions} {...field} />
           )}
         />
-      </InputGroup>
+      </CreatePlanInputGroup>
 
-      <InputGroup>
+      <CreatePlanInputGroup>
         <Input
           type="submit"
           value={loading ? "..." : "ارسال"}
           // disabled={loading}
         />
-      </InputGroup>
+      </CreatePlanInputGroup>
     </AdminCreatePlanFormEl>
   );
 };
