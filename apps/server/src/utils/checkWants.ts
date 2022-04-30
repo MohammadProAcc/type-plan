@@ -149,9 +149,10 @@ const context: (req: Request) => Context = (req) => ({
 
 export const parsBody = async (req: Request) => {
   const parsedBody = await decodeBody(req);
-  const url = req.url.split("8080")[1];
+  const url = req.url.split("/");
+  const pathname = url[url.length - 1];
 
-  return req.method === "POST" && url === "/funql" && checkBody(parsedBody)
+  return req.method === "POST" && pathname === "funql" && checkBody(parsedBody)
     ? { ...parsedBody, context: context(req) }
     : throwError("you most send a post request to /funql url");
 };
