@@ -29,7 +29,22 @@ export const getPlansFn: GetPlansFn = async (details, context) => {
   checkValidation(checkPlansDetails, { details });
 
   const {
-    set: { pagination },
+    set: {
+      pagination,
+      planCode,
+      planType,
+      units,
+      floors,
+      sleeps,
+      unitType,
+      bathroom,
+      exposure,
+      infrastructureArea,
+      lenght,
+      width,
+      passageWidth,
+      plateType,
+    },
     get,
   } = details;
 
@@ -37,7 +52,83 @@ export const getPlansFn: GetPlansFn = async (details, context) => {
   const defaultSort = { createdAt: -1 };
 
   let filter: Bson.Document = {};
+  planCode &&
+    (filter = {
+      ...filter,
+      planCode,
+    });
 
+  planType &&
+    (filter = {
+      ...filter,
+      planType,
+    });
+
+  units &&
+    (filter = {
+      ...filter,
+      units,
+    });
+
+  floors &&
+    (filter = {
+      ...filter,
+      floors,
+    });
+
+  sleeps &&
+    (filter = {
+      ...filter,
+      sleeps,
+    });
+
+  unitType &&
+    (filter = {
+      ...filter,
+      unitType,
+    });
+
+  bathroom &&
+    (filter = {
+      ...filter,
+      bathroom,
+    });
+
+  exposure &&
+    (filter = {
+      ...filter,
+      exposure,
+    });
+
+  infrastructureArea &&
+    (filter = {
+      ...filter,
+      infrastructureArea,
+    });
+
+  lenght &&
+    (filter = {
+      ...filter,
+      lenght,
+    });
+
+  width &&
+    (filter = {
+      ...filter,
+      width,
+    });
+
+  passageWidth &&
+    (filter = {
+      ...filter,
+      passageWidth,
+    });
+
+  planType &&
+    (filter = {
+      ...filter,
+      planType,
+    });
   const foundPlans = await getPlans({
     filter,
     getObj: get,
