@@ -6,7 +6,7 @@ import { A } from '.';
 
 export const NavbarLink = styled(A) <Activable>`
   height: 3rem;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   margin-left: 1rem;
   border-radius: 0.75rem;
 
@@ -14,6 +14,8 @@ export const NavbarLink = styled(A) <Activable>`
 
   font-size: ${FontSize.xl};
   font-family: ${FontFamily.regular};
+
+  background-color: ${props => props.active && Color.BackgroundSecondary};
 
   transition: 0.125s ease-in-out;
 
