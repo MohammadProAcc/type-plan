@@ -4,4 +4,8 @@ import { Label } from "./Label";
 
 export const CreatePlanFormLabel = styled(Label)`
   font-family: ${FontFamily.medium};
+
+  &.file {
+    margin-bottom: 0;
+  }
 `;

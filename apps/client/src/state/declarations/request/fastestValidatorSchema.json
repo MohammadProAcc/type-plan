@@ -26774,6 +26774,24 @@
                                         "min": 1,
                                         "max": 1000
                                       },
+                                      "bathroom": {
+                                        "type": "number",
+                                        "min": 1,
+                                        "max": 1000
+                                      },
+                                      "planCode": {
+                                        "type": "string",
+                                        "min": 6,
+                                        "max": 10
+                                      },
+                                      "unitType": {
+                                        "type": "enum",
+                                        "values": [
+                                          "Solo",
+                                          "Duplex",
+                                          "Triplex"
+                                        ]
+                                      },
                                       "exposure": {
                                         "type": "enum",
                                         "values": [
@@ -26817,6 +26835,24 @@
                                         ]
                                       },
                                       "photo": {
+                                        "type": "object",
+                                        "props": {
+                                          "_id": {
+                                            "type": "objectID"
+                                          },
+                                          "filename": {
+                                            "type": "string"
+                                          },
+                                          "type": {
+                                            "type": "string"
+                                          },
+                                          "size": {
+                                            "type": "number"
+                                          }
+                                        },
+                                        "optional": true
+                                      },
+                                      "pdf": {
                                         "type": "object",
                                         "props": {
                                           "_id": {
@@ -26918,6 +26954,30 @@
                                         ],
                                         "optional": true
                                       },
+                                      "planCode": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "unitType": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "bathroom": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
                                       "exposure": {
                                         "type": "enum",
                                         "values": [
@@ -26975,6 +27035,14 @@
                                         "optional": true
                                       },
                                       "slider": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "pdf": {
                                         "type": "enum",
                                         "values": [
                                           0,
@@ -27616,6 +27684,30 @@
                                         ],
                                         "optional": true
                                       },
+                                      "planCode": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "unitType": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "bathroom": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
                                       "exposure": {
                                         "type": "enum",
                                         "values": [
@@ -27673,6 +27765,14 @@
                                         "optional": true
                                       },
                                       "slider": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "pdf": {
                                         "type": "enum",
                                         "values": [
                                           0,
@@ -27935,6 +28035,101 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "planType": {
+                                      "type": "enum",
+                                      "values": [
+                                        "Resindental",
+                                        "Villa"
+                                      ],
+                                      "optional": true
+                                    },
+                                    "units": {
+                                      "type": "number",
+                                      "min": 1,
+                                      "max": 1000,
+                                      "optional": true
+                                    },
+                                    "floors": {
+                                      "type": "number",
+                                      "min": 1,
+                                      "max": 1000,
+                                      "optional": true
+                                    },
+                                    "sleeps": {
+                                      "type": "number",
+                                      "min": 1,
+                                      "max": 1000,
+                                      "optional": true
+                                    },
+                                    "bathroom": {
+                                      "type": "number",
+                                      "min": 1,
+                                      "max": 1000,
+                                      "optional": true
+                                    },
+                                    "planCode": {
+                                      "type": "string",
+                                      "min": 6,
+                                      "max": 10,
+                                      "optional": true
+                                    },
+                                    "unitType": {
+                                      "type": "enum",
+                                      "values": [
+                                        "Solo",
+                                        "Duplex",
+                                        "Triplex"
+                                      ],
+                                      "optional": true
+                                    },
+                                    "exposure": {
+                                      "type": "enum",
+                                      "values": [
+                                        "Northern",
+                                        "Southern",
+                                        "Eastern",
+                                        "Western"
+                                      ],
+                                      "optional": true
+                                    },
+                                    "infrastructureArea": {
+                                      "type": "tuple",
+                                      "items": [
+                                        "number",
+                                        "number"
+                                      ],
+                                      "optional": true
+                                    },
+                                    "lenght": {
+                                      "type": "tuple",
+                                      "items": [
+                                        "number",
+                                        "number"
+                                      ],
+                                      "optional": true
+                                    },
+                                    "width": {
+                                      "type": "tuple",
+                                      "items": [
+                                        "number",
+                                        "number"
+                                      ],
+                                      "optional": true
+                                    },
+                                    "passageWidth": {
+                                      "type": "number",
+                                      "min": 1,
+                                      "max": 1000,
+                                      "optional": true
+                                    },
+                                    "plateType": {
+                                      "type": "enum",
+                                      "values": [
+                                        "Registered",
+                                        "Normal"
+                                      ],
+                                      "optional": true
                                     }
                                   },
                                   "get": {
@@ -27990,6 +28185,30 @@
                                         "optional": true
                                       },
                                       "sleeps": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "planCode": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "unitType": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "bathroom": {
                                         "type": "enum",
                                         "values": [
                                           0,
@@ -28054,6 +28273,14 @@
                                         "optional": true
                                       },
                                       "slider": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "pdf": {
                                         "type": "enum",
                                         "values": [
                                           0,
@@ -28755,6 +28982,43 @@
                                           "size": {
                                             "type": "number",
                                             "max": 10485760
+                                          }
+                                        },
+                                        "optional": true
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "uploadPdf": {
+                            "type": "object",
+                            "props": {
+                              "details": {
+                                "type": "object",
+                                "props": {
+                                  "set": {
+                                    "type": "object",
+                                    "props": {
+                                      "file": {
+                                        "type": "object",
+                                        "props": {
+                                          "filename": {
+                                            "type": "string"
+                                          },
+                                          "type": {
+                                            "type": "enum",
+                                            "values": [
+                                              "application/pdf"
+                                            ]
+                                          },
+                                          "content": {
+                                            "type": "any"
+                                          },
+                                          "size": {
+                                            "type": "number",
+                                            "max": 26214400
                                           }
                                         },
                                         "optional": true

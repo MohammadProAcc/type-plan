@@ -6,7 +6,7 @@ import {
 import React from "react";
 import {
   AdminPanelHeader,
-  AdminPanelNavbar,
+  LayoutNavbar,
   AdminPanelSidebar,
 } from "./organisms";
 
@@ -15,7 +15,7 @@ export const AdminPanelLayout: React.FC<AdminPanelLayoutProps> = (
 ) => {
   return (
     <AdminPanelLayoutContainer>
-      <AdminPanelNavbar />
+      <LayoutNavbar />
 
       <AdminPanelContentContainer>
         <AdminPanelSidebar />

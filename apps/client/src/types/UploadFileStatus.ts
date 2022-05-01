@@ -1,0 +1,1 @@
+export type FileInputStatus = "" | "loading" | "succeed" | "failed"

@@ -42,7 +42,11 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       onMouseLeave={() => setHover(false)}
     >
       <PlanCardImgContainer>
-        <PlanCardImage Src={plan?.photo?.filename} />
+        <Link href={`/plans/${plan?._id}`} passHref>
+          <PlanCardAnchor>
+            <PlanCardImage Src={plan?.photo?.filename} />
+          </PlanCardAnchor>
+        </Link>
       </PlanCardImgContainer>
 
       <PlanCardContent>
