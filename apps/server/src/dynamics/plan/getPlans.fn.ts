@@ -124,10 +124,10 @@ export const getPlansFn: GetPlansFn = async (details, context) => {
       passageWidth,
     });
 
-  planType &&
+  plateType &&
     (filter = {
       ...filter,
-      planType,
+      plateType,
     });
   const foundPlans = await getPlans({
     filter,
