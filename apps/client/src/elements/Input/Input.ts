@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Color } from "styles";
+import styled from 'styled-components';
+import { Color } from 'styles';
 
 // export const Input = styled.input.attrs((props) => ({
 //   type: props.type || 'text',

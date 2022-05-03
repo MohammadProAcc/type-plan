@@ -4275,6 +4275,9 @@ export interface FunQLRequest {
           units: number,
           floors: number,
           sleeps: number,
+          bathroom: number,
+          planCode: string,
+          unitType: 'Solo' | 'Duplex' | 'Triplex',
           exposure: 'Northern' | 'Southern' | 'Eastern' | 'Western',
           infrastructureArea: any,
           lenght: any,
@@ -4282,6 +4285,12 @@ export interface FunQLRequest {
           passageWidth: number,
           plateType: 'Registered' | 'Normal',
           photo?: {
+           _id: any,
+           filename: string,
+           type: string,
+           size: number
+          },
+          pdf?: {
            _id: any,
            filename: string,
            type: string,
@@ -4297,6 +4306,9 @@ export interface FunQLRequest {
           units?: 0 | 1,
           floors?: 0 | 1,
           sleeps?: 0 | 1,
+          planCode?: 0 | 1,
+          unitType?: 0 | 1,
+          bathroom?: 0 | 1,
           exposure?: 0 | 1,
           infrastructureArea?: 0 | 1,
           lenght?: 0 | 1,
@@ -4305,6 +4317,7 @@ export interface FunQLRequest {
           plateType?: 0 | 1,
           photo?: 0 | 1,
           slider?: 0 | 1,
+          pdf?: 0 | 1,
           state?: {
            _id?: 0 | 1,
            createdAt?: 0 | 1,
@@ -4404,6 +4417,9 @@ export interface FunQLRequest {
           units?: 0 | 1,
           floors?: 0 | 1,
           sleeps?: 0 | 1,
+          planCode?: 0 | 1,
+          unitType?: 0 | 1,
+          bathroom?: 0 | 1,
           exposure?: 0 | 1,
           infrastructureArea?: 0 | 1,
           lenght?: 0 | 1,
@@ -4412,6 +4428,7 @@ export interface FunQLRequest {
           plateType?: 0 | 1,
           photo?: 0 | 1,
           slider?: 0 | 1,
+          pdf?: 0 | 1,
           state?: {
            _id?: 0 | 1,
            createdAt?: 0 | 1,
@@ -4464,6 +4481,9 @@ export interface FunQLRequest {
           units?: 0 | 1,
           floors?: 0 | 1,
           sleeps?: 0 | 1,
+          planCode?: 0 | 1,
+          unitType?: 0 | 1,
+          bathroom?: 0 | 1,
           exposure?: 0 | 1,
           infrastructureArea?: 0 | 1,
           lenght?: 0 | 1,
@@ -4472,6 +4492,7 @@ export interface FunQLRequest {
           plateType?: 0 | 1,
           photo?: 0 | 1,
           slider?: 0 | 1,
+          pdf?: 0 | 1,
           state?: {
            _id?: 0 | 1,
            createdAt?: 0 | 1,
@@ -4607,6 +4628,18 @@ export interface FunQLRequest {
           file?: {
            filename: string,
            type: 'image/jpeg',
+           content: any,
+           size: number
+          }
+         }
+        }
+       },
+       uploadPdf: {
+        details: {
+         set: {
+          file?: {
+           filename: string,
+           type: 'application/pdf',
            content: any,
            size: number
           }

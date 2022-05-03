@@ -4,4 +4,5 @@ export enum Breakpoint {
   laptop = 768,
   desktop = 1024,
   largeScreen = 1201,
+  ultimate = 1440
 }

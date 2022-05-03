@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Layout } from "./Layout";
 
 import {
@@ -18,10 +18,10 @@ import { useStore } from "state";
 import { FQl_dynamic_plan_IPlan } from "state/declarations/schema/schema";
 import { translator } from "tools";
 
-export const PlanShowPage: React.FC<PlanShowPageProps> = () => {
+export const PlanShowPage: React.FC = () => {
   const {
     plan,
-  } = useStore(state => ({
+  } = useStore((state) => ({
     plan: (state?.plan as FQl_dynamic_plan_IPlan),
   }));
 
@@ -36,7 +36,7 @@ export const PlanShowPage: React.FC<PlanShowPageProps> = () => {
           </PlanInformationContainerTitle>
           <PlanInformation>
             <PlanInformationTitle>کد پلان:</PlanInformationTitle>
-            <PlanInformationValue>{plan?._id}</PlanInformationValue>
+            <PlanInformationValue>{plan?.planCode}</PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
@@ -62,7 +62,7 @@ export const PlanShowPage: React.FC<PlanShowPageProps> = () => {
 
           <PlanInformation>
             <PlanInformationTitle>تعداد حمام:</PlanInformationTitle>
-            <PlanInformationValue>-</PlanInformationValue>
+            <PlanInformationValue>{plan?.bathroom}</PlanInformationValue>
           </PlanInformation>
 
           <PlanInformation>
@@ -124,5 +124,3 @@ export const PlanShowPage: React.FC<PlanShowPageProps> = () => {
     </Layout>
   );
 };
-
-export interface PlanShowPageProps {}
