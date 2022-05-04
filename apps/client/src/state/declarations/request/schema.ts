@@ -4471,7 +4471,20 @@ export interface FunQLRequest {
           sort?: {
            createdAt?: 1 | -1,
            updateAt?: 1 | -1
-          }
+          },
+          planType?: 'Resindental' | 'Villa',
+          units?: number,
+          floors?: number,
+          sleeps?: number,
+          bathroom?: number,
+          planCode?: string,
+          unitType?: 'Solo' | 'Duplex' | 'Triplex',
+          exposure?: 'Northern' | 'Southern' | 'Eastern' | 'Western',
+          infrastructureArea?: any,
+          lenght?: any,
+          width?: any,
+          passageWidth?: number,
+          plateType?: 'Registered' | 'Normal'
          },
          get?: {
           _id?: 0 | 1,
