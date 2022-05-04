@@ -3,3 +3,4 @@ export * from './molecules';
 export * from './HomePage';
 export * from './AdminPanelLayout'
 export * from './AdminCreatePlanForm'
+export * from './PlansPage'
