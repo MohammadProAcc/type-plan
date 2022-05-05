@@ -1,5 +1,6 @@
 import { AdminPanelPlansPage } from "components";
 import { GetServerSideProps, NextPage } from "next";
+import { TypePlanSet } from "pages/plans";
 import { getPlans } from "state";
 import { isAdmin } from "tools";
 
@@ -14,7 +15,26 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (admin) {
     const params = context.query;
+    const query: TypePlanSet = {};
 
+    (params?.units?.length > 0) && (query.units = +(params.units));
+    (params?.floors?.length > 0) && (query.floors = +(params.floors));
+
+    (params?.sleeps?.length > 0) && (query.sleeps = +(params.floors));
+    (params?.bathroom?.length > 0) && (query.bathroom = +(params.floors));
+    (params["width[0]"] || params["width[1]"]) && (query.width = [
+      +(params?.["width[0]"] || 1),
+      +(params?.["width[1]"] || 1),
+    ]);
+    (params["length[0]"] || params["length[1]"]) && (query.lenght = [
+      +(params?.["lenght[0]"] || 1),
+      +(params?.["lenght[1]"] || 1),
+    ]);
+    (params["infrastructureArea[0]"] || params["infrastructureArea[1]"]) &&
+      (query.infrastructureArea = [
+        +(params?.["infrastructureArea[0]"] || 1),
+        +(params?.["infrastructureAre[1]"] || 1),
+      ]);
     const plans = await getPlans({
       set: {
         pagination: {
@@ -22,27 +42,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           page: +(params.page || 1),
         },
         ...params,
-        units: +(params?.units?.length > 0 ? params.units : 1),
-        floors: +(params?.floors?.length > 0 ? params.floors : 1),
-        sleeps: +(params?.sleeps?.length > 0 ? params.sleeps : 1),
-        bathroom: +(params?.bathroom?.length > 0 ? params.bathroom : 1),
-        passageWidth: +(params?.passageWidth?.length > 0
-          ? params.passageWidth
-          : 1),
-        width: (params["width[0]"] || params["width[1]"]) && [
-          +(params?.["width[0]"] || 1),
-          +(params?.["width[1]"] || 1),
-        ],
-        lenght: (params["length[0]"] || params["length[1]"]) && [
-          +(params?.["lenght[0]"] || 1),
-          +(params?.["lenght[1]"] || 1),
-        ],
-        infrastructureArea: (params["infrastructureArea[0]"] ||
-          params["infrastructureArea[1]"]) &&
-          [
-            +(params?.["infrastructureArea[0]"] || 1),
-            +(params?.["infrastructureArea[1]"] || 1),
-          ],
+        ...query,
       },
       get: {
         updateAt: 0,

@@ -14,7 +14,7 @@ export const AdminPanelPlansPage: React.FC = () => {
   const [columns] = useState(["تصویر", "شناسه"]);
   const [rows] = useState(
     plans?.map(plan => [
-      <PlanTableThumb Src={plan?.photo?.filename} />,
+      <PlanTableThumb key={plan?._id} Src={plan?.photo?.filename} />,
       plan?._id,
     ]),
   );
