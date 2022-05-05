@@ -38,6 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       floors: +(params?.floors?.length > 0 ? params.floors : 1),
       sleeps: +(params?.sleeps?.length > 0 ? params.sleeps : 1),
       bathroom: +(params?.bathroom?.length > 0 ? params.bathroom : 1),
+      passageWidth: +(params?.passageWidth?.length > 0 ? params.passageWidth : 1),
       width: (params["width[0]"] || params["width[1]"]) && [
         +(params?.["width[0]"] || 1),
         +(params?.["width[1]"] || 1),
