@@ -6,21 +6,7 @@ export const serveStatic = async (request: Request) => {
   const url = request.url.split("/");
   const pathname = url[url.length - 1];
 
-  /*
-  *  @LOG @DEBUG @INFO
-  *  This log written by ::==> {{ syd }}
-  *
-  *  Please remove your log after debugging
-  */
-  console.group("request, pathname ------ ");
-  console.log(" ============= ");
-  console.log();
-  console.info({ request, pathname }, " ------ ");
-  console.log();
-  console.log(" ============= ");
-  console.groupEnd();
-
-  const path = `${Deno.cwd()}/files${request.url.split("8080")[1]}`;
+  const path = `${Deno.cwd()}/files${pathname}`;
   /*
   *  @LOG @DEBUG @INFO
   *  This log written by ::==> {{ syd }}
