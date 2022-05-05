@@ -14,9 +14,9 @@ type GetPlansFn = (
  * @function
  * Represent get blog tags(tags with desired names)
  * @param details
- * @param context
+ * @param _context
  */
-export const getPlansFn: GetPlansFn = async (details, context) => {
+export const getPlansFn: GetPlansFn = async (details, _context) => {
   // !context ? emptyTokenError() : null;
 
   // /**check user is authenticated */
