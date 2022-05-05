@@ -76,6 +76,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         limit: 12,
         page,
       },
+      ...params,
       ...query,
     },
     get: {
