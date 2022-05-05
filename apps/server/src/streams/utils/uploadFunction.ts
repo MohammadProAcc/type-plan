@@ -70,6 +70,20 @@ export const writeFileInServer = async (objectId: string, file: FileType) => {
       file.filename.lastIndexOf("."),
     )
   }`;
+  /*
+  *  @LOG @DEBUG @INFO
+  *  This log written by ::==> {{ syd }}
+  *
+  *  Please remove your log after debugging
+  */
+  console.group("path ------ inside writeFileInServer");
+  console.log(" ============= ");
+  console.log();
+  console.info({ path }, " ------ ");
+  console.log();
+  console.log(" ============= ");
+  console.groupEnd();
+
   await ensureFile(path!);
 
   // const openStreamFile = await Deno.open(path, {
