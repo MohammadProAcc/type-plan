@@ -6,20 +6,7 @@ export const serveStatic = async (request: Request) => {
   const url = request.url.split("/");
   const pathname = url[url.length - 1];
 
-  const path = `${Deno.cwd()}/files${pathname}`;
-  /*
-  *  @LOG @DEBUG @INFO
-  *  This log written by ::==> {{ syd }}
-  *
-  *  Please remove your log after debugging
-  */
-  console.group("path ------ ");
-  console.log(" ============= ");
-  console.log();
-  console.info({ path }, " ------ ");
-  console.log();
-  console.log(" ============= ");
-  console.groupEnd();
+  const path = `${Deno.cwd()}/files/${pathname}`;
 
   const stats = await Deno.lstat(path);
   const streamFile = async () => {
