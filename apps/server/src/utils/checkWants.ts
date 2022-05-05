@@ -53,6 +53,20 @@ const decodeBody = async (req: Request): Promise<Body> => {
     // finds boundary of form data
     // const boundary = contentType.match(/boundary=([^\s]+)/)?.[1];
 
+    /*
+    *  @LOG @DEBUG @INFO
+    *  This log written by ::==> {{ syd }}
+    *
+    *  Please remove your log after debugging
+    */
+    console.group("inside decodeMultiPartBody ------ ");
+    console.log(" ============= ");
+    console.log();
+    console.info("inside decodeMultiPartBody", " ------ ");
+    console.log();
+    console.log(" ============= ");
+    console.groupEnd();
+
     const getFileFormData: () => Promise<Body> = async () => {
       const fd = await req.formData();
       let file: FileType;
