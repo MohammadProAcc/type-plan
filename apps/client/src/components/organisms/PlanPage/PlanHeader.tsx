@@ -1,6 +1,10 @@
 import React from "react";
 import { useStore } from "state";
-import { PlanShowTitle, PlanTitle } from "elements";
+import {
+  PlanShowTitle,
+  SinglePlanPagePlanCode,
+  SinglePlanPagePlanType,
+} from "elements";
 import { translator } from "tools";
 
 export const PlanHeader: React.FC = () => {
@@ -12,8 +16,15 @@ export const PlanHeader: React.FC = () => {
 
   return (
     <>
-      <PlanShowTitle>جزئیات پلان</PlanShowTitle>
-      <PlanTitle>نقشه خانه {translator(plan?.planType)}</PlanTitle>
+      <PlanShowTitle>
+        جزئیات پلان
+        <SinglePlanPagePlanCode>
+          {plan?.planCode}
+        </SinglePlanPagePlanCode>
+        <SinglePlanPagePlanType>
+          ({translator(plan?.planType)})
+        </SinglePlanPagePlanType>
+      </PlanShowTitle>
     </>
   );
 };

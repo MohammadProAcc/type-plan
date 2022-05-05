@@ -1,7 +1,7 @@
 import { Button } from "./Button";
 import styled from 'styled-components'
 import { Directional } from "types";
-import { TimeStep } from "styles";
+import { Radius, TimeStep } from "styles";
 
 
 export const PlanSliderNavigationButton = styled(Button).attrs({
@@ -9,6 +9,7 @@ export const PlanSliderNavigationButton = styled(Button).attrs({
 }) <Required<Directional>>`
   width: 3rem;
   height: 100%;
+  border-radius: ${props => props.direction === "right" ? `0 ${Radius.l2} ${Radius.l2} 0` : `${Radius.l2} 0 0 ${Radius.l2}`};
 
   position: absolute;
   top: 0;

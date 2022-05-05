@@ -5,5 +5,5 @@ export * from './PlanInformation';
 export * from './PlanInformationTitle';
 export * from './PlanInformationValue';
 export * from './PlanInformationContainerTitle';
-export * from './PlanTitle';
 export * from './PlanDescriptionContainer';
+export * from './PlanDetailsContainerRow'
