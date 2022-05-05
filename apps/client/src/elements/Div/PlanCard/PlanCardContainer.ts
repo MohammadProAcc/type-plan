@@ -4,7 +4,6 @@ import { Div } from '../Div';
 
 export const PlanCardContainer = styled(Div)`
   width: 19rem;
-  height: 25rem;
   border-radius: ${Radius.l2};
 
   display: flex;
