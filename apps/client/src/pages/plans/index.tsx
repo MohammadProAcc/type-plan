@@ -5,7 +5,7 @@ import { getPlans } from "state";
 const Page: NextPage = () => <PlansPage />;
 
 export default Page;
-interface TypePlanSet {
+export interface TypePlanSet {
   pagination?: {
     lastObjectId?: string;
     limit?: number;
