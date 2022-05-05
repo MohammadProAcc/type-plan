@@ -6,4 +6,8 @@ export const PlanLargeImg = styled(Img)`
   height: 100%;
 
   object-fit: cover;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

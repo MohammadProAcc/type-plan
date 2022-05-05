@@ -6,3 +6,4 @@ export * from "./CreatePlanImagePreview";
 export * from "./Icons";
 export * from "./Inputs";
 export * from "./Svgs";
+export * from './Modals'
