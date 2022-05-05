@@ -1,8 +1,8 @@
 import { MultiSelectionContainer, MultiSelectionOption } from "elements";
 import { useNonInitialEffect } from "hooks";
+import _ from "lodash";
 import { useState } from "react";
 import { KeyVal } from "types";
-import _ from "lodash"
 
 interface MultiSelectionProps {
   initial?: KeyVal<any>;
@@ -15,12 +15,11 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
   options,
   callback,
 }) => {
-
   const [active, setActive] = useState(initial ?? options[0]);
 
   useNonInitialEffect(() => {
     callback(active);
-  }, [active])
+  }, [active]);
 
   return (
     <MultiSelectionContainer>

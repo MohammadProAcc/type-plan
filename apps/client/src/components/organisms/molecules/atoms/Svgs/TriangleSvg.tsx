@@ -1,12 +1,15 @@
+import { SvgTriangle } from "elements";
 import React from "react";
 import { Directional, Stylable } from "types";
-import { SvgTriangle } from "elements"
 
-interface TriangleSvgProps extends Directional, Stylable { }
+interface TriangleSvgProps extends Directional, Stylable {
+  flip?: boolean;
+}
 
 export const TriangleSvg: React.FC<TriangleSvgProps> = ({
   direction,
-  Style
+  flip,
+  Style,
 }) => {
   return (
     <SvgTriangle
@@ -16,6 +19,7 @@ export const TriangleSvg: React.FC<TriangleSvgProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       Style={Style}
       direction={direction}
+      flip={flip}
     >
       <path
         fill="#494c4e"

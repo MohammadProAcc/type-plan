@@ -1,12 +1,13 @@
+import { TriangleSvg } from "components";
 import { Card } from "elements";
 import { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
+import { FontFamily } from "styles";
 import { Activable, Stylable } from "types";
-import { TriangleSvg } from "components"
 
 const collapseIconStyle = css`
   margin-right: auto;
-`
+`;
 
 export const Collapsible: React.FC<CollapsibleProps> = (
   { children, title, Style },
@@ -38,6 +39,7 @@ export const Collapsible: React.FC<CollapsibleProps> = (
         <TriangleSvg
           direction={active ? "up" : "down"}
           Style={collapseIconStyle}
+          flip
         />
       </Title>
 
@@ -56,13 +58,14 @@ export interface CollapsibleProps extends Stylable {
   title: any;
 }
 
-const Component = styled(Card) <Stylable>`
+const Component = styled(Card)<Stylable>`
   ${props => props.Style}
 `;
 
 const Title = styled.div`
   width: 100%;
   display: flex;
+  font-family: ${FontFamily.bold};
 
   &:hover {
     cursor: pointer;

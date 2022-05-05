@@ -1,17 +1,22 @@
-import styled from 'styled-components'
-import { Svg } from './Svg';
-import { Activable, Directional, Stylable } from "types"
-import { TimeStep } from 'styles';
+import styled from "styled-components";
+import { TimeStep } from "styles";
+import { Activable, Directional, Stylable } from "types";
+import { Svg } from "./Svg";
 
-interface SvgTriangleProps extends Activable, Stylable, Directional { }
-export const SvgTriangle = styled(Svg) <SvgTriangleProps>`
+interface SvgTriangleProps extends Activable, Stylable, Directional {
+  flip?: boolean;
+}
+export const SvgTriangle = styled(Svg)<SvgTriangleProps>`
   display: flex;
   justify-content: center;
   align-items: center;
 
   transition: ${TimeStep.mellow};
 
-  transform: rotate(${props => props.direction === "up" ? "-180deg" : "0"});
+  transform: ${props =>
+  props.direction === "up"
+    ? props.flip ? "scaleY(-1)" : "rotate(-180deg)"
+    : "0"};
 
   ${props => props.Style}
 `;
