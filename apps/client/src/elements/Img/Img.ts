@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Media } from "types";
 
 export const imgPath = process.env.NODE_ENV === "development"
-  ? "http://localhost:8000/"
+  ? "http://localhost:8080/"
   : "http://eyvan.satek.ir/statics/";
 
 export const Img = styled.img.attrs<ImgProps>((props) => ({
