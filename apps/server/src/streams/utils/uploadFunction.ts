@@ -70,6 +70,7 @@ export const writeFileInServer = async (objectId: string, file: FileType) => {
       file.filename.lastIndexOf("."),
     )
   }`;
+
   await ensureFile(path!);
 
   // const openStreamFile = await Deno.open(path, {
