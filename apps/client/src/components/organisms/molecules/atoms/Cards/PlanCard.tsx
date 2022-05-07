@@ -58,16 +58,16 @@ export const PlanCard: React.FC<PlanCardProps> = ({
 
           <PlanCardField>
             <PlanCardFieldName>مساحت :</PlanCardFieldName>
-            {plan.infrastructureArea[0]} متر
+            {plan?.infrastructureArea[0]} متر
             <PlanCardSeparator>
               در
             </PlanCardSeparator>{" "}
-            {plan.infrastructureArea[1]} متر
+            {plan?.infrastructureArea[1]} متر
           </PlanCardField>
 
           <PlanCardField>
             <PlanCardFieldName>جهت جغرافیایی :</PlanCardFieldName>
-            {translator(plan.exposure)}
+            {translator(plan?.exposure)}
           </PlanCardField>
         </PlanCardInformationContainer>
 

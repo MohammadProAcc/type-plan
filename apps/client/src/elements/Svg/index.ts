@@ -1,2 +1,3 @@
-export * from './Svg'
-export * from "./SvgTriangle"
+export * from "./Svg";
+export * from "./SvgClear";
+export * from "./SvgTriangle";

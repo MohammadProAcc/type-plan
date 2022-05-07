@@ -4,26 +4,26 @@ import {
   InputSubmit,
   LoginCard,
   LoginForm,
-} from 'elements';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Layout } from './Layout';
-import { useRouter } from 'next/router';
-import { useCookies } from 'react-cookie';
+} from "elements";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { useCookies } from "react-cookie";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import {
   FQl_response_login_LoginReturn,
   FQl_response_loginRequest_LoginRequestReturn,
   login,
   loginRequest,
-} from 'state';
-import { toast } from 'react-toastify';
+} from "state";
+import { Layout } from "./Layout";
 
 export const LoginPage: React.FC = () => {
   const router = useRouter();
 
   const [phoneNumber, setPhoneNumber] = useState<number>(null);
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState('interPhoneNumber');
+  const [step, setStep] = useState("interPhoneNumber");
 
   const [, setCookie] = useCookies([process.env.TOKEN]);
 
@@ -36,31 +36,30 @@ export const LoginPage: React.FC = () => {
 
   const onSubmit = async (form) => {
     setLoading(true);
-    //one-interPhoneNumber
-    if (step === 'interPhoneNumber') {
+    // one-interPhoneNumber
+    if (step === "interPhoneNumber") {
       const response = await loginRequest({
         set: {
           phone: form.phone,
-          countryCode: '98',
+          countryCode: "98",
         },
         get: {
           phone: 1,
         },
       });
-      console.log(response);
 
       if (response.success) {
         setPhoneNumber(
-          (response.body as FQl_response_loginRequest_LoginRequestReturn).phone
+          (response.body as FQl_response_loginRequest_LoginRequestReturn).phone,
         );
-        setStep('interCode');
+        setStep("interCode");
         reset();
-        toast.success('کد تایید برای شما ارسال شد');
+        toast.success("کد تایید برای شما ارسال شد");
       } else {
-        toast.error('ارسال کد موفقیت آمیز نبود، لطفا دوباره تلاش کنید');
+        toast.error("ارسال کد موفقیت آمیز نبود، لطفا دوباره تلاش کنید");
       }
-      //two:InterCode
-    } else if (step === 'interCode') {
+      // two:InterCode
+    } else if (step === "interCode") {
       console.log({
         phone: phoneNumber,
         code: form.code,
@@ -81,20 +80,20 @@ export const LoginPage: React.FC = () => {
       if (response.success) {
         setCookie(
           process.env.TOKEN,
-          (response.body as FQl_response_login_LoginReturn).token
+          (response.body as FQl_response_login_LoginReturn).token,
         );
         if ((response.body as FQl_response_login_LoginReturn).user.name) {
           reset();
-          toast.success('خوش آمدید 🌹');
+          toast.success("خوش آمدید 🌹");
           router.back();
         } else {
-          setStep('interInformation');
+          setStep("interInformation");
           reset();
         }
       }
-    } else if (step === 'interInformation') {
+    } else if (step === "interInformation") {
       reset();
-      toast.success('خوش آمدید 🌹');
+      toast.success("خوش آمدید 🌹");
       router.back();
     }
 
@@ -105,58 +104,61 @@ export const LoginPage: React.FC = () => {
     <Layout>
       <LoginCard>
         <LoginForm onSubmit={handleSubmit(onSubmit)}>
-          {step === 'interPhoneNumber' ? (
-            <>
-              شماره تلفن همراه:
-              <InputPhoneNumber
-                type="number"
-                {...register('phone', {
-                  required: 'لطفا شماره تلفن همراه خود را وارد کنید',
-                  maxLength: {
-                    value: 11,
-                    message: 'شماره باید ۱۱ رقم باشد',
-                  },
-                  minLength: {
-                    value: 11,
-                    message: 'شماره باید ۱۱ رقم باشد',
-                  },
-                  valueAsNumber: true,
-                })}
-                placeholder="با اعداد انگلیسی ..."
-              />
-              {errors.phone?.message}
-            </>
-          ) : step === 'interCode' ? (
-            <>
-              کد تایید:
-              <Input
-                type="number"
-                {...register('code', {
-                  required: 'کد تایید را وارد کنید',
-                })}
-              />
-              {errors.phone?.message}
-            </>
-          ) : (
-            <>
-              نام:
-              <Input
-                type="text"
-                placeholder="با حروف فارسی ..."
-                {...register('name', {
-                  // required: 'تعیین نام ضروری است',
-                })}
-              />
-              نام خانوادگی:
-              <Input type="text" {...register('lastname', {})} />
-              ایمیل:
-              <Input type="email" {...register('email', {})} />
-            </>
-          )}
+          {step === "interPhoneNumber"
+            ? (
+              <>
+                شماره تلفن همراه:
+                <InputPhoneNumber
+                  {...register("phone", {
+                    required: "لطفا شماره تلفن همراه خود را وارد کنید",
+                    maxLength: {
+                      value: 11,
+                      message: "شماره باید ۱۱ رقم باشد",
+                    },
+                    minLength: {
+                      value: 11,
+                      message: "شماره باید ۱۱ رقم باشد",
+                    },
+                    valueAsNumber: true,
+                  })}
+                  placeholder="با اعداد انگلیسی ..."
+                />
+                {errors.phone?.message}
+              </>
+            )
+            : step === "interCode"
+            ? (
+              <>
+                کد تایید:
+                <Input
+                  type="tel"
+                  {...register("code", {
+                    required: "کد تایید را وارد کنید",
+                  })}
+                />
+                {errors.phone?.message}
+              </>
+            )
+            : (
+              <>
+                نام:
+                <Input
+                  type="text"
+                  placeholder="با حروف فارسی ..."
+                  {...register("name", {
+                    // required: 'تعیین نام ضروری است',
+                  })}
+                />
+                نام خانوادگی:
+                <Input type="text" {...register("lastname", {})} />
+                ایمیل:
+                <Input type="email" {...register("email", {})} />
+              </>
+            )}
           <InputSubmit
             disabled={loading}
             type="submit"
-            value={loading ? '...' : 'دریافت کد ورود'}
+            value={loading ? "..." : "دریافت کد ورود"}
           />
         </LoginForm>
       </LoginCard>

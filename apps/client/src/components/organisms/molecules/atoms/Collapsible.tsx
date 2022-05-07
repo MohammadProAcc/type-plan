@@ -2,18 +2,16 @@ import { TriangleSvg } from "components";
 import { Card } from "elements";
 import { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
-import { FontFamily } from "styles";
+import { FontFamily, Zindex } from "styles";
 import { Activable, Stylable } from "types";
 
-const collapseIconStyle = css`
-  margin-right: auto;
-`;
-
 export const Collapsible: React.FC<CollapsibleProps> = (
-  { children, title, Style },
+  { children, title, Style, AdditionalComponent },
 ) => {
   const [height, setHeight] = useState(0);
   const [active, setActive] = useState(false);
+
+  const titleRef = useRef<HTMLDivElement>(null);
 
   const collapseRef = useRef<any>(null);
 
@@ -33,14 +31,22 @@ export const Collapsible: React.FC<CollapsibleProps> = (
   }, []);
 
   return (
-    <Component Style={Style}>
-      <Title onClick={() => setActive(_curr => !_curr)}>
-        {title}
-        <TriangleSvg
-          direction={active ? "up" : "down"}
-          Style={collapseIconStyle}
-          flip
-        />
+    <Component
+      Style={Style}
+    >
+      <Title
+        ref={titleRef}
+      >
+        <TitleInnerContainer
+          onClick={() => setActive(_curr => !_curr)}
+        >
+          {title}
+          <TriangleSvg
+            direction={active ? "up" : "down"}
+            flip
+          />
+        </TitleInnerContainer>
+        {AdditionalComponent && AdditionalComponent}
       </Title>
 
       <CollapsibleDiv
@@ -56,6 +62,8 @@ export const Collapsible: React.FC<CollapsibleProps> = (
 
 export interface CollapsibleProps extends Stylable {
   title: any;
+  additionalCallback?: any;
+  AdditionalComponent?: any;
 }
 
 const Component = styled(Card)<Stylable>`
@@ -63,9 +71,11 @@ const Component = styled(Card)<Stylable>`
 `;
 
 const Title = styled.div`
+  position: relative;
+  z-index: ${Zindex.collapsibleTitle};
+  
   width: 100%;
   display: flex;
-  font-family: ${FontFamily.bold};
 
   &:hover {
     cursor: pointer;
@@ -80,4 +90,13 @@ const CollapsibleDiv = styled.div<CollapsibleDivProps>`
   height: ${props => props.height};
 
   overflow: hidden;
+`;
+
+const TitleInnerContainer = styled.div`
+  width: 100%;
+
+  font-family: ${FontFamily.bold};
+  
+  display: flex;
+  justify-content: space-between;
 `;

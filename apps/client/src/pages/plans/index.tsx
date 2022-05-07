@@ -35,22 +35,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const params = context.query;
   const query: TypePlanSet = {};
 
-  console.log({
-    width: (params["width[0]"] || params["width[1]"]) && [
-      +(params?.["width[0]"] || 1),
-      +(params?.["width[1]"] || 1),
-    ],
-    lenght: (params["lenght[0]"] || params["lenght[1]"]) && [
-      +(params?.["lenght[0]"] || 1),
-      +(params?.["lenght[1]"] || 1),
-    ],
-    infrastructureArea:
-      (params["infrastructureArea[0]"] || params["infrastructureArea[1]"]) &&
-      [
-        +(params?.["infrastructureArea[0]"] || 1),
-        +(params?.["infrastructureArea[1]"] || 1),
-      ],
-  });
   (params?.units?.length > 0) && (query.units = +(params.units));
   (params?.floors?.length > 0) && (query.floors = +(params.floors));
 
@@ -80,7 +64,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       ...query,
     },
     get: {
-      updateAt: 0,
+      _id: 1,
+      photo: 1,
+      infrastructureArea: 1,
+      exposure: 1,
     },
   });
 

@@ -6,6 +6,7 @@ import {
 } from "constants/index";
 import {
   ClearAllButton,
+  ClearButton,
   PlansPageSidebarContainer,
   PlansPageSidebarHeader,
   PlansPageSidebarInput,
@@ -15,21 +16,34 @@ import {
 } from "elements";
 import { useRouter } from "next/router";
 import React from "react";
+import { Color } from "styles";
 import { PlanFilter } from "types";
-import { Collapsible } from "../molecules";
+import { ClearSvg, Collapsible, CollapsibleTitle } from "../molecules";
 import { MultiSelection } from "../molecules/atoms/MultiSelection";
 
 export const PlansPageSidebar: React.FC = () => {
   // Filtering Mechanism
   const router = useRouter();
-  const applyQuery = (type: PlanFilter, filter: any) => {
+
+  function applyQuery(type: PlanFilter, filter: any) {
     router.push({
       query: {
         ...router.query,
         [type]: filter,
       },
     });
-  };
+  }
+
+  function clearQuery(filterName: string) {
+    const { [filterName]: target, ...rest } = router.query;
+    router.push({
+      query: rest,
+    });
+  }
+
+  function checkFilterActivity(filterName: string) {
+    return Object.keys(router.query).includes(filterName);
+  }
 
   return (
     <PlansPageSidebarContainer>
@@ -42,7 +56,18 @@ export const PlansPageSidebar: React.FC = () => {
         )}
       </PlansPageSidebarHeader>
 
-      <Collapsible title="نوع کاربری">
+      <Collapsible
+        title="نوع کاربری"
+        AdditionalComponent={
+          <ClearButton
+            onClick={() => clearQuery("plateType")}
+            active={checkFilterActivity("plateType")}
+            disabled={!checkFilterActivity("plateType")}
+          >
+            <ClearSvg Color={Color.Error} />
+          </ClearButton>
+        }
+      >
         <MultiSelection
           initial={router.query.planType &&
             planTypeOptions
@@ -52,7 +77,18 @@ export const PlansPageSidebar: React.FC = () => {
         />
       </Collapsible>
 
-      <Collapsible title="موقعیت زمین">
+      <Collapsible
+        title="موقعیت زمین"
+        AdditionalComponent={
+          <ClearButton
+            onClick={() => clearQuery("exposure")}
+            active={checkFilterActivity("exposure")}
+            disabled={!checkFilterActivity("exposure")}
+          >
+            <ClearSvg Color={Color.Error} />
+          </ClearButton>
+        }
+      >
         <MultiSelection
           initial={router.query.exposure &&
             exposureOptions
@@ -62,7 +98,18 @@ export const PlansPageSidebar: React.FC = () => {
         />
       </Collapsible>
 
-      <Collapsible title="نوع واحد">
+      <Collapsible
+        title="نوع واحد"
+        AdditionalComponent={
+          <ClearButton
+            onClick={() => clearQuery("unitType")}
+            active={checkFilterActivity("unitType")}
+            disabled={!checkFilterActivity("unitType")}
+          >
+            <ClearSvg Color={Color.Error} />
+          </ClearButton>
+        }
+      >
         <MultiSelection
           initial={router.query.unitType &&
             unitTypeOptions
@@ -72,7 +119,18 @@ export const PlansPageSidebar: React.FC = () => {
         />
       </Collapsible>
 
-      <Collapsible title="نوع پلاک">
+      <Collapsible
+        title="نوع پلاک"
+        AdditionalComponent={
+          <ClearButton
+            onClick={() => clearQuery("planType")}
+            active={checkFilterActivity("planType")}
+            disabled={!checkFilterActivity("planType")}
+          >
+            <ClearSvg Color={Color.Error} />
+          </ClearButton>
+        }
+      >
         <MultiSelection
           initial={router.query.plateType &&
             plateTypeOptions
@@ -82,7 +140,18 @@ export const PlansPageSidebar: React.FC = () => {
         />
       </Collapsible>
 
-      <Collapsible title="مشخصات">
+      <Collapsible
+        title="مشخصات"
+        AdditionalComponent={
+          <ClearButton
+            onClick={() => clearQuery("units")}
+            active={checkFilterActivity("units")}
+            disabled={!checkFilterActivity("units")}
+          >
+            <ClearSvg Color={Color.Error} />
+          </ClearButton>
+        }
+      >
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>تعداد واحد :</PlansPageSidebarLabel>
           <PlansPageSidebarInput
@@ -112,7 +181,18 @@ export const PlansPageSidebar: React.FC = () => {
         </PlansPageSidebarInputGroup>
       </Collapsible>
 
-      <Collapsible title="عرض معبر">
+      <Collapsible
+        title="عرض معبر"
+        AdditionalComponent={
+          <ClearButton
+            onClick={() => clearQuery("passageWidth")}
+            active={checkFilterActivity("passageWidth")}
+            disabled={!checkFilterActivity("passageWidth")}
+          >
+            <ClearSvg Color={Color.Error} />
+          </ClearButton>
+        }
+      >
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>(متر)</PlansPageSidebarLabel>
           <PlansPageSidebarInput
@@ -121,7 +201,16 @@ export const PlansPageSidebar: React.FC = () => {
         </PlansPageSidebarInputGroup>
       </Collapsible>
 
-      <Collapsible title="مساحت">
+      <Collapsible
+        title={
+          <CollapsibleTitle
+            callback={() => clearQuery("infrastructureArea")}
+            active={checkFilterActivity("infrastructureArea")}
+          >
+            مساحت
+          </CollapsibleTitle>
+        }
+      >
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>از (متر)</PlansPageSidebarLabel>
           <PlansPageSidebarInput
@@ -139,7 +228,18 @@ export const PlansPageSidebar: React.FC = () => {
         </PlansPageSidebarInputGroup>
       </Collapsible>
 
-      <Collapsible title="طول">
+      <Collapsible
+        title="طول"
+        AdditionalComponent={
+          <ClearButton
+            onClick={() => clearQuery("length")}
+            active={checkFilterActivity("length")}
+            disabled={!checkFilterActivity("length")}
+          >
+            <ClearSvg Color={Color.Error} />
+          </ClearButton>
+        }
+      >
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>از (متر)</PlansPageSidebarLabel>
           <PlansPageSidebarInput
@@ -155,7 +255,18 @@ export const PlansPageSidebar: React.FC = () => {
         </PlansPageSidebarInputGroup>
       </Collapsible>
 
-      <Collapsible title="عرض">
+      <Collapsible
+        title="عرض"
+        AdditionalComponent={
+          <ClearButton
+            onClick={() => clearQuery("width")}
+            active={checkFilterActivity("width")}
+            disabled={!checkFilterActivity("width")}
+          >
+            <ClearSvg Color={Color.Error} />
+          </ClearButton>
+        }
+      >
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>از (متر)</PlansPageSidebarLabel>
           <PlansPageSidebarInput

@@ -15,7 +15,7 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
   options,
   callback,
 }) => {
-  const [active, setActive] = useState(initial ?? options[0]);
+  const [active, setActive] = useState(initial);
 
   useNonInitialEffect(() => {
     callback(active);
