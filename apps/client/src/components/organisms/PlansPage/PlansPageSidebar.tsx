@@ -60,9 +60,9 @@ export const PlansPageSidebar: React.FC = () => {
         title="نوع کاربری"
         AdditionalComponent={
           <ClearButton
-            onClick={() => clearQuery("plateType")}
-            active={checkFilterActivity("plateType")}
-            disabled={!checkFilterActivity("plateType")}
+            onClick={() => clearQuery("planType")}
+            active={checkFilterActivity("planType")}
+            disabled={!checkFilterActivity("planType")}
           >
             <ClearSvg Color={Color.Error} />
           </ClearButton>
@@ -123,9 +123,9 @@ export const PlansPageSidebar: React.FC = () => {
         title="نوع پلاک"
         AdditionalComponent={
           <ClearButton
-            onClick={() => clearQuery("planType")}
-            active={checkFilterActivity("planType")}
-            disabled={!checkFilterActivity("planType")}
+            onClick={() => clearQuery("plateType")}
+            active={checkFilterActivity("plateType")}
+            disabled={!checkFilterActivity("plateType")}
           >
             <ClearSvg Color={Color.Error} />
           </ClearButton>
