@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
 import {
   PlanDetailsImgContainer,
   PlanLargeImg,
   PlanSliderNavigationButton,
 } from "elements";
+import React, { useEffect, useState } from "react";
 import { useStore } from "state";
-import { FullScreenMediaModal } from "../molecules";
 import { FQl_dynamic_upload_IFile } from "state/declarations/schema/schema";
+import { FullScreenMediaModal } from "../molecules";
 
 export const PlanMedia: React.FC = () => {
   const {
@@ -15,7 +15,7 @@ export const PlanMedia: React.FC = () => {
     plan: state?.plan,
   }));
 
-  const [medias, setMedias] = useState([plan.photo, ...plan.slider]);
+  const [medias, setMedias] = useState([plan?.photo, ...(plan?.slider ?? [])]);
   const [activeMedia, setActiveMedia] = useState(medias[0]);
   const [fullScreenMedia, setFullScreenMedia] = useState<
     FQl_dynamic_upload_IFile
@@ -40,7 +40,7 @@ export const PlanMedia: React.FC = () => {
   return (
     <PlanDetailsImgContainer>
       <PlanLargeImg
-        Src={activeMedia.filename}
+        Src={activeMedia?.filename}
         onClick={() => setFullScreenMedia(activeMedia)}
       />
 
