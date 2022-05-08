@@ -31,7 +31,7 @@ html {
     Noto Color Emoji;
   line-height: 1.5;
   tab-size: 4;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 body {
   font-family: inherit;
