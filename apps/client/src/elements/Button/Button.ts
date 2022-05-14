@@ -1,11 +1,11 @@
-import styled, { css } from 'styled-components';
-import { Color, FontSize } from 'styles';
-import { FontFamily } from 'styles/design/FontFamily';
-import { Activable } from 'types/interfaces/props/Activable';
+import styled, { css } from "styled-components";
+import { Color, FontSize } from "styles";
+import { FontFamily } from "styles/design/FontFamily";
+import { Activable } from "types/interfaces/props/Activable";
 
 export const Button = styled.button<ButtonProps>`
   border: 1px solid ${Color.Line};
-  border-radius: 1.5rem;
+  border-radius: ${props => !props.pure && "1.5rem"};
   padding: 0.25rem 1rem;
 
   font-size: ${FontSize.lg};
@@ -24,8 +24,8 @@ export const Button = styled.button<ButtonProps>`
   }
 
   ${(props) =>
-    props.pure &&
-    css`
+  props.pure &&
+  css`
       border: none;
       background-color: transparent;
       &:hover {

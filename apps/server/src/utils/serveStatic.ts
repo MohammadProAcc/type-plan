@@ -1,14 +1,22 @@
-import { throwError } from "./throwErr.ts";
 import { readableStreamFromReader } from "https://deno.land/std@0.128.0/streams/mod.ts";
+import { addCors } from "../cors.ts";
+import { throwError } from "./throwErr.ts";
 // import { addCors } from "../../cors.ts";
 
 export const serveStatic = async (request: Request) => {
-  const path = `${Deno.cwd()}/files${request.url.split("8080")[1]}`;
+  const url = request.url.split("/");
+  const pathname = url[url.length - 1];
+
+  const path = `${Deno.cwd()}/files/${pathname}`;
+
   const stats = await Deno.lstat(path);
   const streamFile = async () => {
     const file = await Deno.open(path, { read: true });
     const r = readableStreamFromReader(file);
-    return new Response(r);
+    return new Response(r, {
+      headers: addCors(),
+      status: 200,
+    });
     // file.close();
   };
 

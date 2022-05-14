@@ -33,7 +33,7 @@ export const uploadFileFn: UploadFile = async (context, details) => {
   const user = await isAuthFn(context.token!);
 
   /**if user was authenticated,check the user role */
-  user ? await checkRoleFn(user, ["Admin"]) : notFoundError("User");
+  user ? checkRoleFn(user, ["Admin"]) : notFoundError("User");
 
   /** check whether the details(input) is right or not*/
   checkValidation(checkUploadFileDetails, { details });

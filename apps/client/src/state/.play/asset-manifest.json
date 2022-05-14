@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.91ca1e8a.chunk.css",
+    "main.js": "/static/js/main.533bd4f5.chunk.js",
+    "main.js.map": "/static/js/main.533bd4f5.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.afcade58.js",
+    "runtime-main.js.map": "/static/js/runtime-main.afcade58.js.map",
+    "static/css/2.727f3867.chunk.css": "/static/css/2.727f3867.chunk.css",
+    "static/js/2.495150f0.chunk.js": "/static/js/2.495150f0.chunk.js",
+    "static/js/2.495150f0.chunk.js.map": "/static/js/2.495150f0.chunk.js.map",
+    "static/js/3.441baa02.chunk.js": "/static/js/3.441baa02.chunk.js",
+    "static/js/3.441baa02.chunk.js.map": "/static/js/3.441baa02.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.727f3867.chunk.css.map": "/static/css/2.727f3867.chunk.css.map",
+    "static/css/main.91ca1e8a.chunk.css.map": "/static/css/main.91ca1e8a.chunk.css.map",
+    "static/js/2.495150f0.chunk.js.LICENSE.txt": "/static/js/2.495150f0.chunk.js.LICENSE.txt",
+    "static/media/books.3fbd2339.svg": "/static/media/books.3fbd2339.svg",
+    "static/media/code.89fbb572.svg": "/static/media/code.89fbb572.svg",
+    "static/media/flow-chart.8f15b546.svg": "/static/media/flow-chart.8f15b546.svg",
+    "static/media/gear.a0439b5d.svg": "/static/media/gear.a0439b5d.svg",
+    "static/media/test.33e964e2.svg": "/static/media/test.33e964e2.svg",
+    "static/media/website.89faa666.svg": "/static/media/website.89faa666.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.afcade58.js",
+    "static/css/2.727f3867.chunk.css",
+    "static/js/2.495150f0.chunk.js",
+    "static/css/main.91ca1e8a.chunk.css",
+    "static/js/main.533bd4f5.chunk.js"
+  ]
+}

@@ -5,7 +5,7 @@ const dictionaries = {
     Eastern: "شرقی",
     Western: "غربی",
     Resindental: "مسکونی",
-    Villa: "وییلایی",
+    Villa: "ویلایی",
   },
 };
 

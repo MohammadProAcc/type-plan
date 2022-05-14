@@ -1,10 +1,10 @@
 import styled from 'styled-components';
+import { Padding } from 'styles';
 import { Div } from '../Div';
 
 export const PlanCardContent = styled(Div)`
   width: 100%;
-  height: 6rem;
-  padding: 0.5rem 1rem;
+  padding: ${Padding.l5};
 
   display: flex;
 `;

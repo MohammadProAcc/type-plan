@@ -17,7 +17,7 @@ export const HomePagePlans: React.FC = () => {
     <HomePagePlansContainer>
       <HomePagePlanTitle>جدیدترین طرح ها</HomePagePlanTitle>
       <HomePagePlansFlexContainer>
-        {plans?.map((plan) => <PlanCard plan={plan} />)}
+        {plans?.map((plan) => <PlanCard key={plan?._id} plan={plan} />)}
       </HomePagePlansFlexContainer>
     </HomePagePlansContainer>
   );

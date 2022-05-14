@@ -1,8 +1,9 @@
-import styled from 'styled-components';
-import { Color } from 'styles';
-import { Input } from '../Input';
+import styled from "styled-components";
+import { Input } from "../Input";
 
-export const InputPhoneNumber = styled(Input)`
+export const InputPhoneNumber = styled(Input).attrs({
+  type: "tel",
+})`
   margin: 1rem;
   ::-webkit-inner-spin-button {
     -webkit-appearance: none;

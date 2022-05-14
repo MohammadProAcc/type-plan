@@ -3,4 +3,6 @@ export interface Flexible {
   col?: boolean;
   fullWidth?: boolean;
   autoWidth?: boolean;
+  width?: string;
+  height?: string;
 }
