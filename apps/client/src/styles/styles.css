@@ -51,8 +51,7 @@ pre {
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;
-  border-color: currentColor;
-  color: #001219;
+  border-color: currentColor; 
 }
 h1,
 h2 {

@@ -5,3 +5,4 @@ export * from "./Layout";
 export * from "./molecules";
 export * from "./PlanPage";
 export * from "./PlansPage";
+export * from "./BlogPage"
