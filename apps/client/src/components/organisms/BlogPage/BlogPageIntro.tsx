@@ -7,13 +7,20 @@ import {
   BlogPageSlidesImagesDate,
   BlogPageSlidesImagesTitle,
 } from 'elements';
-import { BLOG_SLIDES_ARTICLE } from 'constants/index';
 import { calcPassedTime } from 'tools';
+import { useStore } from 'state';
 
 export const BlogPageIntro: React.FC = () => {
+
+  const {
+    topBlogPosts
+  } = useStore(state => ({
+    topBlogPosts: state.topBlogPosts
+  }))
+
   return (
     <BlogPageSection>
-      {BLOG_SLIDES_ARTICLE.map((val) => (
+      {topBlogPosts.map((val) => (
         <BlogPageArticle key={val._id}>
           <BlogPageImages src={val.photo.filename} />
           <BlogPageSlidesImagesDescription>

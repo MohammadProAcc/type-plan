@@ -2,13 +2,14 @@ import { useMemo } from "react";
 import create, { SetState } from "zustand";
 // import { devtools } from "zustand/middleware";
 import { userPiece } from ".";
-import { planPiece } from "./pieces";
+import { blogPageStore, planPiece } from "./pieces";
 
 let store;
 
 const initialState = (set: SetState<any>) => ({
   ...userPiece(set),
   ...planPiece(set),
+  ...blogPageStore()
 });
 
 export type InitialState = ReturnType<typeof initialState>;
