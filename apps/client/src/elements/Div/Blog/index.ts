@@ -1,1 +1,1 @@
-export * from './BlogPageLastpost';
+export * from './BlogPageSlidesImagesDescription';
