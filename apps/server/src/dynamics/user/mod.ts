@@ -13,11 +13,12 @@ import { getUsersFn } from "./getUsers.fn.ts";
 import { insertProfileInfoFn } from "./insertProfileInfo.fn.ts";
 import { login, LoginReturn } from "./login.fn.ts";
 import { loginRequest, LoginRequestReturn } from "./loginRequest.fn.ts";
+import { makeAdmin } from "./makeAdmin.fn.ts";
 import { updateUserFn } from "./updateUser.fn.ts";
 import { updateUserAddressFn } from "./updateUserAddress.fn.ts";
 import { updateUserRoleFn } from "./updateUserRole.fn.ts";
 
-//TODO: uncomment
+// TODO: uncomment
 const v = new FastestValidator();
 const check = v.compile({
   doit: {
@@ -35,6 +36,7 @@ const check = v.compile({
       "createUser",
       "addUserAddress",
       "updateUserAddress",
+      "makeAdmin",
     ],
   },
 });
@@ -50,7 +52,8 @@ export type UserDoit =
   // | "createGhostUser"
   | "getMe"
   | "createUser"
-  | "addUserAddress";
+  | "addUserAddress"
+  | "makeAdmin";
 
 type UsrFns = (
   doit: UserDoit,
@@ -75,8 +78,10 @@ export const usrFns: UsrFns = (doit, details, context) => {
       // ["createGhostUser"]: async () => await createGhostUser(),
       ["getMe"]: async () => await getMeFn(context, details),
       ["createUser"]: async () => await createUser(context, details),
-      ["addUserAddress"]: async () => addUserAddressFn(details, context),
-      ["updateUserAddress"]: async () => updateUserAddressFn(details, context),
+      ["addUserAddress"]: async () => await addUserAddressFn(details, context),
+      ["updateUserAddress"]: async () =>
+        await updateUserAddressFn(details, context),
+      ["makeAdmin"]: async () => await makeAdmin(details),
     }[doit]()
     : throwError((checkDoit as ValidationError[])[0].message!);
 };
