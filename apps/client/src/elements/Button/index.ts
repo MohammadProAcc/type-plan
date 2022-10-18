@@ -7,3 +7,4 @@ export * from "./MutilSelectionOption";
 export * from "./PaginationPageButton";
 export * from "./PlanCardButton";
 export * from "./PlanSliderNavigationButton";
+export * from "./BlogLastPostButton"

@@ -11,6 +11,7 @@ export * from './PlanShowPage';
 export * from './CreatePlanInputGroup';
 export * from './CreatePlanPreview';
 export * from './Blog';
+export * from './BlogPage'
 
 export * from "./AdminPanelLayout";
 export * from "./Card";

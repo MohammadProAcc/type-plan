@@ -6,3 +6,4 @@ export * from "./PlanShowPage";
 export * from "./PlanTableThumb";
 export * from './CreatePlanPreviewImg';
 export * from './Blog';
+export * from './BlogPage'

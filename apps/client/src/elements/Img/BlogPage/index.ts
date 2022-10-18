@@ -1,3 +1,3 @@
 export * from './BlogPageLastPostImg';
-export * from './BlogPageFavoritPostImg';
+export * from './BlogPageFavoritePostImg';
 export * from './BlogPageSuggestPostImg';
