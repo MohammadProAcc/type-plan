@@ -53,7 +53,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
         <PlanCardInformationContainer>
           <PlanCardField>
             <PlanCardFieldName>کد نقشه :</PlanCardFieldName>
-            {plan?._id.substring(-4, 4)}
+            {plan?.planCode}
           </PlanCardField>
 
           <PlanCardField>
