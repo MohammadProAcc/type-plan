@@ -1,19 +1,18 @@
-import React from 'react';
-import { BlogPage } from 'components';
-import { GetStaticProps } from 'next';
-import { typePlanApi } from 'state';
+import { BlogPage } from "components";
+import { GetServerSideProps } from "next";
+import React from "react";
+import { typePlanApi } from "state";
 
 export const Blog: React.FC = () => <BlogPage />;
 
 export default Blog;
 
-export const getStaticProps: GetStaticProps = async () => {
-
+export const getServerSideProps: GetServerSideProps = async () => {
   const blogPosts = await typePlanApi.api({
     contents: "dynamic",
     wants: {
       model: "BlogPost",
-      doit: "getBlogPosts"
+      doit: "getBlogPosts",
     },
     details: {
       get: {
@@ -26,20 +25,20 @@ export const getStaticProps: GetStaticProps = async () => {
           type: 1,
           filename: 1,
           createdAt: 1,
-          updateAt: 1
+          updateAt: 1,
         },
         createdAt: 1,
       },
-      set: {}
-    }
-  })
-  
+      set: {},
+    },
+  });
+
   return {
     props: {
       initialState: {
-        topBlogPosts: blogPosts.body
+        topBlogPosts: blogPosts.body,
       },
     },
-    revalidate: 3600
-  }
-}
+    revalidate: 3600,
+  };
+};
