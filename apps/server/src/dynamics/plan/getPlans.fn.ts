@@ -48,20 +48,6 @@ export const getPlansFn: GetPlansFn = async (details, _context) => {
     get,
   } = details;
 
-  /*
-  *  @LOG @DEBUG @INFO
-  *  This log written by ::==> {{ syd }}
-  *
-  *  Please remove your log after debugging
-  */
-  console.group("infrastructureArea, length, width ------ ");
-  console.log(" ============= ");
-  console.log();
-  console.info({ infrastructureArea, length, width }, " ------ ");
-  console.log();
-  console.log(" ============= ");
-  console.groupEnd();
-
   /**the default sort is createdAt descending */
   const defaultSort = { createdAt: -1 };
 

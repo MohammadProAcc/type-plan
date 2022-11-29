@@ -85,9 +85,6 @@ export interface PuPlan extends Base {
 }
 
 export interface RelPlan {
-  state?: ObjectID | IState;
-  country?: ObjectID | ICountry;
-  city?: ObjectID | ICity;
   creator?: ObjectID | IUser;
 }
 
@@ -98,9 +95,6 @@ export interface PuRelPlan extends PuPlan, RelPlan {}
  * Embedded city: This is an interface for embedded fields in city collection */
 
 export interface EmPlan {
-  city: PuRelCity;
-  state: PuRelState;
-  country: PuRelCountry;
   creator: PuRelUser;
 }
 
@@ -108,9 +102,6 @@ export interface EmPlan {
  * @interface
  * inRelation city: This is an interface for the relations of blogTag that are kept in collection the number of these inRel doc are less than 1000 */
 export interface InPlan {
-  city: ICity;
-  state: IState;
-  country: ICountry;
   creator: IUser;
 }
 
@@ -142,16 +133,10 @@ export interface RPlan {
   photo?: 0 | 1;
   slider?: 0 | 1;
   pdf?: 0 | 1;
-  state?: RState;
-  country?: RCountry;
-  city?: RCity;
   creator?: RUser;
 }
 
 export type PlanInp = {
-  state: number | StateInp;
-  country: number | CountryInp;
-  city: number | CityInp;
   creator: number | UserSelectInp;
 };
 
@@ -181,18 +166,6 @@ export const planSelectable: any = (depth: number | PlanInp = 2): any => {
     depth > -1 &&
       (pureObj = {
         ...pureObj,
-        state: {
-          type: "object",
-          optional: true,
-          props: stateSelectable(depth),
-        },
-
-        country: {
-          type: "object",
-          optional: true,
-          props: countrySelectable(depth),
-        },
-
         creator: {
           type: "object",
           optional: true,
@@ -204,26 +177,6 @@ export const planSelectable: any = (depth: number | PlanInp = 2): any => {
 
   const objectDepth = (depth: any, pureObj: Record<string, any>) => {
     depth = decreaseIterate<PlanInp>(depth);
-
-    checkRelation(depth, "state") &&
-      (pureObj = {
-        ...pureObj,
-        state: {
-          type: "object",
-          optional: true,
-          props: stateSelectable(depth.state),
-        },
-      });
-
-    checkRelation(depth, "country") &&
-      (pureObj = {
-        ...pureObj,
-        country: {
-          type: "object",
-          optional: true,
-          props: countrySelectable(depth.country),
-        },
-      });
 
     checkRelation(depth, "creator") &&
       (pureObj = {
