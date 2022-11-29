@@ -40,13 +40,27 @@ export const getPlansFn: GetPlansFn = async (details, _context) => {
       bathroom,
       exposure,
       infrastructureArea,
-      lenght,
+      length,
       width,
       passageWidth,
       plateType,
     },
     get,
   } = details;
+
+  /*
+  *  @LOG @DEBUG @INFO
+  *  This log written by ::==> {{ syd }}
+  *
+  *  Please remove your log after debugging
+  */
+  console.group("infrastructureArea, length, width ------ ");
+  console.log(" ============= ");
+  console.log();
+  console.info({ infrastructureArea, length, width }, " ------ ");
+  console.log();
+  console.log(" ============= ");
+  console.groupEnd();
 
   /**the default sort is createdAt descending */
   const defaultSort = { createdAt: -1 };
@@ -101,21 +115,56 @@ export const getPlansFn: GetPlansFn = async (details, _context) => {
     });
 
   infrastructureArea &&
+    infrastructureArea[0] &&
+    infrastructureArea[0] > 1 &&
     (filter = {
       ...filter,
-      infrastructureArea,
+      infrastructureArea: {
+        $gte: infrastructureArea[0],
+      },
     });
 
-  lenght &&
+  infrastructureArea &&
+    infrastructureArea[1] &&
+    infrastructureArea[1] > 1 &&
     (filter = {
       ...filter,
-      lenght,
+      infrastructureArea: {
+        ...filter.infrastructureArea,
+        $lte: infrastructureArea[1],
+      },
+    });
+
+  length &&
+    length[0] &&
+    length[0] > 1 &&
+    (filter = {
+      ...filter,
+      length: { $gte: length[0] },
+    });
+
+  length &&
+    length[1] &&
+    length[1] > 1 &&
+    (filter = {
+      ...filter,
+      length: { ...filter.length, $lte: length[1] },
     });
 
   width &&
+    width[0] &&
+    width[0] > 1 &&
     (filter = {
       ...filter,
-      width,
+      width: { $gte: width[0] },
+    });
+
+  width &&
+    width[1] &&
+    width[1] > 1 &&
+    (filter = {
+      ...filter,
+      width: { ...filter.width, $lte: width[1] },
     });
 
   passageWidth &&
@@ -129,6 +178,7 @@ export const getPlansFn: GetPlansFn = async (details, _context) => {
       ...filter,
       plateType,
     });
+
   const foundPlans = await getPlans({
     filter,
     getObj: get,

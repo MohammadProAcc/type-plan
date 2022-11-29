@@ -41,7 +41,38 @@ export const createPlanFn: CreatePlanFn = async (details, context) => {
   const foundedCountry = await countries.findOne();
   const foundedState = await states.findOne();
   const foundedcity = await cities.findOne();
+
+  /*
+  *  @LOG @DEBUG @INFO
+  *  This log written by ::==> {{ syd }}
+  *
+  *  Please remove your log after debugging
+  */
+  console.group("details ------ reached after foundedcity");
+  console.log(" ============= ");
+  console.log();
+  console.info({ details }, " ------ ");
+  console.log();
+  console.log(" ============= ");
+  console.groupEnd();
   checkValidation(checkCreatePlan, { details });
+
+  /*
+  *  @LOG @DEBUG @INFO
+  *  This log written by ::==> {{ syd }}
+  *
+  *  Please remove your log after debugging
+  */
+  console.group(
+    "foundedcity, foundedState, foundedCountry ------ after checkValidation",
+  );
+  console.log(" ============= ");
+  console.log();
+  console.info({ foundedcity, foundedState, foundedCountry }, " ------ ");
+  console.log();
+  console.log(" ============= ");
+  console.groupEnd();
+
   const {
     set,
     get,

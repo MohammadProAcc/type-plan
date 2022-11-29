@@ -40,10 +40,10 @@ export const schema = {
             type: "enum",
             values: ["Northern", "Southern", "Eastern", "Western"],
           },
-          infrastructureArea: { type: "tuple", items: ["number", "number"] },
-          lenght: { type: "tuple", items: ["number", "number"] },
-          width: { type: "tuple", items: ["number", "number"] },
-          passageWidth: { type: "number", min: 1, max: 1000 },
+          infrastructureArea: { type: "number" },
+          length: { type: "number" },
+          width: { type: "number" },
+          passageWidth: { type: "number", min: 5, max: 1000 },
           plateType: { type: "enum", values: ["Registered", "Normal"] },
           photo: {
             type: "object",
@@ -112,9 +112,9 @@ export interface ICreatePlanDetails {
     unitType: UNITTYPE;
     bathroom: number;
     exposure: POSITION;
-    infrastructureArea: [number, number];
-    lenght: [number, number];
-    width: [number, number];
+    infrastructureArea: number;
+    length: number;
+    width: number;
     passageWidth: number;
     plateType: PLATETYPE;
     photo: PuFile;

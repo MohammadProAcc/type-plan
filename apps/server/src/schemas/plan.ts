@@ -63,13 +63,13 @@ export interface PuPlan extends Base {
   units: number;
   floors: number;
   sleeps: number;
-  planCode: string;
+  planCode: string; // make it atu num
   unitType: UNITTYPE;
   bathroom: number;
   exposure: POSITION;
-  infrastructureArea: [number, number];
-  lenght: [number, number];
-  width: [number, number];
+  infrastructureArea: number;
+  length: number;
+  width: number;
   passageWidth: number;
   plateType: PLATETYPE;
   photo: PuFile;
@@ -135,7 +135,7 @@ export interface RPlan {
   bathroom: 0 | 1;
   exposure?: 0 | 1;
   infrastructureArea?: 0 | 1;
-  lenght?: 0 | 1;
+  length?: 0 | 1;
   width?: 0 | 1;
   passageWidth?: 0 | 1;
   plateType?: 0 | 1;
@@ -168,7 +168,7 @@ export const planSelectable: any = (depth: number | PlanInp = 2): any => {
     bathroom: fieldType,
     exposure: fieldType,
     infrastructureArea: fieldType,
-    lenght: fieldType,
+    length: fieldType,
     width: fieldType,
     passageWidth: fieldType,
     plateType: fieldType,

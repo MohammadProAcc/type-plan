@@ -24,7 +24,7 @@ export interface TypePlanSet {
   unitType?: "Solo" | "Duplex" | "Triplex";
   exposure?: "Northern" | "Southern" | "Eastern" | "Western";
   infrastructureArea?: any;
-  lenght?: any;
+  length?: any;
   width?: any;
   passageWidth?: number;
   plateType?: "Registered" | "Normal";
@@ -40,18 +40,31 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   (params?.sleeps?.length > 0) && (query.sleeps = +(params.floors));
   (params?.bathroom?.length > 0) && (query.bathroom = +(params.floors));
-  (params["width[0]"] || params["width[1]"]) && (query.width = [
-    +(params?.["width[0]"] || 1),
-    +(params?.["width[1]"] || 1),
+  (params["width[0]"]) && (query.width = [
+    +(params["width[0]"] || 1),
+    1,
   ]);
-  (params["length[0]"] || params["length[1]"]) && (query.lenght = [
-    +(params?.["lenght[0]"] || 1),
-    +(params?.["lenght[1]"] || 1),
+  (params["width[0]"] && params["width[1]"]) && (query.width = [
+    +(params["width[0]"] || 1),
+    +(params["width[1]"] || 1),
   ]);
-  (params["infrastructureArea[0]"] || params["infrastructureArea[1]"]) &&
+  (params["length[0]"]) && (query.length = [
+    +(params["length[0]"] || 1),
+    1,
+  ]);
+  (params["length[0]"] && params["length[1]"]) && (query.length = [
+    +(params["length[0]"] || 1),
+    +(params["length[1]"] || 1),
+  ]);
+  (params["infrastructureArea[0]"]) &&
     (query.infrastructureArea = [
-      +(params?.["infrastructureArea[0]"] || 1),
-      +(params?.["infrastructureAre[1]"] || 1),
+      +(params["infrastructureArea[0]"]) || 1,
+      1,
+    ]);
+  (params["infrastructureArea[0]"] && params["infrastructureArea[1]"]) &&
+    (query.infrastructureArea = [
+      +(params["infrastructureArea[0]"] || 1),
+      +(params["infrastructureArea[1]"] || 1),
     ]);
 
   const plans = await getPlans({
@@ -60,12 +73,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         limit: 12,
         page,
       },
-      ...params,
       ...query,
     },
     get: {
       _id: 1,
       photo: 1,
+      planCode: 1,
       infrastructureArea: 1,
       exposure: 1,
     },

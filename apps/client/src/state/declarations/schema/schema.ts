@@ -674,9 +674,9 @@ export interface FQl_dynamic_plan_PuPlan {
   unitType: FQl_dynamic_plan_UNITTYPE;
   bathroom: number;
   exposure: FQl_dynamic_plan_POSITION;
-  infrastructureArea: [number, number];
-  lenght: [number, number];
-  width: [number, number];
+  infrastructureArea: number;
+  length: number;
+  width: number;
   passageWidth: number;
   plateType: FQl_dynamic_plan_PLATETYPE;
   photo: FQl_dynamic_upload_PuFile;
@@ -720,7 +720,7 @@ export interface FQl_dynamic_plan_PuRelPlan {
   bathroom: number;
   exposure: FQl_dynamic_plan_POSITION;
   infrastructureArea: [number, number];
-  lenght: [number, number];
+  length: [number, number];
   width: [number, number];
   passageWidth: number;
   plateType: FQl_dynamic_plan_PLATETYPE;
@@ -775,9 +775,9 @@ export interface FQl_dynamic_plan_IPlan {
   unitType: FQl_dynamic_plan_UNITTYPE;
   bathroom: number;
   exposure: FQl_dynamic_plan_POSITION;
-  infrastructureArea: [number, number];
-  lenght: [number, number];
-  width: [number, number];
+  infrastructureArea: number;
+  length: number;
+  width: number;
   passageWidth: number;
   plateType: FQl_dynamic_plan_PLATETYPE;
   photo: FQl_dynamic_upload_PuFile;

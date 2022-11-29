@@ -879,7 +879,7 @@ export interface FQl_response_plan_IPlan {
   sleeps: number;
   exposure: FQl_response_plan_POSITION;
   infrastructureArea: [number, number];
-  lenght: [number, number];
+  length: [number, number];
   width: [number, number];
   passageWidth: number;
   plateType: FQl_response_plan_PLATETYPE;

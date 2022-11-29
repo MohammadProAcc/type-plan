@@ -26808,7 +26808,7 @@
                                           "number"
                                         ]
                                       },
-                                      "lenght": {
+                                      "length": {
                                         "type": "tuple",
                                         "items": [
                                           "number",
@@ -26994,7 +26994,7 @@
                                         ],
                                         "optional": true
                                       },
-                                      "lenght": {
+                                      "length": {
                                         "type": "enum",
                                         "values": [
                                           0,
@@ -27724,7 +27724,7 @@
                                         ],
                                         "optional": true
                                       },
-                                      "lenght": {
+                                      "length": {
                                         "type": "enum",
                                         "values": [
                                           0,
@@ -28100,7 +28100,7 @@
                                         ],
                                         "optional": true
                                       },
-                                      "lenght": {
+                                      "length": {
                                         "type": "tuple",
                                         "items": [
                                           "number",
@@ -28232,7 +28232,7 @@
                                         ],
                                         "optional": true
                                       },
-                                      "lenght": {
+                                      "length": {
                                         "type": "enum",
                                         "values": [
                                           0,

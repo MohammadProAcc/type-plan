@@ -207,7 +207,7 @@ export const PlansPageSidebar: React.FC = () => {
             callback={() => clearQuery("infrastructureArea")}
             active={checkFilterActivity("infrastructureArea")}
           >
-            مساحت
+            مساحت زیربنا
           </CollapsibleTitle>
         }
       >
@@ -222,8 +222,9 @@ export const PlansPageSidebar: React.FC = () => {
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>تا (متر)</PlansPageSidebarLabel>
           <PlansPageSidebarInput
-            onChange={(e) =>
-              applyQuery("infrastructureArea[1]", e.target.value)}
+            onChange={(e) => {
+              applyQuery("infrastructureArea[1]", e.target.value);
+            }}
           />
         </PlansPageSidebarInputGroup>
       </Collapsible>
@@ -243,14 +244,14 @@ export const PlansPageSidebar: React.FC = () => {
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>از (متر)</PlansPageSidebarLabel>
           <PlansPageSidebarInput
-            onChange={(e) => applyQuery("lenght[0]", e.target.value)}
+            onChange={(e) => applyQuery("length[0]", e.target.value)}
           />
         </PlansPageSidebarInputGroup>
 
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>تا (متر)</PlansPageSidebarLabel>
           <PlansPageSidebarInput
-            onChange={(e) => applyQuery("lenght[1]", e.target.value)}
+            onChange={(e) => applyQuery("length[1]", e.target.value)}
           />
         </PlansPageSidebarInputGroup>
       </Collapsible>

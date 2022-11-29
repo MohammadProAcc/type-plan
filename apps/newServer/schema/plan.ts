@@ -19,7 +19,7 @@ export const purePlan = {
   planCode: string(),
   exposure: position,
   infrastructureArea: union([number(), number()]),
-  lenght: union([number(), number()]),
+  length: union([number(), number()]),
   width: union([number(), number()]),
   passageWidth: number(),
   plateType: plateType,

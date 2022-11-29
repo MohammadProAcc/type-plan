@@ -92,9 +92,7 @@ export const AdminCreatePlanForm: React.FC = () => {
       photo,
       slider,
     };
-    console.log(finalForm);
     const response = await createPlan(finalForm, cookies[process.env.TOKEN]);
-    console.log(response);
     if (response.success) {
       reset();
       toast.success("طرح اضافه شد");
@@ -218,7 +216,7 @@ export const AdminCreatePlanForm: React.FC = () => {
       </CreatePlanInputGroup>
 
       <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>تعداد اتاق ها :</CreatePlanFormLabel>
+        <CreatePlanFormLabel>تعداد اتاق ها خواب :</CreatePlanFormLabel>
         <Input
           {...register("sleeps", { required: true, valueAsNumber: true })}
           type="number"
@@ -251,59 +249,71 @@ export const AdminCreatePlanForm: React.FC = () => {
 
       <CreatePlanInputGroup col>
         <CreatePlanFormLabel>مساحت زیر بنا :</CreatePlanFormLabel>
-        <CreatePlanInputGroup>
-          <Input
-            {...register("infrastructureArea.0", {
-              required: true,
-              valueAsNumber: true,
-            })}
-            type="number"
-            placeholder="-"
-          />
-          <Em>تا</Em>
-          <Input
-            {...register("infrastructureArea.1", {
-              required: true,
-              valueAsNumber: true,
-            })}
-            type="number"
-            placeholder="-"
-          />
-        </CreatePlanInputGroup>
+        {/* <Input */}
+        {/*   {...register("infrastructureArea.0", { */}
+        {/*     required: true, */}
+        {/*     valueAsNumber: true, */}
+        {/*   })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        {/* <Em>تا</Em> */}
+        {/* <Input */}
+        {/*   {...register("infrastructureArea.1", { */}
+        {/*     required: true, */}
+        {/*     valueAsNumber: true, */}
+        {/*   })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        <Input
+          {...register("infrastructureArea", {
+            required: true,
+            valueAsNumber: true,
+          })}
+          type="number"
+          placeholder="-"
+        />
       </CreatePlanInputGroup>
 
       <CreatePlanInputGroup col>
         <CreatePlanFormLabel>طول :</CreatePlanFormLabel>
-        <CreatePlanInputGroup>
-          <Input
-            {...register("lenght.0", { required: true, valueAsNumber: true })}
-            type="number"
-            placeholder="-"
-          />
-          <Em>تا</Em>
-          <Input
-            {...register("lenght.1", { required: true, valueAsNumber: true })}
-            type="number"
-            placeholder="-"
-          />
-        </CreatePlanInputGroup>
+        {/* <Input */}
+        {/*   {...register("length.0", { required: true, valueAsNumber: true })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        {/* <Em>تا</Em> */}
+        {/* <Input */}
+        {/*   {...register("length.1", { required: true, valueAsNumber: true })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        <Input
+          {...register("length", { required: true, valueAsNumber: true })}
+          type="number"
+          placeholder="-"
+        />
       </CreatePlanInputGroup>
 
       <CreatePlanInputGroup col>
         <CreatePlanFormLabel>عرض :</CreatePlanFormLabel>
-        <CreatePlanInputGroup>
-          <Input
-            {...register("width.0", { required: true, valueAsNumber: true })}
-            type="number"
-            placeholder="-"
-          />
-          <Em>تا</Em>
-          <Input
-            {...register("width.1", { required: true, valueAsNumber: true })}
-            type="number"
-            placeholder="-"
-          />
-        </CreatePlanInputGroup>
+        {/* <Input */}
+        {/*   {...register("width.0", { required: true, valueAsNumber: true })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        {/* <Em>تا</Em> */}
+        {/* <Input */}
+        {/*   {...register("width.1", { required: true, valueAsNumber: true })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        <Input
+          {...register("width", { required: true, valueAsNumber: true })}
+          type="number"
+          placeholder="-"
+        />
       </CreatePlanInputGroup>
 
       <CreatePlanInputGroup col>

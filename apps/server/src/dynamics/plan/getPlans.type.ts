@@ -51,7 +51,7 @@ export const schema = {
             items: ["number", "number"],
             optional: true,
           },
-          lenght: {
+          length: {
             type: "tuple",
             items: ["number", "number"],
             optional: true,
@@ -87,7 +87,7 @@ export interface GetPlansDetails {
     bathroom: number;
     exposure: POSITION;
     infrastructureArea: [number, number];
-    lenght: [number, number];
+    length: [number, number];
     width: [number, number];
     passageWidth: number;
     plateType: PLATETYPE;

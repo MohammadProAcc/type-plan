@@ -61,18 +61,18 @@ export const PlanInformation: React.FC = () => {
       <PlanInformationEl>
         <PlanInformationTitle>مساحت:</PlanInformationTitle>
         <PlanInformationValue>
-          {plan.infrastructureArea[0] * plan.infrastructureArea[1]} متر مربع
+          {plan.infrastructureArea} متر مربع
         </PlanInformationValue>
       </PlanInformationEl>
 
       <PlanInformationEl>
         <PlanInformationTitle>طول:</PlanInformationTitle>
-        <PlanInformationValue>{plan?.lenght[0]} متر</PlanInformationValue>
+        <PlanInformationValue>{plan?.length} متر</PlanInformationValue>
       </PlanInformationEl>
 
       <PlanInformationEl>
         <PlanInformationTitle>عرض:</PlanInformationTitle>
-        <PlanInformationValue>{plan?.width[0]} متر</PlanInformationValue>
+        <PlanInformationValue>{plan?.width} متر</PlanInformationValue>
       </PlanInformationEl>
     </PlanInformationContainer>
   );

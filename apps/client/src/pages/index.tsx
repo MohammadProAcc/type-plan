@@ -1,7 +1,6 @@
-import axios from 'axios';
-import { HomePage } from 'components';
-import { GetServerSideProps, NextPage } from 'next';
-import { getPlans } from 'state';
+import { HomePage } from "components";
+import { GetServerSideProps, NextPage } from "next";
+import { getPlans } from "state";
 
 const Index: NextPage = () => <HomePage />;
 
@@ -17,6 +16,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
     get: {
       _id: 1,
+      planCode: 1,
       infrastructureArea: 1,
       exposure: 1,
       photo: 1,

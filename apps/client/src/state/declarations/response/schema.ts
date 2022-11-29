@@ -885,9 +885,9 @@ export interface FQl_response_plan_IPlan {
   unitType: FQl_response_plan_UNITTYPE;
   bathroom: number;
   exposure: FQl_response_plan_POSITION;
-  infrastructureArea: [number, number];
-  lenght: [number, number];
-  width: [number, number];
+  infrastructureArea: number;
+  length: number;
+  width: number;
   passageWidth: number;
   plateType: FQl_response_plan_PLATETYPE;
   photo: FQl_response_upload_PuFile;

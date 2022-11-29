@@ -26,9 +26,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       +(params?.["width[0]"] || 1),
       +(params?.["width[1]"] || 1),
     ]);
-    (params["length[0]"] || params["length[1]"]) && (query.lenght = [
-      +(params?.["lenght[0]"] || 1),
-      +(params?.["lenght[1]"] || 1),
+    (params["length[0]"] || params["length[1]"]) && (query.length = [
+      +(params?.["length[0]"] || 1),
+      +(params?.["length[1]"] || 1),
     ]);
     (params["infrastructureArea[0]"] || params["infrastructureArea[1]"]) &&
       (query.infrastructureArea = [
