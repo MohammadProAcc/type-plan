@@ -4,15 +4,15 @@ import {
   PlanSliderNavigationButton,
 } from "elements";
 import React, { useEffect, useState } from "react";
-import { useStore } from "state";
+import { InitialState, useStore } from "state";
 import { FQl_dynamic_upload_IFile } from "state/declarations/schema/schema";
 import { FullScreenMediaModal } from "../molecules";
 
 export const PlanMedia: React.FC = () => {
   const {
     plan,
-  } = useStore((state) => ({
-    plan: state?.plan,
+  } = useStore((state: InitialState) => ({
+    plan: state?.plan.data,
   }));
 
   const [medias, setMedias] = useState([plan?.photo, ...(plan?.slider ?? [])]);

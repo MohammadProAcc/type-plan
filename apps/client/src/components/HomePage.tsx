@@ -1,5 +1,4 @@
-import { createContext, useEffect } from "react";
-import { useStore } from "state";
+import { createContext } from "react";
 import { Layout } from "./Layout";
 import { HomePageIntro, HomePagePlans } from "./organisms";
 

@@ -5,6 +5,9 @@ import { getPlans } from "state";
 const Page: NextPage = () => <PlansPage />;
 
 export default Page;
+type PlanType = "Resindental" | "Commercial" | "Mixed";
+type Exposure = "Northern" | "Southern" | "Eastern" | "Western";
+type PlateType = "Registered" | "Normal";
 export interface TypePlanSet {
   pagination?: {
     lastObjectId?: string;
@@ -15,19 +18,16 @@ export interface TypePlanSet {
     createdAt?: 1 | -1;
     updateAt?: 1 | -1;
   };
-  planType?: "Resindental" | "Villa";
+  planType?: PlanType;
   units?: number;
   floors?: number;
-  sleeps?: number;
-  bathroom?: number;
   planCode?: string;
-  unitType?: "Solo" | "Duplex" | "Triplex";
-  exposure?: "Northern" | "Southern" | "Eastern" | "Western";
+  exposure?: Exposure;
   infrastructureArea?: any;
   length?: any;
   width?: any;
   passageWidth?: number;
-  plateType?: "Registered" | "Normal";
+  plateType?: PlateType;
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -37,9 +37,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   (params?.units?.length > 0) && (query.units = +(params.units));
   (params?.floors?.length > 0) && (query.floors = +(params.floors));
+  (params?.exposure?.length > 0) &&
+    (query.exposure = params.exposure as Exposure);
+  (params?.planType?.length > 0) &&
+    (query.planType = params.planType as PlanType);
+  (params?.plateType?.length > 0) &&
+    (query.plateType = params.plateType as PlateType);
 
-  (params?.sleeps?.length > 0) && (query.sleeps = +(params.floors));
-  (params?.bathroom?.length > 0) && (query.bathroom = +(params.floors));
   (params["width[0]"]) && (query.width = [
     +(params["width[0]"] || 1),
     1,
@@ -70,24 +74,31 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const plans = await getPlans({
     set: {
       pagination: {
-        limit: 12,
+        limit: 20,
         page,
       },
       ...query,
     },
     get: {
-      _id: 1,
-      photo: 1,
+      planType: 1,
+      units: 1,
+      floors: 1,
       planCode: 1,
-      infrastructureArea: 1,
       exposure: 1,
+      infrastructureArea: 1,
+      length: 1,
+      width: 1,
+      passageWidth: 1,
+      plateType: 1,
+      photo: 1,
+      _id: 1,
     },
   });
 
   return {
     props: {
-      initialState: {
-        plans: plans.body,
+      initialZustandState: {
+        plans,
       },
     },
   };

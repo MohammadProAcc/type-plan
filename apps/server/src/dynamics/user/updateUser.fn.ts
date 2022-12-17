@@ -1,14 +1,14 @@
 import { ValidationError } from "https://cdn.esm.sh/v45/fastest-validator@1.11.1/dist/index";
-import { getPureDoc } from "./../../utils/mod.ts";
 import { countries } from "./../../schemas/country.ts";
-import { throwError } from "./../../utils/mod.ts";
-import { getUser } from "./funcs/getUser.ts";
-import { cities, IUser, states, users } from "../../schemas/mode.ts";
-import { isAuthFn } from "../../utils/mod.ts";
-import { Context } from "../utils/context.ts";
-import { checkRoleFn } from "../../utils/mod.ts";
-import { checkUpdateUser, updateUserDetails } from "./updateUser.type.ts";
+import { cities, IUser, Level, states, users } from "../../schemas/mode.ts";
 import { Bson } from "../../utils/deps.ts";
+import { getPureDoc } from "./../../utils/mod.ts";
+import { throwError } from "./../../utils/mod.ts";
+import { isAuthFn } from "../../utils/mod.ts";
+import { checkRoleFn } from "../../utils/mod.ts";
+import { Context } from "../utils/context.ts";
+import { getUser } from "./funcs/getUser.ts";
+import { checkUpdateUser, updateUserDetails } from "./updateUser.type.ts";
 
 type UpdateUser = (
   details: updateUserDetails,
@@ -31,9 +31,9 @@ export const updateUserFn: UpdateUser = async (details, context) => {
     ? throwError("the token is not right! so we didn't find you dear user")
     : null;
   /**check the Role:just the admin can change the user info */
-  !checkRoleFn(user, ["Admin"])
-    ? throwError("just the admin can change the user info")
-    : null;
+  // !checkRoleFn(user, ["Admin"])
+  //   ? throwError("just the admin can change the user info")
+  //   : null;
 
   const detailsIsRight = checkUpdateUser({ details });
   detailsIsRight !== true &&
@@ -53,7 +53,11 @@ export const updateUserFn: UpdateUser = async (details, context) => {
     get,
   } = details;
 
-  const userObjId = new Bson.ObjectID(userId);
+  const userObjId = user.level.includes(Level.Admin)
+    ? new Bson.ObjectID(userId)
+    : user._id.equals(userId)
+    ? user._id
+    : throwError("You can not update this user");
 
   await users.updateOne(
     { _id: userObjId },

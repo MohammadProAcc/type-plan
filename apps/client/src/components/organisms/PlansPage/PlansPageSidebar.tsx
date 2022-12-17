@@ -2,7 +2,6 @@ import {
   exposureOptions,
   planTypeOptions,
   plateTypeOptions,
-  unitTypeOptions,
 } from "constants/index";
 import {
   ClearAllButton,
@@ -95,27 +94,6 @@ export const PlansPageSidebar: React.FC = () => {
               ?.find((o) => o.value === (router.query.exposure as string))}
           options={exposureOptions}
           callback={(filter) => applyQuery("exposure", filter.value)}
-        />
-      </Collapsible>
-
-      <Collapsible
-        title="نوع واحد"
-        AdditionalComponent={
-          <ClearButton
-            onClick={() => clearQuery("unitType")}
-            active={checkFilterActivity("unitType")}
-            disabled={!checkFilterActivity("unitType")}
-          >
-            <ClearSvg Color={Color.Error} />
-          </ClearButton>
-        }
-      >
-        <MultiSelection
-          initial={router.query.unitType &&
-            unitTypeOptions
-              ?.find((o) => o.value === (router.query.unitType as string))}
-          options={unitTypeOptions}
-          callback={(filter) => applyQuery("unitType", filter.value)}
         />
       </Collapsible>
 

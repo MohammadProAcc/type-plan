@@ -6428,6 +6428,595 @@
                                 }
                               }
                             }
+                          },
+                          "makeAdmin": {
+                            "type": "object",
+                            "props": {
+                              "details": {
+                                "type": "object",
+                                "props": {
+                                  "set": {
+                                    "type": "object",
+                                    "props": {
+                                      "phone": {
+                                        "type": "number"
+                                      },
+                                      "countryCode": {
+                                        "type": "string"
+                                      },
+                                      "name": {
+                                        "type": "string"
+                                      },
+                                      "lastName": {
+                                        "type": "string"
+                                      },
+                                      "gender": {
+                                        "type": "enum",
+                                        "values": [
+                                          "Male",
+                                          "Female"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "get": {
+                                    "type": "object",
+                                    "strict": true,
+                                    "optional": true,
+                                    "props": {
+                                      "_id": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "name": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "lastName": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "phone": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "gender": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "birthDate": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "postalCode": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "level": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "email": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "isActive": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "creditCardNumber": {
+                                        "type": "enum",
+                                        "values": [
+                                          0,
+                                          1
+                                        ],
+                                        "optional": true
+                                      },
+                                      "addresses": {
+                                        "optional": true,
+                                        "type": "object",
+                                        "props": {
+                                          "country": {
+                                            "type": "object",
+                                            "optional": true,
+                                            "props": {
+                                              "_id": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "createdAt": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "updateAt": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "name": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "enName": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "countryCode": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "states": {
+                                                "type": "object",
+                                                "optional": true,
+                                                "props": {
+                                                  "_id": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "updateAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "name": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "enName": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  }
+                                                }
+                                              },
+                                              "cities": {
+                                                "type": "object",
+                                                "optional": true,
+                                                "props": {
+                                                  "_id": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "updateAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "name": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "enName": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "state": {
+                                            "type": "object",
+                                            "optional": true,
+                                            "props": {
+                                              "_id": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "createdAt": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "updateAt": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "name": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "enName": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "country": {
+                                                "type": "object",
+                                                "optional": true,
+                                                "props": {
+                                                  "_id": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "updateAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "name": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "enName": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "countryCode": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  }
+                                                }
+                                              },
+                                              "cities": {
+                                                "type": "object",
+                                                "optional": true,
+                                                "props": {
+                                                  "_id": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "updateAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "name": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "enName": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "city": {
+                                            "type": "object",
+                                            "optional": true,
+                                            "props": {
+                                              "_id": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "createdAt": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "updateAt": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "name": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "enName": {
+                                                "type": "enum",
+                                                "values": [
+                                                  0,
+                                                  1
+                                                ],
+                                                "optional": true
+                                              },
+                                              "state": {
+                                                "type": "object",
+                                                "optional": true,
+                                                "props": {
+                                                  "_id": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "updateAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "name": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "enName": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  }
+                                                }
+                                              },
+                                              "country": {
+                                                "type": "object",
+                                                "optional": true,
+                                                "props": {
+                                                  "_id": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "updateAt": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "name": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "enName": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  },
+                                                  "countryCode": {
+                                                    "type": "enum",
+                                                    "values": [
+                                                      0,
+                                                      1
+                                                    ],
+                                                    "optional": true
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "addressTxt": {
+                                            "type": "enum",
+                                            "values": [
+                                              0,
+                                              1
+                                            ],
+                                            "optional": true
+                                          },
+                                          "addressId": {
+                                            "type": "enum",
+                                            "values": [
+                                              0,
+                                              1
+                                            ],
+                                            "optional": true
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
                           }
                         }
                       }
@@ -26756,7 +27345,8 @@
                                         "type": "enum",
                                         "values": [
                                           "Resindental",
-                                          "Villa"
+                                          "Commercial",
+                                          "Mixed"
                                         ]
                                       },
                                       "units": {
@@ -26769,62 +27359,36 @@
                                         "min": 1,
                                         "max": 1000
                                       },
-                                      "sleeps": {
-                                        "type": "number",
-                                        "min": 1,
-                                        "max": 1000
-                                      },
-                                      "bathroom": {
-                                        "type": "number",
-                                        "min": 1,
-                                        "max": 1000
-                                      },
                                       "planCode": {
                                         "type": "string",
                                         "min": 6,
                                         "max": 10
                                       },
-                                      "unitType": {
-                                        "type": "enum",
-                                        "values": [
-                                          "Solo",
-                                          "Duplex",
-                                          "Triplex"
-                                        ]
-                                      },
                                       "exposure": {
-                                        "type": "enum",
-                                        "values": [
-                                          "Northern",
-                                          "Southern",
-                                          "Eastern",
-                                          "Western"
-                                        ]
+                                        "type": "array",
+                                        "items": {
+                                          "type": "enum",
+                                          "values": [
+                                            "Northern",
+                                            "Southern",
+                                            "Eastern",
+                                            "Western"
+                                          ]
+                                        },
+                                        "default": []
                                       },
                                       "infrastructureArea": {
-                                        "type": "tuple",
-                                        "items": [
-                                          "number",
-                                          "number"
-                                        ]
+                                        "type": "number"
                                       },
                                       "length": {
-                                        "type": "tuple",
-                                        "items": [
-                                          "number",
-                                          "number"
-                                        ]
+                                        "type": "number"
                                       },
                                       "width": {
-                                        "type": "tuple",
-                                        "items": [
-                                          "number",
-                                          "number"
-                                        ]
+                                        "type": "number"
                                       },
                                       "passageWidth": {
                                         "type": "number",
-                                        "min": 1,
+                                        "min": 5,
                                         "max": 1000
                                       },
                                       "plateType": {
@@ -26946,31 +27510,7 @@
                                         ],
                                         "optional": true
                                       },
-                                      "sleeps": {
-                                        "type": "enum",
-                                        "values": [
-                                          0,
-                                          1
-                                        ],
-                                        "optional": true
-                                      },
                                       "planCode": {
-                                        "type": "enum",
-                                        "values": [
-                                          0,
-                                          1
-                                        ],
-                                        "optional": true
-                                      },
-                                      "unitType": {
-                                        "type": "enum",
-                                        "values": [
-                                          0,
-                                          1
-                                        ],
-                                        "optional": true
-                                      },
-                                      "bathroom": {
                                         "type": "enum",
                                         "values": [
                                           0,
@@ -27049,298 +27589,6 @@
                                           1
                                         ],
                                         "optional": true
-                                      },
-                                      "state": {
-                                        "type": "object",
-                                        "optional": true,
-                                        "props": {
-                                          "_id": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "createdAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "updateAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "name": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "enName": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "country": {
-                                            "type": "object",
-                                            "optional": true,
-                                            "props": {
-                                              "_id": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "createdAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "updateAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "name": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "enName": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "countryCode": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              }
-                                            }
-                                          },
-                                          "cities": {
-                                            "type": "object",
-                                            "optional": true,
-                                            "props": {
-                                              "_id": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "createdAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "updateAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "name": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "enName": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              }
-                                            }
-                                          }
-                                        }
-                                      },
-                                      "country": {
-                                        "type": "object",
-                                        "optional": true,
-                                        "props": {
-                                          "_id": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "createdAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "updateAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "name": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "enName": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "countryCode": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "states": {
-                                            "type": "object",
-                                            "optional": true,
-                                            "props": {
-                                              "_id": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "createdAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "updateAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "name": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "enName": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              }
-                                            }
-                                          },
-                                          "cities": {
-                                            "type": "object",
-                                            "optional": true,
-                                            "props": {
-                                              "_id": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "createdAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "updateAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "name": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "enName": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              }
-                                            }
-                                          }
-                                        }
                                       },
                                       "creator": {
                                         "type": "object",
@@ -27676,31 +27924,7 @@
                                         ],
                                         "optional": true
                                       },
-                                      "sleeps": {
-                                        "type": "enum",
-                                        "values": [
-                                          0,
-                                          1
-                                        ],
-                                        "optional": true
-                                      },
                                       "planCode": {
-                                        "type": "enum",
-                                        "values": [
-                                          0,
-                                          1
-                                        ],
-                                        "optional": true
-                                      },
-                                      "unitType": {
-                                        "type": "enum",
-                                        "values": [
-                                          0,
-                                          1
-                                        ],
-                                        "optional": true
-                                      },
-                                      "bathroom": {
                                         "type": "enum",
                                         "values": [
                                           0,
@@ -27779,106 +28003,6 @@
                                           1
                                         ],
                                         "optional": true
-                                      },
-                                      "state": {
-                                        "type": "object",
-                                        "optional": true,
-                                        "props": {
-                                          "_id": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "createdAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "updateAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "name": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "enName": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          }
-                                        }
-                                      },
-                                      "country": {
-                                        "type": "object",
-                                        "optional": true,
-                                        "props": {
-                                          "_id": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "createdAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "updateAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "name": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "enName": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "countryCode": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          }
-                                        }
                                       },
                                       "creator": {
                                         "type": "object",
@@ -28039,7 +28163,8 @@
                                         "type": "enum",
                                         "values": [
                                           "Resindental",
-                                          "Villa"
+                                          "Commercial",
+                                          "Mixed"
                                         ],
                                         "optional": true
                                       },
@@ -28184,31 +28309,7 @@
                                         ],
                                         "optional": true
                                       },
-                                      "sleeps": {
-                                        "type": "enum",
-                                        "values": [
-                                          0,
-                                          1
-                                        ],
-                                        "optional": true
-                                      },
                                       "planCode": {
-                                        "type": "enum",
-                                        "values": [
-                                          0,
-                                          1
-                                        ],
-                                        "optional": true
-                                      },
-                                      "unitType": {
-                                        "type": "enum",
-                                        "values": [
-                                          0,
-                                          1
-                                        ],
-                                        "optional": true
-                                      },
-                                      "bathroom": {
                                         "type": "enum",
                                         "values": [
                                           0,
@@ -28287,298 +28388,6 @@
                                           1
                                         ],
                                         "optional": true
-                                      },
-                                      "state": {
-                                        "type": "object",
-                                        "optional": true,
-                                        "props": {
-                                          "_id": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "createdAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "updateAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "name": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "enName": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "country": {
-                                            "type": "object",
-                                            "optional": true,
-                                            "props": {
-                                              "_id": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "createdAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "updateAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "name": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "enName": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "countryCode": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              }
-                                            }
-                                          },
-                                          "cities": {
-                                            "type": "object",
-                                            "optional": true,
-                                            "props": {
-                                              "_id": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "createdAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "updateAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "name": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "enName": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              }
-                                            }
-                                          }
-                                        }
-                                      },
-                                      "country": {
-                                        "type": "object",
-                                        "optional": true,
-                                        "props": {
-                                          "_id": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "createdAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "updateAt": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "name": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "enName": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "countryCode": {
-                                            "type": "enum",
-                                            "values": [
-                                              0,
-                                              1
-                                            ],
-                                            "optional": true
-                                          },
-                                          "states": {
-                                            "type": "object",
-                                            "optional": true,
-                                            "props": {
-                                              "_id": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "createdAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "updateAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "name": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "enName": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              }
-                                            }
-                                          },
-                                          "cities": {
-                                            "type": "object",
-                                            "optional": true,
-                                            "props": {
-                                              "_id": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "createdAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "updateAt": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "name": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              },
-                                              "enName": {
-                                                "type": "enum",
-                                                "values": [
-                                                  0,
-                                                  1
-                                                ],
-                                                "optional": true
-                                              }
-                                            }
-                                          }
-                                        }
                                       },
                                       "creator": {
                                         "type": "object",
@@ -28841,6 +28650,33 @@
                                             }
                                           }
                                         }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "deletePlan": {
+                            "type": "object",
+                            "props": {
+                              "details": {
+                                "type": "object",
+                                "props": {
+                                  "set": {
+                                    "type": "object",
+                                    "props": {
+                                      "_id": {
+                                        "type": "objectID"
+                                      }
+                                    }
+                                  },
+                                  "get": {
+                                    "type": "object",
+                                    "optional": true,
+                                    "props": {
+                                      "msg": {
+                                        "type": "string"
                                       }
                                     }
                                   }

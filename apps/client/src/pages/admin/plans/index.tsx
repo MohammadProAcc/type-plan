@@ -20,8 +20,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     (params?.units?.length > 0) && (query.units = +(params.units));
     (params?.floors?.length > 0) && (query.floors = +(params.floors));
 
-    (params?.sleeps?.length > 0) && (query.sleeps = +(params.floors));
-    (params?.bathroom?.length > 0) && (query.bathroom = +(params.floors));
     (params["width[0]"] || params["width[1]"]) && (query.width = [
       +(params?.["width[0]"] || 1),
       +(params?.["width[1]"] || 1),
@@ -51,8 +49,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     return {
       props: {
-        initialState: {
-          plans: plans.body,
+        initialZustandState: {
+          plans,
         },
       },
     };

@@ -669,11 +669,8 @@ export interface FQl_dynamic_plan_PuPlan {
   planType: FQl_dynamic_plan_PLANTYPE;
   units: number;
   floors: number;
-  sleeps: number;
   planCode: string;
-  unitType: FQl_dynamic_plan_UNITTYPE;
-  bathroom: number;
-  exposure: FQl_dynamic_plan_POSITION;
+  exposure: FQl_dynamic_plan_POSITION[];
   infrastructureArea: number;
   length: number;
   width: number;
@@ -689,13 +686,8 @@ export interface FQl_dynamic_plan_PuPlan {
 
 export enum FQl_dynamic_plan_PLANTYPE {
   Resindental = "Resindental",
-  Villa = "Villa",
-}
-
-export enum FQl_dynamic_plan_UNITTYPE {
-  Solo = "Solo",
-  Duplex = "Duplex",
-  Triplex = "Triplex",
+  Commercaial = "Commercial",
+  Mixed = "Mixed",
 }
 
 export enum FQl_dynamic_plan_POSITION {
@@ -714,14 +706,11 @@ export interface FQl_dynamic_plan_PuRelPlan {
   planType: FQl_dynamic_plan_PLANTYPE;
   units: number;
   floors: number;
-  sleeps: number;
   planCode: string;
-  unitType: FQl_dynamic_plan_UNITTYPE;
-  bathroom: number;
-  exposure: FQl_dynamic_plan_POSITION;
-  infrastructureArea: [number, number];
-  length: [number, number];
-  width: [number, number];
+  exposure: FQl_dynamic_plan_POSITION[];
+  infrastructureArea: number;
+  length: number;
+  width: number;
   passageWidth: number;
   plateType: FQl_dynamic_plan_PLATETYPE;
   photo: FQl_dynamic_upload_PuFile;
@@ -730,9 +719,6 @@ export interface FQl_dynamic_plan_PuRelPlan {
   _id: string;
   createdAt?: Date;
   updateAt?: Date;
-  state?: string | FQl_dynamic_state_IState;
-  country?: string | FQl_dynamic_country_ICountry;
-  city?: string | FQl_dynamic_city_ICity;
   creator?: string | FQl_dynamic_user_IUser;
 }
 
@@ -741,9 +727,6 @@ export interface FQl_dynamic_plan_PuRelPlan {
  * Embedded city: This is an interface for embedded fields in city collection
  */
 export interface FQl_dynamic_plan_EmPlan {
-  city: FQl_dynamic_city_PuRelCity;
-  state: FQl_dynamic_state_PuRelState;
-  country: FQl_dynamic_country_PuRelCountry;
   creator: FQl_dynamic_user_PuRelUser;
 }
 
@@ -752,9 +735,6 @@ export interface FQl_dynamic_plan_EmPlan {
  * inRelation city: This is an interface for the relations of blogTag that are kept in collection the number of these inRel doc are less than 1000
  */
 export interface FQl_dynamic_plan_InPlan {
-  city: FQl_dynamic_city_ICity;
-  state: FQl_dynamic_state_IState;
-  country: FQl_dynamic_country_ICountry;
   creator: FQl_dynamic_user_IUser;
 }
 
@@ -763,18 +743,12 @@ export interface FQl_dynamic_plan_InPlan {
  * this is the main interface and the collection in mongoDB is based on this collection
  */
 export interface FQl_dynamic_plan_IPlan {
-  city: FQl_dynamic_city_PuRelCity;
-  state: FQl_dynamic_state_PuRelState;
-  country: FQl_dynamic_country_PuRelCountry;
   creator: FQl_dynamic_user_PuRelUser;
   planType: FQl_dynamic_plan_PLANTYPE;
   units: number;
   floors: number;
-  sleeps: number;
   planCode: string;
-  unitType: FQl_dynamic_plan_UNITTYPE;
-  bathroom: number;
-  exposure: FQl_dynamic_plan_POSITION;
+  exposure: FQl_dynamic_plan_POSITION[];
   infrastructureArea: number;
   length: number;
   width: number;

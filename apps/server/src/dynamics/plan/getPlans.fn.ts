@@ -35,9 +35,6 @@ export const getPlansFn: GetPlansFn = async (details, _context) => {
       planType,
       units,
       floors,
-      sleeps,
-      unitType,
-      bathroom,
       exposure,
       infrastructureArea,
       length,
@@ -74,24 +71,6 @@ export const getPlansFn: GetPlansFn = async (details, _context) => {
     (filter = {
       ...filter,
       floors,
-    });
-
-  sleeps &&
-    (filter = {
-      ...filter,
-      sleeps,
-    });
-
-  unitType &&
-    (filter = {
-      ...filter,
-      unitType,
-    });
-
-  bathroom &&
-    (filter = {
-      ...filter,
-      bathroom,
     });
 
   exposure &&

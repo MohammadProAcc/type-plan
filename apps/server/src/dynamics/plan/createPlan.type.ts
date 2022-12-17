@@ -6,7 +6,6 @@ import {
   POSITION,
   PuFile,
   RPlan,
-  UNITTYPE,
 } from "../../schemas/mode.ts";
 import { ObjectID } from "../../utils/deps.ts";
 const v = new FastestValidator();
@@ -26,19 +25,22 @@ export const schema = {
       set: {
         type: "object",
         props: {
-          planType: { type: "enum", values: ["Resindental", "Villa"] },
+          planType: {
+            type: "enum",
+            values: ["Resindental", "Commercial", "Mixed"],
+          },
           units: { type: "number", min: 1, max: 1000 },
           floors: { type: "number", min: 1, max: 1000 },
-          sleeps: { type: "number", min: 1, max: 1000 },
-          bathroom: { type: "number", min: 1, max: 1000 },
           planCode: { type: "string", min: 6, max: 10 },
-          unitType: {
-            type: "enum",
-            values: ["Solo", "Duplex", "Triplex"],
-          },
           exposure: {
-            type: "enum",
-            values: ["Northern", "Southern", "Eastern", "Western"],
+            // type: "enum",
+            // values: ["Northern", "Southern", "Eastern", "Western"],
+            type: "array",
+            items: {
+              type: "enum",
+              values: ["Northern", "Southern", "Eastern", "Western"],
+            },
+            default: [],
           },
           infrastructureArea: { type: "number" },
           length: { type: "number" },
@@ -107,10 +109,7 @@ export interface ICreatePlanDetails {
     planType: PLANTYPE;
     units: number;
     floors: number;
-    sleeps: number;
     planCode: string;
-    unitType: UNITTYPE;
-    bathroom: number;
     exposure: POSITION;
     infrastructureArea: number;
     length: number;

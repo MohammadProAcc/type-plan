@@ -1,11 +1,16 @@
-import styled from 'styled-components';
-import { Color } from 'styles';
-import { Div } from '..';
+import styled from "styled-components";
+import { Color } from "styles";
+import { Div } from "..";
 
 export const LayoutFooterContainer = styled(Div)`
   width: 100%;
-  height: 24rem;
+  height: 2.5rem;
   margin-top: auto;
-
+  line-height: 2.5rem;
+  display: flex;
+  color: #03378a;
+  justify-content: space-around;
+  border-top: 2px solid goldenrod;
+  font-size: 0.9rem;
   background: ${Color.BackgroundSecondary};
 `;

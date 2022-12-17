@@ -1,26 +1,30 @@
-import styled from 'styled-components';
-import { Color, FontSize } from 'styles';
-import { FontFamily } from 'styles/design/FontFamily';
-import { Activable } from 'types';
-import { A } from '.';
+import styled from "styled-components";
+import { Color, FontSize } from "styles";
+import { FontFamily } from "styles/design/FontFamily";
+import { Activable } from "types";
+import { A } from ".";
 
-export const NavbarLink = styled(A) <Activable>`
-  height: 3rem;
+export const NavbarLink = styled(A)<Activable>`
+  height: 2.2rem;
+  min-width: 5.5rem;
+  text-align: center;
   padding: 0 1rem;
   margin-left: 1rem;
   border-radius: 0.75rem;
 
   position: relative;
 
-  font-size: ${FontSize.xl};
-  font-family: ${FontFamily.regular};
+  font-size: 1.1rem;
+  font-family: ${FontFamily.light};
 
   background-color: ${props => props.active && Color.BackgroundSecondary};
+  border: 1px solid goldenrod;
 
   transition: 0.125s ease-in-out;
 
   display: ${props => props.deactive ? "none" : "flex"};
   align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: ${Color.BackgroundSecondary};

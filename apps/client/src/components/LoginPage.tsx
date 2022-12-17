@@ -12,18 +12,22 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import {
   FQl_response_login_LoginReturn,
-  FQl_response_loginRequest_LoginRequestReturn,
+  InitialState,
   login,
   loginRequest,
+  useStore,
 } from "state";
+import { updateUser } from "state/actions/user/updateMe";
 import { Layout } from "./Layout";
 
 export const LoginPage: React.FC = () => {
   const router = useRouter();
 
-  const [phoneNumber, setPhoneNumber] = useState<number>(null);
-  const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState("interPhoneNumber");
+  const {
+    me,
+  } = useStore((store: InitialState) => ({
+    me: store?.me,
+  }));
 
   const [, setCookie] = useCookies([process.env.TOKEN]);
 
@@ -35,9 +39,8 @@ export const LoginPage: React.FC = () => {
   } = useForm();
 
   const onSubmit = async (form) => {
-    setLoading(true);
     // one-interPhoneNumber
-    if (step === "interPhoneNumber") {
+    if (me.data.loginStatus === "exit") {
       const response = await loginRequest({
         set: {
           phone: form.phone,
@@ -48,25 +51,17 @@ export const LoginPage: React.FC = () => {
         },
       });
 
-      if (response.success) {
-        setPhoneNumber(
-          (response.body as FQl_response_loginRequest_LoginRequestReturn).phone,
-        );
-        setStep("interCode");
+      if (response.error === null) {
         reset();
         toast.success("کد تایید برای شما ارسال شد");
       } else {
         toast.error("ارسال کد موفقیت آمیز نبود، لطفا دوباره تلاش کنید");
       }
       // two:InterCode
-    } else if (step === "interCode") {
-      console.log({
-        phone: phoneNumber,
-        code: form.code,
-      });
+    } else if (me.data.loginStatus === "Request") {
       const response = await login({
         set: {
-          phone: phoneNumber,
+          phone: me.data.phone,
           code: form.code,
         },
         get: {
@@ -74,37 +69,54 @@ export const LoginPage: React.FC = () => {
           user: {
             _id: 1,
             name: 1,
+            level: 1,
+            lastName: 1,
+            email: 1,
           },
         },
       });
-      if (response.success) {
-        setCookie(
-          process.env.TOKEN,
-          (response.body as FQl_response_login_LoginReturn).token,
-        );
-        if ((response.body as FQl_response_login_LoginReturn).user.name) {
-          reset();
-          toast.success("خوش آمدید 🌹");
-          router.back();
-        } else {
-          setStep("interInformation");
-          reset();
-        }
+      if (response.error === null) {
+        /* setCookie( */
+        /*   process.env.TOKEN, */
+        /*   (response.data as FQl_response_login_LoginReturn).token, */
+        /* ); */
+        reset();
+        toast.success(`${response.data.name} خوش آمدید 🌹`);
+        if (response.data.name) router.back();
       }
-    } else if (step === "interInformation") {
-      reset();
-      toast.success("خوش آمدید 🌹");
+    } else if (me.data.loginStatus === "Login") {
+      const response = await updateUser(
+        {
+          set: {
+            userId: me.data._id,
+            name: form.name,
+            lastName: form.lastName,
+            email: form.email,
+          },
+          get: {
+            _id: 1,
+            name: 1,
+            level: 1,
+            lastName: 1,
+            email: 1,
+          },
+        },
+        me.data.token,
+        true,
+      );
+      if (response.error === null) {
+        reset();
+        toast.success(`${me.data.name} خوش آمدید 🌹`);
+      }
       router.back();
     }
-
-    setLoading(false);
   };
 
   return (
     <Layout>
       <LoginCard>
         <LoginForm onSubmit={handleSubmit(onSubmit)}>
-          {step === "interPhoneNumber"
+          {me.data.loginStatus === "exit"
             ? (
               <>
                 شماره تلفن همراه:
@@ -126,7 +138,7 @@ export const LoginPage: React.FC = () => {
                 {errors.phone?.message}
               </>
             )
-            : step === "interCode"
+            : me.data.loginStatus === "Request"
             ? (
               <>
                 کد تایید:
@@ -150,15 +162,15 @@ export const LoginPage: React.FC = () => {
                   })}
                 />
                 نام خانوادگی:
-                <Input type="text" {...register("lastname", {})} />
+                <Input type="text" {...register("lastName", {})} />
                 ایمیل:
                 <Input type="email" {...register("email", {})} />
               </>
             )}
           <InputSubmit
-            disabled={loading}
+            disabled={me.loader}
             type="submit"
-            value={loading ? "..." : "دریافت کد ورود"}
+            value={me.loader ? "..." : "دریافت کد ورود"}
           />
         </LoginForm>
       </LoginCard>

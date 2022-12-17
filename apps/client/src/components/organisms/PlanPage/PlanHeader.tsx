@@ -6,7 +6,7 @@ import {
 } from "elements";
 import { useRouter } from "next/router";
 import React from "react";
-import { useStore } from "state";
+import { InitialState, useStore } from "state";
 import { translator } from "tools";
 
 export const PlanHeader: React.FC = () => {
@@ -14,8 +14,8 @@ export const PlanHeader: React.FC = () => {
 
   const {
     plan,
-  } = useStore((state) => ({
-    plan: state?.plan,
+  } = useStore((store: InitialState) => ({
+    plan: store?.plan.data,
   }));
 
   return (

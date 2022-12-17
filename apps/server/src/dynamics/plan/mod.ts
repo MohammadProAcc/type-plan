@@ -3,6 +3,7 @@ import FastestValidator, {
 } from "https://esm.sh/fastest-validator@1";
 import { throwError } from "../../utils/mod.ts";
 import { createPlanFn } from "./createPlan.fn.ts";
+import { deletePlanFn } from "./delete.fn.ts";
 import { getPlanFn } from "./getPlan.fn.ts";
 import { getPlansFn } from "./getPlans.fn.ts";
 
@@ -14,6 +15,7 @@ const check = v.compile({
       "createPlan",
       "getPlan",
       "getPlans",
+      "deletePlan",
     ],
   },
 });
@@ -21,7 +23,8 @@ const check = v.compile({
 export type PlanDoit =
   | "createPlan"
   | "getPlan"
-  | "getPlans";
+  | "getPlans"
+  | "deletePlan";
 
 type planFns = (doit: PlanDoit, details: any, context: any) => any;
 
@@ -32,6 +35,7 @@ export const planFns: planFns = (doit, details, context) => {
       ["createPlan"]: async () => await createPlanFn(details, context),
       ["getPlan"]: async () => await getPlanFn(details, context),
       ["getPlans"]: async () => await getPlansFn(details, context),
+      ["deletePlan"]: async () => await deletePlanFn(details, context),
     }[doit]()
     : throwError((checkDoit as ValidationError[])[0].message!);
 };

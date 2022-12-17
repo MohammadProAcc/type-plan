@@ -38,6 +38,9 @@ export interface FunQLResponseWithDetails {
               updateUserAddress: {
                 details: { response: Partial<FQl_response_user_IUser> };
               };
+              makeAdmin: {
+                details: { response: Partial<FQl_response_user_IUser> };
+              };
             };
           };
           Country: {
@@ -227,6 +230,7 @@ export interface FunQLResponseWithDetails {
               getPlans: {
                 details: { response: Partial<FQl_response_plan_IPlan>[] };
               };
+              deletePlan: { details: { response: { msg: string } } };
             };
           };
         };
@@ -287,6 +291,7 @@ export interface FunQLResponseWithoutDetails {
               createUser: Partial<FQl_response_user_IUser>;
               addUserAddress: Partial<FQl_response_user_IUser>;
               updateUserAddress: Partial<FQl_response_user_IUser>;
+              makeAdmin: Partial<FQl_response_user_IUser>;
             };
           };
           Country: {
@@ -376,6 +381,7 @@ export interface FunQLResponseWithoutDetails {
               createPlan: Partial<FQl_response_country_ICountry>;
               getPlan: Partial<FQl_response_plan_IPlan>;
               getPlans: Partial<FQl_response_plan_IPlan>[];
+              deletePlan: { msg: string };
             };
           };
         };
@@ -873,18 +879,12 @@ export interface FQl_response_contactUs_IContactUs {
  * this is the main interface and the collection in mongoDB is based on this collection
  */
 export interface FQl_response_plan_IPlan {
-  city: FQl_response_city_PuRelCity;
-  state: FQl_response_state_PuRelState;
-  country: FQl_response_country_PuRelCountry;
   creator: FQl_response_user_PuRelUser;
   planType: FQl_response_plan_PLANTYPE;
   units: number;
   floors: number;
-  sleeps: number;
   planCode: string;
-  unitType: FQl_response_plan_UNITTYPE;
-  bathroom: number;
-  exposure: FQl_response_plan_POSITION;
+  exposure: FQl_response_plan_POSITION[];
   infrastructureArea: number;
   length: number;
   width: number;
@@ -900,13 +900,8 @@ export interface FQl_response_plan_IPlan {
 
 export enum FQl_response_plan_PLANTYPE {
   Resindental = "Resindental",
-  Villa = "Villa",
-}
-
-export enum FQl_response_plan_UNITTYPE {
-  Solo = "Solo",
-  Duplex = "Duplex",
-  Triplex = "Triplex",
+  Commercaial = "Commercial",
+  Mixed = "Mixed",
 }
 
 export enum FQl_response_plan_POSITION {

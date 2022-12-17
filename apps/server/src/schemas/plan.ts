@@ -1,18 +1,5 @@
-import { CityInp, ICity, PuRelCity, RCity } from "./city.ts";
 import db from "./db.ts";
-import {
-  CountryInp,
-  countrySelectable,
-  ICountry,
-  IState,
-  PuFile,
-  PuRelCountry,
-  PuRelState,
-  RCountry,
-  RState,
-  StateInp,
-  stateSelectable,
-} from "./mode.ts";
+import { PuFile } from "./mode.ts";
 import {
   IUser,
   PuRelUser,
@@ -32,7 +19,8 @@ import {
 // This is thype of Land for example in Persian word -- Khane Maskoni ya villaei --
 export enum PLANTYPE {
   Resindental = "Resindental",
-  Villa = "Villa",
+  Commercaial = "Commercial",
+  Mixed = "Mixed",
 }
 
 // This is position of Land for example in Persian word -- Khane Shomali ya jonobi --
@@ -49,12 +37,6 @@ export enum PLATETYPE {
   Normal = "Normal", // this for aadi
 }
 
-export enum UNITTYPE {
-  Solo = "Solo",
-  Duplex = "Duplex",
-  Triplex = "Triplex",
-}
-
 /**
  * @interface
  * PURE city: This is an interface for primitives types of city */
@@ -62,11 +44,8 @@ export interface PuPlan extends Base {
   planType: PLANTYPE;
   units: number;
   floors: number;
-  sleeps: number;
   planCode: string; // make it atu num
-  unitType: UNITTYPE;
-  bathroom: number;
-  exposure: POSITION;
+  exposure: POSITION[];
   infrastructureArea: number;
   length: number;
   width: number;
@@ -120,10 +99,7 @@ export interface RPlan {
   planType?: 0 | 1;
   units?: 0 | 1;
   floors?: 0 | 1;
-  sleeps?: 0 | 1;
   planCode: 0 | 1;
-  unitType: 0 | 1;
-  bathroom: 0 | 1;
   exposure?: 0 | 1;
   infrastructureArea?: 0 | 1;
   length?: 0 | 1;
@@ -147,10 +123,7 @@ export const planSelectable: any = (depth: number | PlanInp = 2): any => {
     planType: fieldType,
     units: fieldType,
     floors: fieldType,
-    sleeps: fieldType,
     planCode: fieldType,
-    unitType: fieldType,
-    bathroom: fieldType,
     exposure: fieldType,
     infrastructureArea: fieldType,
     length: fieldType,

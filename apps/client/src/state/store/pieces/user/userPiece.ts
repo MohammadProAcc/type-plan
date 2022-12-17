@@ -1,6 +1,4 @@
-import { FunQLResponse } from "@hemedani/funreq";
 import { typePlanApi } from "state";
-import { FQl_response_loginRequest_LoginRequestReturn } from "state/declarations/response/schema";
 import { FQl_dynamic_user_IUser } from "state/declarations/schema/schema";
 import { SetState } from "zustand";
 import { LoginDetailsPieces, LoginRequestDetailsPieces } from "./types";

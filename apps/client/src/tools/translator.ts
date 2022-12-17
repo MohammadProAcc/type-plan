@@ -6,6 +6,8 @@ const dictionaries = {
     Western: "غربی",
     Resindental: "مسکونی",
     Villa: "ویلایی",
+    Normal: "عادی",
+    Registered: "ثبتی",
   },
 };
 

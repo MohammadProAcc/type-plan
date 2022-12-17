@@ -3,7 +3,6 @@ import {
   CreatePlanPreviewImg,
   CreatePlanPreviewPdfName,
   CreatePlanPreviewsContainer,
-  Em,
 } from "elements";
 import { CreatePlanFormLabel } from "elements";
 import { AdminCreatePlanFormEl } from "elements/Form/Admin";
@@ -14,12 +13,11 @@ import { useCookies } from "react-cookie";
 import { Controller, useForm } from "react-hook-form";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import { createPlan } from "state";
+import { createPlan, InitialState, useStore } from "state";
 import {
   FQl_dynamic_plan_PLANTYPE,
   FQl_dynamic_plan_PLATETYPE,
   FQl_dynamic_plan_POSITION,
-  FQl_dynamic_plan_UNITTYPE,
   FQl_dynamic_upload_IFile,
 } from "state/declarations/schema/schema";
 import { css } from "styled-components";
@@ -33,15 +31,10 @@ const fileInputGroupStyles = css`
   margin-bottom: 1rem;
 `;
 
-const unitTypeOptions = [
-  { label: "تک", value: FQl_dynamic_plan_UNITTYPE.Solo },
-  { label: "دوبلکس", value: FQl_dynamic_plan_UNITTYPE.Duplex },
-  { label: "تری بلکس", value: FQl_dynamic_plan_UNITTYPE.Triplex },
-];
-
 const planTypeOptions = [
   { label: "مسکونی", value: FQl_dynamic_plan_PLANTYPE.Resindental },
-  { label: "ویلایی", value: FQl_dynamic_plan_PLANTYPE.Villa },
+  { label: "تجاری", value: FQl_dynamic_plan_PLANTYPE.Commercaial },
+  { label: "مختلط", value: FQl_dynamic_plan_PLANTYPE.Mixed },
 ];
 
 const exposureOptions = [
@@ -58,10 +51,13 @@ const plateTypeOptions = [
 
 export const AdminCreatePlanForm: React.FC = () => {
   const router = useRouter();
+  const {
+    plan,
+  } = useStore((store: InitialState) => ({
+    plan: store?.plan,
+  }));
 
   const [cookies] = useCookies([process.env.TOKEN]);
-
-  const [loading, setLoading] = useState(false);
 
   const [pdf, setPdf] = useState<FQl_dynamic_upload_IFile>();
   const [photo, setPhoto] = useState<FQl_dynamic_upload_IFile>();
@@ -81,26 +77,43 @@ export const AdminCreatePlanForm: React.FC = () => {
 
   // FIXME: fix the any
   const onSubmit = async (form) => {
-    setLoading(true);
+    if (!form?.planType?.value) {
+      toast.error("لطفا نوع نقشه تعیین کنید");
+      return;
+    }
+    if (!form?.plateType?.value) {
+      toast.error("لطفا نوع پلاک تعیین کنید");
+      return;
+    }
+    if (!form.exposure || form.exposure.length < 1) {
+      toast.error("لطفا موقعیت زمین را تعیین کنید");
+      return;
+    }
+    if (!photo) {
+      toast.error("لطفا عکس نقشه تعیین کنید");
+      return;
+    }
+    if (!pdf) {
+      toast.error("لطفا PDF نقشه تعیین کنید");
+      return;
+    }
 
     const finalForm = {
       ...form,
-      exposure: form?.exposure?.value,
+      exposure: form?.exposure?.map(exp => exp.value),
       planType: form?.planType?.value,
       plateType: form?.plateType?.value,
-      unitType: form?.unitType?.value,
       photo,
       slider,
     };
     const response = await createPlan(finalForm, cookies[process.env.TOKEN]);
-    if (response.success) {
+    if (response.error === null) {
       reset();
       toast.success("طرح اضافه شد");
       router.push("/admin/plans");
     } else {
       toast.error("ساخت طرح موفقیت آمیز نبود");
     }
-    setLoading(false);
   };
 
   return (
@@ -118,6 +131,17 @@ export const AdminCreatePlanForm: React.FC = () => {
       </CreatePlanInputGroup>
 
       <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>نوع پلاک :</CreatePlanFormLabel>
+        <Controller
+          name="plateType"
+          control={control}
+          render={({ field }) => (
+            <Select options={plateTypeOptions} {...field} />
+          )}
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
         <CreatePlanFormLabel>نوع کاربری :</CreatePlanFormLabel>
         <Controller
           name="planType"
@@ -125,6 +149,117 @@ export const AdminCreatePlanForm: React.FC = () => {
           render={({ field }) => (
             <Select
               options={planTypeOptions}
+              {...field}
+            />
+          )}
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>عرض معبر :</CreatePlanFormLabel>
+        <Input
+          {...register("passageWidth", { required: true, valueAsNumber: true })}
+          placeholder="-"
+          type="number"
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>مساحت زمین :</CreatePlanFormLabel>
+        {/* <Input */}
+        {/*   {...register("infrastructureArea.0", { */}
+        {/*     required: true, */}
+        {/*     valueAsNumber: true, */}
+        {/*   })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        {/* <Em>تا</Em> */}
+        {/* <Input */}
+        {/*   {...register("infrastructureArea.1", { */}
+        {/*     required: true, */}
+        {/*     valueAsNumber: true, */}
+        {/*   })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        <Input
+          {...register("infrastructureArea", {
+            required: true,
+            valueAsNumber: true,
+          })}
+          type="number"
+          placeholder="-"
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>عرض زمین:</CreatePlanFormLabel>
+        {/* <Input */}
+        {/*   {...register("width.0", { required: true, valueAsNumber: true })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        {/* <Em>تا</Em> */}
+        {/* <Input */}
+        {/*   {...register("width.1", { required: true, valueAsNumber: true })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        <Input
+          {...register("width", { required: true, valueAsNumber: true })}
+          type="number"
+          placeholder="-"
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>طول زمین:</CreatePlanFormLabel>
+        {/* <Input */}
+        {/*   {...register("length.0", { required: true, valueAsNumber: true })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        {/* <Em>تا</Em> */}
+        {/* <Input */}
+        {/*   {...register("length.1", { required: true, valueAsNumber: true })} */}
+        {/*   type="number" */}
+        {/*   placeholder="-" */}
+        {/* /> */}
+        <Input
+          {...register("length", { required: true, valueAsNumber: true })}
+          type="number"
+          placeholder="-"
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>تعداد واحد :</CreatePlanFormLabel>
+        <Input
+          {...register("units", { required: true, valueAsNumber: true })}
+          type="number"
+          placeholder="-"
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>تعداد طبقات :</CreatePlanFormLabel>
+        <Input
+          {...register("floors", { required: true, valueAsNumber: true })}
+          type="number"
+          placeholder="-"
+        />
+      </CreatePlanInputGroup>
+
+      <CreatePlanInputGroup col>
+        <CreatePlanFormLabel>موقعیت زمین :</CreatePlanFormLabel>
+        <Controller
+          name="exposure"
+          control={control}
+          render={({ field }) => (
+            <Select
+              options={exposureOptions}
+              isMulti={true}
               {...field}
             />
           )}
@@ -183,163 +318,10 @@ export const AdminCreatePlanForm: React.FC = () => {
         </CreatePlanPreviewPdfName>
       </CreatePlanInputGroup>
 
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>تعداد واحد ها :</CreatePlanFormLabel>
-        <Input
-          {...register("units", { required: true, valueAsNumber: true })}
-          type="number"
-          placeholder="-"
-        />
-      </CreatePlanInputGroup>
-
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>نوع واحد :</CreatePlanFormLabel>
-        <Controller
-          name="unitType"
-          control={control}
-          render={({ field }) => (
-            <Select
-              options={unitTypeOptions}
-              {...field}
-            />
-          )}
-        />
-      </CreatePlanInputGroup>
-
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>تعداد طبقات ها :</CreatePlanFormLabel>
-        <Input
-          {...register("floors", { required: true, valueAsNumber: true })}
-          type="number"
-          placeholder="-"
-        />
-      </CreatePlanInputGroup>
-
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>تعداد اتاق ها خواب :</CreatePlanFormLabel>
-        <Input
-          {...register("sleeps", { required: true, valueAsNumber: true })}
-          type="number"
-          placeholder="-"
-        />
-      </CreatePlanInputGroup>
-
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>تعداد حمام :</CreatePlanFormLabel>
-        <Input
-          {...register("bathroom", { required: true, valueAsNumber: true })}
-          type="number"
-          placeholder="-"
-        />
-      </CreatePlanInputGroup>
-
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>موقعیت زمین :</CreatePlanFormLabel>
-        <Controller
-          name="exposure"
-          control={control}
-          render={({ field }) => (
-            <Select
-              options={exposureOptions}
-              {...field}
-            />
-          )}
-        />
-      </CreatePlanInputGroup>
-
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>مساحت زیر بنا :</CreatePlanFormLabel>
-        {/* <Input */}
-        {/*   {...register("infrastructureArea.0", { */}
-        {/*     required: true, */}
-        {/*     valueAsNumber: true, */}
-        {/*   })} */}
-        {/*   type="number" */}
-        {/*   placeholder="-" */}
-        {/* /> */}
-        {/* <Em>تا</Em> */}
-        {/* <Input */}
-        {/*   {...register("infrastructureArea.1", { */}
-        {/*     required: true, */}
-        {/*     valueAsNumber: true, */}
-        {/*   })} */}
-        {/*   type="number" */}
-        {/*   placeholder="-" */}
-        {/* /> */}
-        <Input
-          {...register("infrastructureArea", {
-            required: true,
-            valueAsNumber: true,
-          })}
-          type="number"
-          placeholder="-"
-        />
-      </CreatePlanInputGroup>
-
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>طول :</CreatePlanFormLabel>
-        {/* <Input */}
-        {/*   {...register("length.0", { required: true, valueAsNumber: true })} */}
-        {/*   type="number" */}
-        {/*   placeholder="-" */}
-        {/* /> */}
-        {/* <Em>تا</Em> */}
-        {/* <Input */}
-        {/*   {...register("length.1", { required: true, valueAsNumber: true })} */}
-        {/*   type="number" */}
-        {/*   placeholder="-" */}
-        {/* /> */}
-        <Input
-          {...register("length", { required: true, valueAsNumber: true })}
-          type="number"
-          placeholder="-"
-        />
-      </CreatePlanInputGroup>
-
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>عرض :</CreatePlanFormLabel>
-        {/* <Input */}
-        {/*   {...register("width.0", { required: true, valueAsNumber: true })} */}
-        {/*   type="number" */}
-        {/*   placeholder="-" */}
-        {/* /> */}
-        {/* <Em>تا</Em> */}
-        {/* <Input */}
-        {/*   {...register("width.1", { required: true, valueAsNumber: true })} */}
-        {/*   type="number" */}
-        {/*   placeholder="-" */}
-        {/* /> */}
-        <Input
-          {...register("width", { required: true, valueAsNumber: true })}
-          type="number"
-          placeholder="-"
-        />
-      </CreatePlanInputGroup>
-
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>عرض معبر :</CreatePlanFormLabel>
-        <Input
-          {...register("passageWidth", { required: true, valueAsNumber: true })}
-          placeholder="-"
-          type="number"
-        />
-      </CreatePlanInputGroup>
-
-      <CreatePlanInputGroup col>
-        <CreatePlanFormLabel>نوع پلاک :</CreatePlanFormLabel>
-        <Controller
-          name="plateType"
-          control={control}
-          render={({ field }) => (
-            <Select options={plateTypeOptions} {...field} />
-          )}
-        />
-      </CreatePlanInputGroup>
-
       <CreatePlanInputGroup>
         <Input
           type="submit"
-          value={loading ? "..." : "ارسال"}
+          value={plan.loader ? "..." : "ارسال"}
           // disabled={loading}
         />
       </CreatePlanInputGroup>

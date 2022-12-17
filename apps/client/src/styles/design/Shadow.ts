@@ -1,6 +1,6 @@
 import { Color } from "./Color";
 
 export const Shadow = {
-  primary: `0 0.125rem 1rem ${Color.LineSecondary}`,
-  secondary: `0 0.125rem 1rem ${Color.LineSecondary}`,
-}
+  primary: `0 0.025rem 0.5rem ${Color.LineSecondary}`,
+  secondary: `0 0.025rem 0.5rem ${Color.LineSecondary}`,
+};

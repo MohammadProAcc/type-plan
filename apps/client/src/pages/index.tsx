@@ -15,18 +15,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     },
     get: {
-      _id: 1,
+      planType: 1,
+      units: 1,
+      floors: 1,
       planCode: 1,
-      infrastructureArea: 1,
       exposure: 1,
+      infrastructureArea: 1,
+      length: 1,
+      width: 1,
+      passageWidth: 1,
+      plateType: 1,
       photo: 1,
+      _id: 1,
     },
   });
 
   return {
     props: {
-      initialState: {
-        plans: plans.body,
+      initialZustandState: {
+        plans,
       },
     },
   };

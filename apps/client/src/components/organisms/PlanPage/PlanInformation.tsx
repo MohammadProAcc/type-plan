@@ -5,14 +5,14 @@ import {
   PlanInformationTitle,
   PlanInformationValue,
 } from "elements";
-import { useStore } from "state";
+import { InitialState, useStore } from "state";
 import { translator } from "tools";
 
 export const PlanInformation: React.FC = () => {
   const {
     plan,
-  } = useStore((state: any) => ({
-    plan: state?.plan,
+  } = useStore((state: InitialState) => ({
+    plan: state?.plan.data,
   }));
 
   return (
@@ -41,20 +41,11 @@ export const PlanInformation: React.FC = () => {
         <PlanInformationTitle>تعداد طبقات:</PlanInformationTitle>
         <PlanInformationValue>{plan?.floors}</PlanInformationValue>
       </PlanInformationEl>
-      <PlanInformationEl>
-        <PlanInformationTitle>تعداد خواب:</PlanInformationTitle>
-        <PlanInformationValue>{plan?.sleeps}</PlanInformationValue>
-      </PlanInformationEl>
-
-      <PlanInformationEl>
-        <PlanInformationTitle>تعداد حمام:</PlanInformationTitle>
-        <PlanInformationValue>{plan?.bathroom}</PlanInformationValue>
-      </PlanInformationEl>
 
       <PlanInformationEl>
         <PlanInformationTitle>موقعیت زمین:</PlanInformationTitle>
         <PlanInformationValue>
-          {translator(plan.exposure)}
+          {plan.exposure.map(exp => `${translator(exp)} - `)}
         </PlanInformationValue>
       </PlanInformationEl>
 

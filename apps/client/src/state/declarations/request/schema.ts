@@ -1034,6 +1034,100 @@ export interface FunQLRequest {
           }
          }
         }
+       },
+       makeAdmin: {
+        details: {
+         set: {
+          phone: number,
+          countryCode: string,
+          name: string,
+          lastName: string,
+          gender: 'Male' | 'Female'
+         },
+         get?: {
+          _id?: 0 | 1,
+          name?: 0 | 1,
+          lastName?: 0 | 1,
+          phone?: 0 | 1,
+          gender?: 0 | 1,
+          birthDate?: 0 | 1,
+          postalCode?: 0 | 1,
+          level?: 0 | 1,
+          email?: 0 | 1,
+          isActive?: 0 | 1,
+          creditCardNumber?: 0 | 1,
+          addresses?: {
+           country?: {
+            _id?: 0 | 1,
+            createdAt?: 0 | 1,
+            updateAt?: 0 | 1,
+            name?: 0 | 1,
+            enName?: 0 | 1,
+            countryCode?: 0 | 1,
+            states?: {
+             _id?: 0 | 1,
+             createdAt?: 0 | 1,
+             updateAt?: 0 | 1,
+             name?: 0 | 1,
+             enName?: 0 | 1
+            },
+            cities?: {
+             _id?: 0 | 1,
+             createdAt?: 0 | 1,
+             updateAt?: 0 | 1,
+             name?: 0 | 1,
+             enName?: 0 | 1
+            }
+           },
+           state?: {
+            _id?: 0 | 1,
+            createdAt?: 0 | 1,
+            updateAt?: 0 | 1,
+            name?: 0 | 1,
+            enName?: 0 | 1,
+            country?: {
+             _id?: 0 | 1,
+             createdAt?: 0 | 1,
+             updateAt?: 0 | 1,
+             name?: 0 | 1,
+             enName?: 0 | 1,
+             countryCode?: 0 | 1
+            },
+            cities?: {
+             _id?: 0 | 1,
+             createdAt?: 0 | 1,
+             updateAt?: 0 | 1,
+             name?: 0 | 1,
+             enName?: 0 | 1
+            }
+           },
+           city?: {
+            _id?: 0 | 1,
+            createdAt?: 0 | 1,
+            updateAt?: 0 | 1,
+            name?: 0 | 1,
+            enName?: 0 | 1,
+            state?: {
+             _id?: 0 | 1,
+             createdAt?: 0 | 1,
+             updateAt?: 0 | 1,
+             name?: 0 | 1,
+             enName?: 0 | 1
+            },
+            country?: {
+             _id?: 0 | 1,
+             createdAt?: 0 | 1,
+             updateAt?: 0 | 1,
+             name?: 0 | 1,
+             enName?: 0 | 1,
+             countryCode?: 0 | 1
+            }
+           },
+           addressTxt?: 0 | 1,
+           addressId?: 0 | 1
+          }
+         }
+        }
        }
       }
      },
@@ -4271,17 +4365,14 @@ export interface FunQLRequest {
        createPlan: {
         details: {
          set: {
-          planType: 'Resindental' | 'Villa',
+          planType: 'Resindental' | 'Commercial' | 'Mixed',
           units: number,
           floors: number,
-          sleeps: number,
-          bathroom: number,
           planCode: string,
-          unitType: 'Solo' | 'Duplex' | 'Triplex',
-          exposure: 'Northern' | 'Southern' | 'Eastern' | 'Western',
-          infrastructureArea: any,
-          length: any,
-          width: any,
+          exposure: any[],
+          infrastructureArea: number,
+          length: number,
+          width: number,
           passageWidth: number,
           plateType: 'Registered' | 'Normal',
           photo?: {
@@ -4305,10 +4396,7 @@ export interface FunQLRequest {
           planType?: 0 | 1,
           units?: 0 | 1,
           floors?: 0 | 1,
-          sleeps?: 0 | 1,
           planCode?: 0 | 1,
-          unitType?: 0 | 1,
-          bathroom?: 0 | 1,
           exposure?: 0 | 1,
           infrastructureArea?: 0 | 1,
           length?: 0 | 1,
@@ -4318,50 +4406,6 @@ export interface FunQLRequest {
           photo?: 0 | 1,
           slider?: 0 | 1,
           pdf?: 0 | 1,
-          state?: {
-           _id?: 0 | 1,
-           createdAt?: 0 | 1,
-           updateAt?: 0 | 1,
-           name?: 0 | 1,
-           enName?: 0 | 1,
-           country?: {
-            _id?: 0 | 1,
-            createdAt?: 0 | 1,
-            updateAt?: 0 | 1,
-            name?: 0 | 1,
-            enName?: 0 | 1,
-            countryCode?: 0 | 1
-           },
-           cities?: {
-            _id?: 0 | 1,
-            createdAt?: 0 | 1,
-            updateAt?: 0 | 1,
-            name?: 0 | 1,
-            enName?: 0 | 1
-           }
-          },
-          country?: {
-           _id?: 0 | 1,
-           createdAt?: 0 | 1,
-           updateAt?: 0 | 1,
-           name?: 0 | 1,
-           enName?: 0 | 1,
-           countryCode?: 0 | 1,
-           states?: {
-            _id?: 0 | 1,
-            createdAt?: 0 | 1,
-            updateAt?: 0 | 1,
-            name?: 0 | 1,
-            enName?: 0 | 1
-           },
-           cities?: {
-            _id?: 0 | 1,
-            createdAt?: 0 | 1,
-            updateAt?: 0 | 1,
-            name?: 0 | 1,
-            enName?: 0 | 1
-           }
-          },
           creator?: {
            _id?: 0 | 1,
            name?: 0 | 1,
@@ -4416,10 +4460,7 @@ export interface FunQLRequest {
           planType?: 0 | 1,
           units?: 0 | 1,
           floors?: 0 | 1,
-          sleeps?: 0 | 1,
           planCode?: 0 | 1,
-          unitType?: 0 | 1,
-          bathroom?: 0 | 1,
           exposure?: 0 | 1,
           infrastructureArea?: 0 | 1,
           length?: 0 | 1,
@@ -4429,21 +4470,6 @@ export interface FunQLRequest {
           photo?: 0 | 1,
           slider?: 0 | 1,
           pdf?: 0 | 1,
-          state?: {
-           _id?: 0 | 1,
-           createdAt?: 0 | 1,
-           updateAt?: 0 | 1,
-           name?: 0 | 1,
-           enName?: 0 | 1
-          },
-          country?: {
-           _id?: 0 | 1,
-           createdAt?: 0 | 1,
-           updateAt?: 0 | 1,
-           name?: 0 | 1,
-           enName?: 0 | 1,
-           countryCode?: 0 | 1
-          },
           creator?: {
            _id?: 0 | 1,
            name?: 0 | 1,
@@ -4472,7 +4498,7 @@ export interface FunQLRequest {
            createdAt?: 1 | -1,
            updateAt?: 1 | -1
           },
-          planType?: 'Resindental' | 'Villa',
+          planType?: 'Resindental' | 'Commercial' | 'Mixed',
           units?: number,
           floors?: number,
           sleeps?: number,
@@ -4493,10 +4519,7 @@ export interface FunQLRequest {
           planType?: 0 | 1,
           units?: 0 | 1,
           floors?: 0 | 1,
-          sleeps?: 0 | 1,
           planCode?: 0 | 1,
-          unitType?: 0 | 1,
-          bathroom?: 0 | 1,
           exposure?: 0 | 1,
           infrastructureArea?: 0 | 1,
           length?: 0 | 1,
@@ -4506,50 +4529,6 @@ export interface FunQLRequest {
           photo?: 0 | 1,
           slider?: 0 | 1,
           pdf?: 0 | 1,
-          state?: {
-           _id?: 0 | 1,
-           createdAt?: 0 | 1,
-           updateAt?: 0 | 1,
-           name?: 0 | 1,
-           enName?: 0 | 1,
-           country?: {
-            _id?: 0 | 1,
-            createdAt?: 0 | 1,
-            updateAt?: 0 | 1,
-            name?: 0 | 1,
-            enName?: 0 | 1,
-            countryCode?: 0 | 1
-           },
-           cities?: {
-            _id?: 0 | 1,
-            createdAt?: 0 | 1,
-            updateAt?: 0 | 1,
-            name?: 0 | 1,
-            enName?: 0 | 1
-           }
-          },
-          country?: {
-           _id?: 0 | 1,
-           createdAt?: 0 | 1,
-           updateAt?: 0 | 1,
-           name?: 0 | 1,
-           enName?: 0 | 1,
-           countryCode?: 0 | 1,
-           states?: {
-            _id?: 0 | 1,
-            createdAt?: 0 | 1,
-            updateAt?: 0 | 1,
-            name?: 0 | 1,
-            enName?: 0 | 1
-           },
-           cities?: {
-            _id?: 0 | 1,
-            createdAt?: 0 | 1,
-            updateAt?: 0 | 1,
-            name?: 0 | 1,
-            enName?: 0 | 1
-           }
-          },
           creator?: {
            _id?: 0 | 1,
            name?: 0 | 1,
@@ -4589,6 +4568,16 @@ export interface FunQLRequest {
             addressId?: 0 | 1
            }
           }
+         }
+        }
+       },
+       deletePlan: {
+        details: {
+         set: {
+          _id: any
+         },
+         get?: {
+          msg: string
          }
         }
        }

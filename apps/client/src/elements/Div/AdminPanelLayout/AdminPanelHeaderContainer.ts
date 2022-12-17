@@ -1,6 +1,6 @@
-import { Div } from "../Div";
-import styled from 'styled-components'
+import styled from "styled-components";
 import { Color, Device, Radius, Shadow } from "styles";
+import { Div } from "../Div";
 
 export const AdminPanelHeaderContainer = styled(Div)`
   width: 100%;
@@ -8,9 +8,10 @@ export const AdminPanelHeaderContainer = styled(Div)`
 
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 
   @media (${Device.desktop}) {
     border-radius: ${Radius.l1};
     box-shadow: ${Shadow.secondary};
   }
-`
+`;

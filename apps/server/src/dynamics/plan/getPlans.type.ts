@@ -6,7 +6,6 @@ import {
   POSITION,
   PuPlan,
   RPlan,
-  UNITTYPE,
 } from "../../schemas/mode.ts";
 
 import {
@@ -28,7 +27,7 @@ export const schema = {
           ),
           planType: {
             type: "enum",
-            values: ["Resindental", "Villa"],
+            values: ["Resindental", "Commercial", "Mixed"],
             optional: true,
           },
           units: { type: "number", min: 1, max: 1000, optional: true },
@@ -81,10 +80,7 @@ export interface GetPlansDetails {
     planType: PLANTYPE;
     units: number;
     floors: number;
-    sleeps: number;
     planCode: string;
-    unitType: UNITTYPE;
-    bathroom: number;
     exposure: POSITION;
     infrastructureArea: [number, number];
     length: [number, number];
