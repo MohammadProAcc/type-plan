@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const plans = await getPlans({
       set: {
         pagination: {
-          limit: 12,
+          limit: 60,
           page: +(params.page || 1),
         },
         ...params,
