@@ -136,9 +136,8 @@ export const PlanCard: React.FC<PlanCardProps> = ({ plan }) => {
           <PlanCardField>
             <PlanCardFieldName>موقعیت زمین</PlanCardFieldName>
             <PlanCardFieldValue>
-              {isArray(plan.exposure)
-                ? plan.exposure.map((exp) => (`${translator(exp)} - `))
-                : translator(plan.exposure)}
+              {isArray(plan.exposure) &&
+                plan.exposure.map((exp) => (`${translator(exp)} - `))}
             </PlanCardFieldValue>
           </PlanCardField>
         </PlanCardInformationContainer>
