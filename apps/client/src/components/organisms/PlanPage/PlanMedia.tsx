@@ -15,7 +15,7 @@ export const PlanMedia: React.FC = () => {
     plan: state?.plan.data,
   }));
 
-  const [medias, setMedias] = useState([plan?.photo, ...(plan?.slider ?? [])]);
+  const [medias, setMedias] = useState([]);
   const [activeMedia, setActiveMedia] = useState(medias[0]);
   const [fullScreenMedia, setFullScreenMedia] = useState<
     FQl_dynamic_upload_IFile
@@ -32,6 +32,10 @@ export const PlanMedia: React.FC = () => {
       }
       return clone;
     });
+
+  useEffect(() => {
+    setMedias(() => [plan?.photo, ...(plan?.slider ?? [])]);
+  }, [plan]);
 
   useEffect(() => {
     setActiveMedia(medias[0]);

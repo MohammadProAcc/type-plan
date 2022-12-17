@@ -56,48 +56,6 @@ export const PlansPageSidebar: React.FC = () => {
       </PlansPageSidebarHeader>
 
       <Collapsible
-        title="نوع کاربری"
-        AdditionalComponent={
-          <ClearButton
-            onClick={() => clearQuery("planType")}
-            active={checkFilterActivity("planType")}
-            disabled={!checkFilterActivity("planType")}
-          >
-            <ClearSvg Color={Color.Error} />
-          </ClearButton>
-        }
-      >
-        <MultiSelection
-          initial={router.query.planType &&
-            planTypeOptions
-              ?.find((o) => o.value === (router.query.planType as string))}
-          options={planTypeOptions}
-          callback={(filter) => applyQuery("planType", filter.value)}
-        />
-      </Collapsible>
-
-      <Collapsible
-        title="موقعیت زمین"
-        AdditionalComponent={
-          <ClearButton
-            onClick={() => clearQuery("exposure")}
-            active={checkFilterActivity("exposure")}
-            disabled={!checkFilterActivity("exposure")}
-          >
-            <ClearSvg Color={Color.Error} />
-          </ClearButton>
-        }
-      >
-        <MultiSelection
-          initial={router.query.exposure &&
-            exposureOptions
-              ?.find((o) => o.value === (router.query.exposure as string))}
-          options={exposureOptions}
-          callback={(filter) => applyQuery("exposure", filter.value)}
-        />
-      </Collapsible>
-
-      <Collapsible
         title="نوع پلاک"
         AdditionalComponent={
           <ClearButton
@@ -119,44 +77,24 @@ export const PlansPageSidebar: React.FC = () => {
       </Collapsible>
 
       <Collapsible
-        title="مشخصات"
+        title="نوع کاربری"
         AdditionalComponent={
           <ClearButton
-            onClick={() => clearQuery("units")}
-            active={checkFilterActivity("units")}
-            disabled={!checkFilterActivity("units")}
+            onClick={() => clearQuery("planType")}
+            active={checkFilterActivity("planType")}
+            disabled={!checkFilterActivity("planType")}
           >
             <ClearSvg Color={Color.Error} />
           </ClearButton>
         }
       >
-        <PlansPageSidebarInputGroup col>
-          <PlansPageSidebarLabel>تعداد واحد :</PlansPageSidebarLabel>
-          <PlansPageSidebarInput
-            onChange={(e) => applyQuery("units", e.target.value)}
-          />
-        </PlansPageSidebarInputGroup>
-
-        <PlansPageSidebarInputGroup col>
-          <PlansPageSidebarLabel>تعداد طبقات :</PlansPageSidebarLabel>
-          <PlansPageSidebarInput
-            onChange={(e) => applyQuery("floors", e.target.value)}
-          />
-        </PlansPageSidebarInputGroup>
-
-        <PlansPageSidebarInputGroup col>
-          <PlansPageSidebarLabel>تعداد خواب :</PlansPageSidebarLabel>
-          <PlansPageSidebarInput
-            onChange={(e) => applyQuery("sleeps", e.target.value)}
-          />
-        </PlansPageSidebarInputGroup>
-
-        <PlansPageSidebarInputGroup col>
-          <PlansPageSidebarLabel>تعداد حمام :</PlansPageSidebarLabel>
-          <PlansPageSidebarInput
-            onChange={(e) => applyQuery("bathroom", e.target.value)}
-          />
-        </PlansPageSidebarInputGroup>
+        <MultiSelection
+          initial={router.query.planType &&
+            planTypeOptions
+              ?.find((o) => o.value === (router.query.planType as string))}
+          options={planTypeOptions}
+          callback={(filter) => applyQuery("planType", filter.value)}
+        />
       </Collapsible>
 
       <Collapsible
@@ -185,7 +123,7 @@ export const PlansPageSidebar: React.FC = () => {
             callback={() => clearQuery("infrastructureArea")}
             active={checkFilterActivity("infrastructureArea")}
           >
-            مساحت زیربنا
+            مساحت زمین
           </CollapsibleTitle>
         }
       >
@@ -208,7 +146,34 @@ export const PlansPageSidebar: React.FC = () => {
       </Collapsible>
 
       <Collapsible
-        title="طول"
+        title="عرض زمین"
+        AdditionalComponent={
+          <ClearButton
+            onClick={() => clearQuery("width")}
+            active={checkFilterActivity("width")}
+            disabled={!checkFilterActivity("width")}
+          >
+            <ClearSvg Color={Color.Error} />
+          </ClearButton>
+        }
+      >
+        <PlansPageSidebarInputGroup col>
+          <PlansPageSidebarLabel>از (متر)</PlansPageSidebarLabel>
+          <PlansPageSidebarInput
+            onChange={(e) => applyQuery("width[0]", e.target.value)}
+          />
+        </PlansPageSidebarInputGroup>
+
+        <PlansPageSidebarInputGroup col>
+          <PlansPageSidebarLabel>تا (متر)</PlansPageSidebarLabel>
+          <PlansPageSidebarInput
+            onChange={(e) => applyQuery("width[1]", e.target.value)}
+          />
+        </PlansPageSidebarInputGroup>
+      </Collapsible>
+
+      <Collapsible
+        title="طول زمین "
         AdditionalComponent={
           <ClearButton
             onClick={() => clearQuery("length")}
@@ -235,30 +200,51 @@ export const PlansPageSidebar: React.FC = () => {
       </Collapsible>
 
       <Collapsible
-        title="عرض"
+        title="مشخصات"
         AdditionalComponent={
           <ClearButton
-            onClick={() => clearQuery("width")}
-            active={checkFilterActivity("width")}
-            disabled={!checkFilterActivity("width")}
+            onClick={() => clearQuery("units")}
+            active={checkFilterActivity("units")}
+            disabled={!checkFilterActivity("units")}
           >
             <ClearSvg Color={Color.Error} />
           </ClearButton>
         }
       >
         <PlansPageSidebarInputGroup col>
-          <PlansPageSidebarLabel>از (متر)</PlansPageSidebarLabel>
+          <PlansPageSidebarLabel>تعداد واحد :</PlansPageSidebarLabel>
           <PlansPageSidebarInput
-            onChange={(e) => applyQuery("width[0]", e.target.value)}
+            onChange={(e) => applyQuery("units", e.target.value)}
           />
         </PlansPageSidebarInputGroup>
 
         <PlansPageSidebarInputGroup col>
-          <PlansPageSidebarLabel>تا (متر)</PlansPageSidebarLabel>
+          <PlansPageSidebarLabel>تعداد طبقات :</PlansPageSidebarLabel>
           <PlansPageSidebarInput
-            onChange={(e) => applyQuery("width[1]", e.target.value)}
+            onChange={(e) => applyQuery("floors", e.target.value)}
           />
         </PlansPageSidebarInputGroup>
+      </Collapsible>
+
+      <Collapsible
+        title="موقعیت زمین"
+        AdditionalComponent={
+          <ClearButton
+            onClick={() => clearQuery("exposure")}
+            active={checkFilterActivity("exposure")}
+            disabled={!checkFilterActivity("exposure")}
+          >
+            <ClearSvg Color={Color.Error} />
+          </ClearButton>
+        }
+      >
+        <MultiSelection
+          initial={router.query.exposure &&
+            exposureOptions
+              ?.find((o) => o.value === (router.query.exposure as string))}
+          options={exposureOptions}
+          callback={(filter) => applyQuery("exposure", filter.value)}
+        />
       </Collapsible>
     </PlansPageSidebarContainer>
   );
