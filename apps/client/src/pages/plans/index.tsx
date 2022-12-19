@@ -36,6 +36,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const query: TypePlanSet = {};
 
   (params?.units?.length > 0) && (query.units = +(params.units));
+  (params?.passageWidth?.length > 0) &&
+    (query.passageWidth = +(params.passageWidth));
   (params?.floors?.length > 0) && (query.floors = +(params.floors));
   (params?.exposure?.length > 0) &&
     (query.exposure = params.exposure as Exposure);

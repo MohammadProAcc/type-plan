@@ -135,7 +135,7 @@ export const getPlansFn: GetPlansFn = async (details, _context) => {
   passageWidth &&
     (filter = {
       ...filter,
-      passageWidth,
+      passageWidth: { $gte: passageWidth },
     });
 
   plateType &&
