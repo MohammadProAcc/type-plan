@@ -25,6 +25,7 @@ export const MultiSelection: React.FC<MultiSelectionProps> = ({
     <MultiSelectionContainer>
       {options?.map(option => (
         <MultiSelectionOption
+          key={Math.random()}
           active={_.isEqual(option, active)}
           onClick={() => setActive(option)}
         >

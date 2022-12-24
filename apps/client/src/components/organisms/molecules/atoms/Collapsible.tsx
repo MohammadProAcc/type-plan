@@ -36,10 +36,9 @@ export const Collapsible: React.FC<CollapsibleProps> = (
     >
       <Title
         ref={titleRef}
+        onClick={() => setActive(_curr => !_curr)}
       >
-        <TitleInnerContainer
-          onClick={() => setActive(_curr => !_curr)}
-        >
+        <TitleInnerContainer>
           {title}
           <TriangleSvg
             direction={active ? "up" : "down"}
@@ -54,7 +53,9 @@ export const Collapsible: React.FC<CollapsibleProps> = (
         active={active}
         height={`${active ? height : 0}px`}
       >
-        {children}
+        <PaddingDiv>
+          {children}
+        </PaddingDiv>
       </CollapsibleDiv>
     </Component>
   );
@@ -68,11 +69,17 @@ export interface CollapsibleProps extends Stylable {
 
 const Component = styled(Card)<Stylable>`
   ${props => props.Style}
+  padding: 0;
+`;
+
+const PaddingDiv = styled.div`
+  padding: 0.5rem 1.2rem;
 `;
 
 const Title = styled.div`
   position: relative;
   z-index: ${Zindex.collapsibleTitle};
+  padding: 1rem;
   
   width: 100%;
   display: flex;
@@ -88,7 +95,6 @@ interface CollapsibleDivProps extends Activable {
 
 const CollapsibleDiv = styled.div<CollapsibleDivProps>`
   height: ${props => props.height};
-
   overflow: hidden;
 `;
 
