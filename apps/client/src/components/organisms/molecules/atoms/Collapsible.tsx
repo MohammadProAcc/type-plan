@@ -9,7 +9,7 @@ export const Collapsible: React.FC<CollapsibleProps> = (
   { children, title, Style, AdditionalComponent },
 ) => {
   const [height, setHeight] = useState(0);
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
 
   const titleRef = useRef<HTMLDivElement>(null);
 
