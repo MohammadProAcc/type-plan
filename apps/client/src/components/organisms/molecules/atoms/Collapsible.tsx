@@ -1,7 +1,7 @@
 import { TriangleSvg } from "components";
 import { Card } from "elements";
-import { useEffect, useRef, useState } from "react";
-import styled, { css } from "styled-components";
+import { useLayoutEffect, useRef, useState } from "react";
+import styled from "styled-components";
 import { FontFamily, Zindex } from "styles";
 import { Activable, Stylable } from "types";
 
@@ -15,19 +15,21 @@ export const Collapsible: React.FC<CollapsibleProps> = (
 
   const collapseRef = useRef<any>(null);
 
-  useEffect(() => {
-    const children = (collapseRef?.current as HTMLElement)?.children;
-    for (let i = 0; i < children?.length; i++) {
-      setHeight(_curr =>
-        _curr +
-        children[i]?.clientHeight +
-        parseInt(window.getComputedStyle(children[i])?.marginBottom) +
-        parseInt(window.getComputedStyle(children[i])?.marginTop) +
-        parseInt(window.getComputedStyle(children[i])?.paddingTop) +
-        parseInt(window.getComputedStyle(children[i])?.paddingBottom) +
-        8
-      );
-    }
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      const children = (collapseRef?.current as HTMLElement)?.children;
+      for (let i = 0; i < children?.length; i++) {
+        setHeight(_curr =>
+          _curr +
+          children[i]?.clientHeight +
+          parseInt(window.getComputedStyle(children[i])?.marginBottom) +
+          parseInt(window.getComputedStyle(children[i])?.marginTop) +
+          parseInt(window.getComputedStyle(children[i])?.paddingTop) +
+          parseInt(window.getComputedStyle(children[i])?.paddingBottom) +
+          8
+        );
+      }
+    }, 0);
   }, []);
 
   return (
