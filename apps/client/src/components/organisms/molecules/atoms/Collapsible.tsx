@@ -1,36 +1,16 @@
 import { TriangleSvg } from "components";
 import { Card } from "elements";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { FontFamily, Zindex } from "styles";
-import { Activable, Stylable } from "types";
+import { Stylable } from "types";
 
 export const Collapsible: React.FC<CollapsibleProps> = (
   { children, title, Style, AdditionalComponent },
 ) => {
-  const [height, setHeight] = useState(0);
   const [active, setActive] = useState(true);
 
   const titleRef = useRef<HTMLDivElement>(null);
-
-  const collapseRef = useRef<any>(null);
-
-  useLayoutEffect(() => {
-    setTimeout(() => {
-      const children = (collapseRef?.current as HTMLElement)?.children;
-      for (let i = 0; i < children?.length; i++) {
-        setHeight(_curr =>
-          _curr +
-          children[i]?.clientHeight +
-          parseInt(window.getComputedStyle(children[i])?.marginBottom) +
-          parseInt(window.getComputedStyle(children[i])?.marginTop) +
-          parseInt(window.getComputedStyle(children[i])?.paddingTop) +
-          parseInt(window.getComputedStyle(children[i])?.paddingBottom) +
-          8
-        );
-      }
-    }, 0);
-  }, []);
 
   return (
     <Component
@@ -50,15 +30,11 @@ export const Collapsible: React.FC<CollapsibleProps> = (
         {AdditionalComponent && AdditionalComponent}
       </Title>
 
-      <CollapsibleDiv
-        ref={collapseRef}
-        active={active}
-        height={`${active ? height : 0}px`}
-      >
+      {active && (
         <PaddingDiv>
           {children}
         </PaddingDiv>
-      </CollapsibleDiv>
+      )}
     </Component>
   );
 };
@@ -75,7 +51,7 @@ const Component = styled(Card)<Stylable>`
 `;
 
 const PaddingDiv = styled.div`
-  padding: 0.5rem 1.2rem;
+  padding: 0.2rem 1.2rem 1.5rem 1.2rem;
 `;
 
 const Title = styled.div`
@@ -89,15 +65,6 @@ const Title = styled.div`
   &:hover {
     cursor: pointer;
   }
-`;
-
-interface CollapsibleDivProps extends Activable {
-  height: string;
-}
-
-const CollapsibleDiv = styled.div<CollapsibleDivProps>`
-  height: ${props => props.height};
-  overflow: hidden;
 `;
 
 const TitleInnerContainer = styled.div`
