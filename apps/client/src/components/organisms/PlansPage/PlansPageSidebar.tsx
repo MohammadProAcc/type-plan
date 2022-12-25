@@ -55,18 +55,14 @@ export const PlansPageSidebar: React.FC = () => {
         )}
       </PlansPageSidebarHeader>
 
-      <Collapsible
-        title="نوع پلاک"
-        AdditionalComponent={
-          <ClearButton
-            onClick={() => clearQuery("plateType")}
-            active={checkFilterActivity("plateType")}
-            disabled={!checkFilterActivity("plateType")}
-          >
-            <ClearSvg Color={Color.Error} />
-          </ClearButton>
-        }
-      >
+      <Collapsible title="نوع پلاک">
+        <ClearButton
+          onClick={() => clearQuery("plateType")}
+          active={checkFilterActivity("plateType")}
+          disabled={!checkFilterActivity("plateType")}
+        >
+          <ClearSvg Color={Color.Error} />
+        </ClearButton>
         <MultiSelection
           initial={router.query.plateType &&
             plateTypeOptions
@@ -76,18 +72,14 @@ export const PlansPageSidebar: React.FC = () => {
         />
       </Collapsible>
 
-      <Collapsible
-        title="نوع کاربری"
-        AdditionalComponent={
-          <ClearButton
-            onClick={() => clearQuery("planType")}
-            active={checkFilterActivity("planType")}
-            disabled={!checkFilterActivity("planType")}
-          >
-            <ClearSvg Color={Color.Error} />
-          </ClearButton>
-        }
-      >
+      <Collapsible title="نوع کاربری">
+        <ClearButton
+          onClick={() => clearQuery("planType")}
+          active={checkFilterActivity("planType")}
+          disabled={!checkFilterActivity("planType")}
+        >
+          <ClearSvg Color={Color.Error} />
+        </ClearButton>
         <MultiSelection
           initial={router.query.planType &&
             planTypeOptions
@@ -97,18 +89,14 @@ export const PlansPageSidebar: React.FC = () => {
         />
       </Collapsible>
 
-      <Collapsible
-        title="عرض معبر"
-        AdditionalComponent={
-          <ClearButton
-            onClick={() => clearQuery("passageWidth")}
-            active={checkFilterActivity("passageWidth")}
-            disabled={!checkFilterActivity("passageWidth")}
-          >
-            <ClearSvg Color={Color.Error} />
-          </ClearButton>
-        }
-      >
+      <Collapsible title="عرض معبر">
+        <ClearButton
+          onClick={() => clearQuery("passageWidth")}
+          active={checkFilterActivity("passageWidth")}
+          disabled={!checkFilterActivity("passageWidth")}
+        >
+          <ClearSvg Color={Color.Error} />
+        </ClearButton>
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>(متر)</PlansPageSidebarLabel>
           <PlansPageSidebarInput
@@ -145,18 +133,14 @@ export const PlansPageSidebar: React.FC = () => {
         </PlansPageSidebarInputGroup>
       </Collapsible>
 
-      <Collapsible
-        title="عرض زمین"
-        AdditionalComponent={
-          <ClearButton
-            onClick={() => clearQuery("width")}
-            active={checkFilterActivity("width")}
-            disabled={!checkFilterActivity("width")}
-          >
-            <ClearSvg Color={Color.Error} />
-          </ClearButton>
-        }
-      >
+      <Collapsible title="عرض زمین">
+        <ClearButton
+          onClick={() => clearQuery("width")}
+          active={checkFilterActivity("width")}
+          disabled={!checkFilterActivity("width")}
+        >
+          <ClearSvg Color={Color.Error} />
+        </ClearButton>
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>از (متر)</PlansPageSidebarLabel>
           <PlansPageSidebarInput
@@ -172,18 +156,14 @@ export const PlansPageSidebar: React.FC = () => {
         </PlansPageSidebarInputGroup>
       </Collapsible>
 
-      <Collapsible
-        title="طول زمین "
-        AdditionalComponent={
-          <ClearButton
-            onClick={() => clearQuery("length")}
-            active={checkFilterActivity("length")}
-            disabled={!checkFilterActivity("length")}
-          >
-            <ClearSvg Color={Color.Error} />
-          </ClearButton>
-        }
-      >
+      <Collapsible title="طول زمین ">
+        <ClearButton
+          onClick={() => clearQuery("length")}
+          active={checkFilterActivity("length")}
+          disabled={!checkFilterActivity("length")}
+        >
+          <ClearSvg Color={Color.Error} />
+        </ClearButton>
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>از (متر)</PlansPageSidebarLabel>
           <PlansPageSidebarInput
@@ -199,18 +179,14 @@ export const PlansPageSidebar: React.FC = () => {
         </PlansPageSidebarInputGroup>
       </Collapsible>
 
-      <Collapsible
-        title="مشخصات"
-        AdditionalComponent={
-          <ClearButton
-            onClick={() => clearQuery("units")}
-            active={checkFilterActivity("units")}
-            disabled={!checkFilterActivity("units")}
-          >
-            <ClearSvg Color={Color.Error} />
-          </ClearButton>
-        }
-      >
+      <Collapsible title="مشخصات">
+        <ClearButton
+          onClick={() => clearQuery("units")}
+          active={checkFilterActivity("units")}
+          disabled={!checkFilterActivity("units")}
+        >
+          <ClearSvg Color={Color.Error} />
+        </ClearButton>
         <PlansPageSidebarInputGroup col>
           <PlansPageSidebarLabel>تعداد واحد :</PlansPageSidebarLabel>
           <PlansPageSidebarInput
@@ -226,18 +202,14 @@ export const PlansPageSidebar: React.FC = () => {
         </PlansPageSidebarInputGroup>
       </Collapsible>
 
-      <Collapsible
-        title="موقعیت زمین"
-        AdditionalComponent={
-          <ClearButton
-            onClick={() => clearQuery("exposure")}
-            active={checkFilterActivity("exposure")}
-            disabled={!checkFilterActivity("exposure")}
-          >
-            <ClearSvg Color={Color.Error} />
-          </ClearButton>
-        }
-      >
+      <Collapsible title="موقعیت زمین">
+        <ClearButton
+          onClick={() => clearQuery("exposure")}
+          active={checkFilterActivity("exposure")}
+          disabled={!checkFilterActivity("exposure")}
+        >
+          <ClearSvg Color={Color.Error} />
+        </ClearButton>
         <MultiSelection
           initial={router.query.exposure &&
             exposureOptions

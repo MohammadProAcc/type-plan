@@ -1,23 +1,20 @@
 import { TriangleSvg } from "components";
 import { Card } from "elements";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { FontFamily, Zindex } from "styles";
 import { Stylable } from "types";
 
 export const Collapsible: React.FC<CollapsibleProps> = (
-  { children, title, Style, AdditionalComponent },
+  { children, title, Style },
 ) => {
   const [active, setActive] = useState(true);
-
-  const titleRef = useRef<HTMLDivElement>(null);
 
   return (
     <Component
       Style={Style}
     >
       <Title
-        ref={titleRef}
         onClick={() => setActive(_curr => !_curr)}
       >
         <TitleInnerContainer>
@@ -27,7 +24,6 @@ export const Collapsible: React.FC<CollapsibleProps> = (
             flip
           />
         </TitleInnerContainer>
-        {AdditionalComponent && AdditionalComponent}
       </Title>
 
       {active && (
@@ -41,13 +37,12 @@ export const Collapsible: React.FC<CollapsibleProps> = (
 
 export interface CollapsibleProps extends Stylable {
   title: any;
-  additionalCallback?: any;
-  AdditionalComponent?: any;
 }
 
 const Component = styled(Card)<Stylable>`
   ${props => props.Style}
   padding: 0;
+  position: relative;
 `;
 
 const PaddingDiv = styled.div`

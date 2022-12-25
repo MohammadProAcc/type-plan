@@ -9,8 +9,8 @@ export const ClearButton = styled(Button).attrs({
   height: 1.5rem;
 
   position: absolute;
-  top: 50%;
-  left: 1rem;
+  top: 1.8rem;
+  left: 1.8rem;
   transform: translateY(-50%);
   z-index: ${Zindex.clearButton};
 
