@@ -1,10 +1,10 @@
 import { useLayoutEffect } from "react";
 import { Plan, planInitials, User } from "state";
-import { userInitials } from "state/actions";
+import { PlanFilters, planFiltersInitial, userInitials } from "state/actions";
 import create, { StoreApi, UseBoundStore } from "zustand";
 import createContext from "zustand/context";
 
-export interface InitialState extends Plan, User {}
+export interface InitialState extends Plan, User, PlanFilters {}
 
 export let store: UseBoundStore<StoreApi<InitialState>> | undefined;
 
@@ -19,6 +19,7 @@ export const initializeStore = (preloadedState = {}) => {
   return create<InitialState>((set, get) => ({
     ...planInitials,
     ...userInitials,
+    ...planFiltersInitial,
     ...preloadedState,
   }));
 };

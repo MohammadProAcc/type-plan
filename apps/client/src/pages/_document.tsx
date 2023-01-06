@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import { ReactElement } from 'react';
-import { ServerStyleSheet } from 'styled-components';
+import Document, { Head, Html, Main, NextScript } from "next/document";
+import { ReactElement } from "react";
+import { ServerStyleSheet } from "styled-components";
 
 export default class CustomDocument extends Document<{
   styleTags: ReactElement[];
@@ -10,7 +10,7 @@ export default class CustomDocument extends Document<{
     const sheet = new ServerStyleSheet();
 
     const page = renderPage(
-      (App) => (props) => sheet.collectStyles(<App {...props} />)
+      (App) => (props) => sheet.collectStyles(<App {...props} />),
     );
 
     const styleTags = sheet.getStyleElement();

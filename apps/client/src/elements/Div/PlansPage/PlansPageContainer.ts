@@ -1,6 +1,6 @@
-import { Div } from "../Div";
-import styled from 'styled-components'
+import styled from "styled-components";
 import { Device } from "styles";
+import { Div } from "../Div";
 
 export const PlansPageContainer = styled(Div)`
   width: 100%;
@@ -8,7 +8,7 @@ export const PlansPageContainer = styled(Div)`
   display: flex;
   flex-direction: column;
 
-  @media (${Device.desktop}) {
+  @media (${Device.laptop}) {
     padding: 2rem 0;
     
     flex-direction: row;
