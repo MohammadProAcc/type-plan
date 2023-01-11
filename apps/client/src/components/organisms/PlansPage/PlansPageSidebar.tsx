@@ -55,16 +55,16 @@ export const PlansPageSidebar: React.FC<PlanPageProps> = (
     +(newPlanFilters.units) > 0 && (query.units = newPlanFilters.units);
     +(newPlanFilters.floors) > 0 && (query.floors = newPlanFilters.floors);
 
-    +(newPlanFilters.infrastructureArea[0]) > 15 &&
-      +(newPlanFilters.infrastructureArea[1]) > 20 &&
+    +(newPlanFilters.infrastructureArea[0]) >= 5 &&
+      +(newPlanFilters.infrastructureArea[1]) >= 15 &&
       (query.infrastructureArea = newPlanFilters.infrastructureArea);
 
-    +(newPlanFilters.width[0]) > 15 &&
-      +(newPlanFilters.width[1]) > 20 &&
+    +(newPlanFilters.width[0]) > 3 &&
+      +(newPlanFilters.width[1]) > 6 &&
       (query.width = newPlanFilters.width);
 
-    +(newPlanFilters.length[0]) > 15 &&
-      +(newPlanFilters.length[1]) > 20 &&
+    +(newPlanFilters.length[0]) > 3 &&
+      +(newPlanFilters.length[1]) > 6 &&
       (query.length = planFilters.length);
 
     newPlanFilters.exposure && (query.exposure = newPlanFilters.exposure);
@@ -236,12 +236,12 @@ export const PlansPageSidebar: React.FC<PlanPageProps> = (
           <ApplyBtn
             onClick={() => {
               (
-                  +(planFilters.infrastructureArea[0]) > 5 &&
-                  +(planFilters.infrastructureArea[1]) > 10
+                  +(planFilters.infrastructureArea[0]) >= 5 &&
+                  +(planFilters.infrastructureArea[1]) >= 10
                 )
                 ? applyQuery()
                 : toast.warn(
-                  "لطفا برای مساحت زمین عددری از بزرگتر از ۱۵ تا بزرگتر از ۲۰ وارد کنید",
+                  "لطفا برای مساحت زمین عددری از بزرگتر از 5 تا بزرگتر از 10 وارد کنید",
                 );
             }}
           >
@@ -293,12 +293,12 @@ export const PlansPageSidebar: React.FC<PlanPageProps> = (
           <ApplyBtn
             onClick={() => {
               (
-                  +(planFilters.width[0]) > 3 &&
-                  +(planFilters.width[1]) > 6
+                  +(planFilters.width[0]) >= 3 &&
+                  +(planFilters.width[1]) >= 6
                 )
                 ? applyQuery()
                 : toast.warn(
-                  "لطفا برای مساحت زمین عددری از بزرگتر از ۱۵ تا بزرگتر از ۲۰ وارد کنید",
+                  "لطفا برای مساحت زمین عددری از بزرگتر از 3 تا بزرگتر از 6 وارد کنید",
                 );
             }}
           >
@@ -355,7 +355,7 @@ export const PlansPageSidebar: React.FC<PlanPageProps> = (
                 )
                 ? applyQuery()
                 : toast.warn(
-                  "لطفا برای مساحت زمین عددری از بزرگتر از ۱۵ تا بزرگتر از ۲۰ وارد کنید",
+                  "لطفا برای مساحت زمین عددری از بزرگتر از 3 تا بزرگتر از 6 وارد کنید",
                 );
             }}
           >
