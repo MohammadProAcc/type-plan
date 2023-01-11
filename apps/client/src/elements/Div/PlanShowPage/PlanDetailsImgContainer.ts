@@ -1,8 +1,9 @@
-import styled from 'styled-components';
-import { Div } from '../Div';
+import styled from "styled-components";
+import { Div } from "../Div";
 
 export const PlanDetailsImgContainer = styled(Div)`
-  width: 60%;
+  flex: 6;
+  min-width: 20rem;
 
   position: relative;
 `;

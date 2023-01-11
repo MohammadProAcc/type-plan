@@ -1,10 +1,11 @@
-import styled from 'styled-components';
-import { Form } from '..';
-import { Color } from 'styles';
+import styled from "styled-components";
+import { Color } from "styles";
+import { Form } from "..";
 
 export const LoginForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   color: ${Color.Line};
 `;

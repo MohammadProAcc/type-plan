@@ -10,5 +10,5 @@ export const PlanShowTitle = styled(H1)`
   display: flex;
   align-items: center;
   
-  font-size: ${FontSize.h5};
+  font-size: ${FontSize.h6};
 `;

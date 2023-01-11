@@ -1,6 +1,6 @@
+import { PlanDetailsContainer, PlanDetailsContainerRow } from "elements";
 import React from "react";
 import { Layout } from "./Layout";
-import { PlanDetailsContainer, PlanDetailsContainerRow } from "elements";
 import {
   PlanDetails,
   PlanHeader,
@@ -13,17 +13,12 @@ export const PlanShowPage: React.FC = () => {
   return (
     <Layout>
       <PlanDetailsContainer>
-        <PlanDetailsContainerRow>
-          <PlanHeader />
-        </PlanDetailsContainerRow>
+        <PlanHeader />
 
         <PlanDetailsContainerRow>
+          <PlanMedia />
           <PlanInformation />
 
-          <PlanMedia />
-        </PlanDetailsContainerRow>
-
-        <PlanDetailsContainerRow>
           <PlanPurchaseInformation />
 
           <PlanDetails />

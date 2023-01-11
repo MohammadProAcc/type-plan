@@ -76,13 +76,9 @@ export const LoginPage: React.FC = () => {
         },
       });
       if (response.error === null) {
-        /* setCookie( */
-        /*   process.env.TOKEN, */
-        /*   (response.data as FQl_response_login_LoginReturn).token, */
-        /* ); */
         reset();
-        toast.success(`${response.data.name} خوش آمدید 🌹`);
         if (response.data.name) router.back();
+        toast.success(`${response.data.name} خوش آمدید 🌹`);
       }
     } else if (me.data.loginStatus === "Login") {
       const response = await updateUser(
