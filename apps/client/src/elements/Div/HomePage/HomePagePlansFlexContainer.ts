@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { Div } from '../Div';
+import styled from "styled-components";
+import { Div } from "../Div";
 
 export const HomePagePlansFlexContainer = styled(Div)`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
 `;

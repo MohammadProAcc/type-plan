@@ -1,4 +1,8 @@
-import { LoginButton as LoginButtonEl, LoginButtonAnchor } from "elements";
+import {
+  LoginButton as LoginButtonEl,
+  LoginButtonAnchor,
+  NavbarLink,
+} from "elements";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -39,15 +43,21 @@ export const LoginButton: React.FC = () => {
     <>
       {cookies[process.env.TOKEN]
         ? (
-          <LoginButtonAnchor>
-            <LoginButtonEl onClick={logout}>خروج</LoginButtonEl>
-          </LoginButtonAnchor>
+          <NavbarLink
+            lefSide
+            onClick={logout}
+          >
+            خروج
+          </NavbarLink>
         )
         : (
           <Link href="/login" passHref>
-            <LoginButtonAnchor>
-              <LoginButtonEl>ورود</LoginButtonEl>
-            </LoginButtonAnchor>
+            <NavbarLink
+              lefSide
+              onClick={logout}
+            >
+              ورود
+            </NavbarLink>
           </Link>
         )}
     </>
