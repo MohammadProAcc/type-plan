@@ -236,8 +236,8 @@ export const PlansPageSidebar: React.FC<PlanPageProps> = (
           <ApplyBtn
             onClick={() => {
               (
-                  +(planFilters.infrastructureArea[0]) > 15 &&
-                  +(planFilters.infrastructureArea[1]) > 20
+                  +(planFilters.infrastructureArea[0]) > 5 &&
+                  +(planFilters.infrastructureArea[1]) > 10
                 )
                 ? applyQuery()
                 : toast.warn(
@@ -293,8 +293,8 @@ export const PlansPageSidebar: React.FC<PlanPageProps> = (
           <ApplyBtn
             onClick={() => {
               (
-                  +(planFilters.width[0]) > 15 &&
-                  +(planFilters.width[1]) > 20
+                  +(planFilters.width[0]) > 3 &&
+                  +(planFilters.width[1]) > 6
                 )
                 ? applyQuery()
                 : toast.warn(
@@ -350,8 +350,8 @@ export const PlansPageSidebar: React.FC<PlanPageProps> = (
           <ApplyBtn
             onClick={() => {
               (
-                  +(planFilters.length[0]) > 15 &&
-                  +(planFilters.length[1]) > 20
+                  +(planFilters.length[0]) > 3 &&
+                  +(planFilters.length[1]) > 6
                 )
                 ? applyQuery()
                 : toast.warn(
